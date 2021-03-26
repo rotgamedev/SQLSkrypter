@@ -3,7 +3,7 @@ Skrypter is software that is used to execute SQL queries on MSSQL databases. The
 
 The application opens in the 800x600 format. Its size cannot be changed. The default application location is in the center of the screen. The location can be changed by grabbing the application title (SKRYPTER) with the cursor and moving it to any place.
 
-Principle of operation:
+#### Principle of operation:
 
 The Skrypter sends a query to previously configured servers returning the names of databases located on the given server
 
