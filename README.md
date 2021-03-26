@@ -43,7 +43,7 @@ The application has different language versions. The language can be changed by 
 
 ###### Despite my best efforts, I cannot guarantee that there will be no problems. Although in my work the software is used successfully by programmers.
 
-I am not a programmer. This software is my first project. If it is helpful for you, I will be grateful for your support.
+I am not a programmer. This software is my first hobby project. If it is helpful for you, I will be grateful for your support.
 
 # Buy Me A beer! 🍺
 
