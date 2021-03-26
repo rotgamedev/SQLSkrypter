@@ -41,6 +41,10 @@ The application checks for updates at startup. If there is a newer version, the 
 
 The application has different language versions. The language can be changed by selecting it from the list. Changing the language does not require restarting the application. Currently, you can choose Polish or English language.
 
+###### Despite my best efforts, I cannot guarantee that there will be no problems. Although in my work the software is used successfully by programmers.
+
+I am not a programmer. This software is my first project. If it is helpful for you, I will be grateful for your support.
+
 # Buy Me A beer! 🍺
 
 Buymeacoffee is a website that contacts developers, designers, artists, etc. with their communities so that people can contribute and help them out so that the content they offer is better since the rewarding system encourages creators to continue doing what they like and helping others.
