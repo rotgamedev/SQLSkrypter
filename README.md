@@ -8,8 +8,8 @@ Principle of operation:
 The Skrypter sends a query to previously configured servers returning the names of databases located on the given server
 
 The default query text on first run is:
-"SELECT * FROM master.sys.databases where state_desc = 'ONLINE' order by name"
-# Important: You should pay attention to what query will be written, as incorrect query may cause an application error.
+`"SELECT * FROM master.sys.databases where state_desc = 'ONLINE' order by name"`
+###### Important: You should pay attention to what query will be written, as incorrect query may cause an application error.
 
 The application checks for updates at startup. If there is a newer version, the user will be notified. Checking for updates is done once at the start of the application. The ability to check for updates at startup can be disabled by unchecking the box: Check for updates at application startup. An internet connection is required for this.
 
