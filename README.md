@@ -32,6 +32,9 @@ If you want to ignore a particular server, you can check the circle next to its 
 ![Ignore server](https://i.imgur.com/MH0UxIB.png)
 
 
+
+### When everything is ready, just press the "Execute" button
+
 ###### Important: The application does not return a result (only a log entry in case of an error). So queries like "select" don't make much sense.
 
 The application checks for updates at startup. If there is a newer version, the user will be notified. Checking for updates is done once at the start of the application. The ability to check for updates at startup can be disabled by unchecking the box: Check for updates at application startup. An internet connection is required for this.
