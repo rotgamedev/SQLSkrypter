@@ -1,3 +1,6 @@
+👉 Download the latest version:
+https://github.com/rotgamedev/SQLSkrypter/releases/latest
+
 # Skrypter
 Skrypter is software that is used to execute SQL queries on MSSQL databases. The software allows you to add multiple servers, on which many databases can be located, and execute scripts on them. The query can be written from within the application or imported from a file. The application informs about the correct or incorrect execution of the query by means of color markings as well as saving in "* .log" files.
 
