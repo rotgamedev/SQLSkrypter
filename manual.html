@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLSkrypter | User Manual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="atmosphere">
+        <div class="sf-central-glow"></div>
+        <div class="grid-layers"></div>
+    </div>
+
+    <nav>
+        <span style="display: flex; align-items: center; margin-right: 5px;">
+            <span style="color: var(--accent-blue); font-weight: 900; letter-spacing: -1px; font-size: 1.2rem;">SQL</span>
+            <span style="color: var(--text-primary); font-weight: 700; letter-spacing: -0.5px; font-size: 1.2rem;">Skrypter</span>
+        </span>
+        <div class="nav-links">
+            <a href="index.html" data-i18n="nav_core">Overview</a>
+            <a href="features.html" data-i18n="nav_features">Features</a>
+            <a href="licensing.html" data-i18n="nav_license">Licensing</a>
+            <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+            <a href="manual.html" data-i18n="nav_manual" class="active">Manual</a>
+            <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
+            <a href="index.html#download" data-i18n="nav_download">Download</a>
+        </div>
+        <select class="lang-switcher" onchange="changeLang(this.value)">
+            <option value="en">EN</option>
+            <option value="pl">PL</option>
+        </select>
+    </nav>
+
+    <div class="page-header container reveal">
+        <h1 data-i18n="man_pg_t">Official User Manual</h1>
+        <p data-i18n="man_pg_d">Operations, limitations, and architectural overview (v2.0.0).</p>
+    </div>
+
+    <section style="padding-top: 2rem;">
+        <div class="container document-content reveal-group">
+            
+            <div class="faq-item">
+                <h3 data-i18n="m_s1">Standard vs. PRO Edition Comparison</h3>
+                <p data-i18n="m_s1_d">To ensure high performance and sustainability, SQLSkrypter uses a tiered feature model.</p>
+                <ul>
+                    <li data-i18n="m_s1_b1">- See Licensing section for exact feature limitations.</li>
+                </ul>
+            </div>
+
+            <div class="faq-item">
+                <h3 data-i18n="m_s2">Setting Up Your Environments</h3>
+                <p data-i18n="m_s2_d">SQLSkrypter allows you to organize your servers into logical groups.</p>
+                <ul>
+                    <li data-i18n="m_s2_b1">Standard Edition: Create up to 3 hierarchical environments.</li>
+                    <li data-i18n="m_s2_b2">Visual Distinction: Custom hex colors are allowed globally.</li>
+                </ul>
+            </div>
+
+            <div class="faq-item">
+                <h3 data-i18n="m_s3">Script Execution & Modes</h3>
+                <p data-i18n="m_s3_d">The Execute button runs the current script on all checked databases.</p>
+                <ul>
+                    <li data-i18n="m_s3_b1">Sequential Execution: Operates one after another.</li>
+                    <li data-i18n="m_s3_b2">Dry Run (PRO): Wraps query in a simulated Transaction rollback.</li>
+                </ul>
+            </div>
+
+            <div class="faq-item">
+                <h3 data-i18n="m_s4">Professional Productivity Features (PRO)</h3>
+                <p data-i18n="m_s4_d">Advanced lifecycle tools for DBAs.</p>
+                <ul>
+                    <li data-i18n="m_s4_b1">Environment Dashboard (Chips): Isolate Dev/Prod branches instantly.</li>
+                    <li data-i18n="m_s4_b2">Configuration Mobility: Save complex XML structures with AES encryption.</li>
+                    <li data-i18n="m_s4_b3">Tree Sessions: Remember exact checkboxes.</li>
+                </ul>
+            </div>
+
+            <div class="faq-item">
+                <h3 data-i18n="m_s5">Security & Privacy</h3>
+                <p data-i18n="m_s5_d">100% Offline application design.</p>
+                <ul>
+                    <li data-i18n="m_s5_b1">No internet telemetry is ever reported.</li>
+                    <li data-i18n="m_s5_b2">Zero dependencies on cloud validation nodes.</li>
+                    <li data-i18n="m_s5_b3">DPAPI storage encryption for offline credential safety.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content" style="margin-bottom: 2rem;">
+                <div class="footer-brand" style="margin-right: 2rem;">
+                    <div style="font-weight: 800; font-size: 1.2rem; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.02em;">Software<span style="color: var(--accent-blue);">Foundry</span></div>
+                    <div style="color: var(--text-muted); font-size: 0.85rem;">SQLSkrypter Engine</div>
+                </div>
+                <div class="footer-links">
+                    <a href="manual.html" data-i18n="ft_manual">User Manual</a>
+                    <a href="faq.html" data-i18n="ft_faq">FAQ</a>
+                    <a href="licensing.html" data-i18n="ft_licd">Licensing</a>
+                    <a href="index.html#download" data-i18n="nav_download">Download</a>
+                    <a href="changelog.html" data-i18n="ft_change">Changelog</a>
+                    <a href="privacy.html" data-i18n="ft_priv">Privacy Policy</a>
+                    <a href="terms.html" data-i18n="ft_terms">Terms</a>
+                    <a href="mailto:support@sqlskrypter.com" data-i18n="ft_contact">Contact</a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Software Foundry (Pawel Merta). All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

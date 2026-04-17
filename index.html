@@ -21,11 +21,13 @@
             <span style="color: var(--text-primary); font-weight: 700; letter-spacing: -0.5px; font-size: 1.2rem;">Skrypter</span>
         </span>
         <div class="nav-links">
-            <a href="index.html" data-i18n="nav_core">Overview</a>
-            <a href="features.html" data-i18n="nav_features">Features</a>
-            <a href="licensing.html" data-i18n="nav_license">Licensing</a>
-            <a href="faq.html" data-i18n="nav_faq">FAQ</a>
-            <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
+                <a href="index.html" data-i18n="nav_core" class="active">Overview</a>
+                <a href="features.html" data-i18n="nav_features">Features</a>
+                <a href="licensing.html" data-i18n="nav_license">Licensing</a>
+                <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+                <a href="manual.html" data-i18n="nav_manual">Manual</a>
+                <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
+                <a href="#download" data-i18n="nav_download">Download</a>
         </div>
         <select class="lang-switcher" onchange="changeLang(this.value)">
             <option value="en">EN</option>
@@ -36,8 +38,13 @@
     <!-- Hero -->
     <section class="hero reveal" id="hero">
         <div class="container">
+            <div style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; letter-spacing: -3px; margin-bottom: 1rem; color: var(--text-primary); text-shadow: 0 0 40px rgba(152, 221, 255, 0.3);">
+                SQL<span style="color: var(--accent-blue);">Skrypter</span>
+            </div>
+            
             <h1 data-i18n="h1_title">Professional SQL Runner for MSSQL</h1>
-            <p class="hero-subtitle" data-i18n="h1_sub">Parallel script execution. Uncompromising security. Zero telemetery.</p>
+            <p class="hero-subtitle" style="margin-bottom: 1.5rem;" data-i18n="h1_sub">Parallel script execution. Uncompromising security. Zero telemetery.</p>
+            <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto 3rem auto; font-size: 1.05rem;" data-i18n="h1_desc">SQLSkrypter is a tool designed to execute SQL scripts across multiple servers and databases simultaneously — faster, safer, and with complete control.</p>
             
             <div class="terminal-snippet reveal" onclick="copySnippet(this)">
                 <span class="prompt">></span> <span class="code">sqlskrypter --deploy --parallel=16 --dry-run</span>
@@ -54,7 +61,8 @@
                     <span data-i18n="btn_pro">Buy Pro License</span>
                 </a>
             </div>
-            <p class="hero-note" data-i18n="hero_note">Offline. No server installation. DPAPI Secured.</p>
+            <p class="hero-note" style="margin-bottom: 0.5rem;" data-i18n="hero_note">Offline. No server installation. DPAPI Secured.</p>
+            <p class="hero-note" style="color: rgba(158, 179, 210, 0.5); font-size: 0.75rem;" data-i18n="hero_platforms">Platform: Windows 10/11 x64. .NET 8.0.</p>
         </div>
     </section>
 
@@ -105,6 +113,21 @@
         </div>
     </section>
 
+    <!-- Overview summary injected based on user feedback -->
+    <section class="section-alt" id="overview" style="padding: 4rem 0;">
+        <div class="container reveal-group">
+            <div class="core-value-container" style="max-width: 900px; margin: 0 auto; background: transparent; border: none; padding: 0;">
+                <h3 style="color: var(--text-primary); font-size: 1.5rem; text-align: center; margin-bottom: 2rem;" data-i18n="ov_title">Designed for scale</h3>
+                <ul class="core-list highlight-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="ov_1">Execute scripts against hundreds of databases concurrently.</span></li>
+                    <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="ov_2">Analyze structure changes without risk using Transactional Dry Run.</span></li>
+                    <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="ov_3">Work efficiently with batch script files or an integrated syntax editor.</span></li>
+                    <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="ov_4">Receive detailed OK/ERR statistics for each database and file instantly.</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- Horizontal Scroll Gallery -->
     <section class="gallery-section reveal">
         <div class="container">
@@ -151,20 +174,19 @@
     <footer>
         <div class="container">
             <div class="footer-content" style="margin-bottom: 2rem;">
-                <div style="flex: 1;">
-                    <strong style="color: var(--text-primary); font-size: 1.2rem; display: block; margin-bottom: 1rem;">SQLSkrypter</strong>
-                    <div class="footer-links">
-                        <a href="faq.html" data-i18n="ft_faq">FAQ</a>
-                        <a href="licensing.html" data-i18n="ft_licd">Licensing</a>
-                        <a href="changelog.html" data-i18n="ft_change">Changelog</a>
-                    </div>
+                <div class="footer-brand" style="margin-right: 2rem;">
+                    <div style="font-weight: 800; font-size: 1.2rem; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.02em;">Software<span style="color: var(--accent-blue);">Foundry</span></div>
+                    <div style="color: var(--text-muted); font-size: 0.85rem;">SQLSkrypter Engine</div>
                 </div>
-                <div>
-                    <div class="footer-links">
-                        <a href="privacy.html" data-i18n="ft_priv">Privacy Policy</a>
-                        <a href="terms.html" data-i18n="ft_terms">Terms of condition</a>
-                        <a href="mailto:sqlskrypter@gmail.com" data-i18n="ft_contact">Contact</a>
-                    </div>
+                <div class="footer-links">
+                    <a href="manual.html" data-i18n="ft_manual">User Manual</a>
+                    <a href="faq.html" data-i18n="ft_faq">FAQ</a>
+                    <a href="licensing.html" data-i18n="ft_licd">Licensing</a>
+                    <a href="#download" data-i18n="nav_download">Download</a>
+                    <a href="changelog.html" data-i18n="ft_change">Changelog</a>
+                    <a href="privacy.html" data-i18n="ft_priv">Privacy Policy</a>
+                    <a href="terms.html" data-i18n="ft_terms">Terms</a>
+                    <a href="mailto:support@sqlskrypter.com" data-i18n="ft_contact">Contact</a>
                 </div>
             </div>
             <div class="copyright">

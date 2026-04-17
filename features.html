@@ -20,12 +20,14 @@
             <span style="color: var(--accent-blue); font-weight: 900; letter-spacing: -1px; font-size: 1.2rem;">SQL</span>
             <span style="color: var(--text-primary); font-weight: 700; letter-spacing: -0.5px; font-size: 1.2rem;">Skrypter</span>
         </span>
-        <div class="nav-links">
+                <div class="nav-links">
             <a href="index.html" data-i18n="nav_core">Overview</a>
-            <a href="features.html" data-i18n="nav_features">Features</a>
+            <a href="features.html" data-i18n="nav_features" class="active">Features</a>
             <a href="licensing.html" data-i18n="nav_license">Licensing</a>
             <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+            <a href="manual.html" data-i18n="nav_manual">Manual</a>
             <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
+            <a href="index.html#download" data-i18n="nav_download">Download</a>
         </div>
         <select class="lang-switcher" onchange="changeLang(this.value)">
             <option value="en">EN</option>
@@ -123,28 +125,26 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+        <footer>
         <div class="container">
             <div class="footer-content" style="margin-bottom: 2rem;">
-                <div style="flex: 1;">
-                    <strong style="color: var(--text-primary); font-size: 1.2rem; display: block; margin-bottom: 1rem;">SQLSkrypter</strong>
-                    <div class="footer-links">
-                        <a href="#" data-i18n="ft_manual">User Manual</a>
-                        <a href="#" data-i18n="ft_faq">FAQ</a>
-                        <a href="licensing.html" data-i18n="ft_licd">Licensing</a>
-                        <a href="changelog.html" data-i18n="ft_change">Changelog</a>
-                    </div>
+                <div class="footer-brand" style="margin-right: 2rem;">
+                    <div style="font-weight: 800; font-size: 1.2rem; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: -0.02em;">Software<span style="color: var(--accent-blue);">Foundry</span></div>
+                    <div style="color: var(--text-muted); font-size: 0.85rem;">SQLSkrypter Engine</div>
                 </div>
-                <div>
-                    <div class="footer-links">
-                        <a href="#" data-i18n="ft_priv">Privacy Policy</a>
-                        <a href="#" data-i18n="ft_terms">Terms of condition</a>
-                        <a href="mailto:sqlskrypter@gmail.com" data-i18n="ft_contact">Contact</a>
-                    </div>
+                <div class="footer-links">
+                    <a href="manual.html" data-i18n="ft_manual">User Manual</a>
+                    <a href="faq.html" data-i18n="ft_faq">FAQ</a>
+                    <a href="licensing.html" data-i18n="ft_licd">Licensing</a>
+                    <a href="index.html#download" data-i18n="nav_download">Download</a>
+                    <a href="changelog.html" data-i18n="ft_change">Changelog</a>
+                    <a href="privacy.html" data-i18n="ft_priv">Privacy Policy</a>
+                    <a href="terms.html" data-i18n="ft_terms">Terms</a>
+                    <a href="mailto:support@sqlskrypter.com" data-i18n="ft_contact">Contact</a>
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2026 SQLSkrypter. All rights reserved.
+                &copy; 2026 Software Foundry (Pawel Merta). All rights reserved.
             </div>
         </div>
     </footer>
