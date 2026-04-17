@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLSkrypter | Professional SQL Runner for MSSQL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="atmosphere">
+        <div class="sf-central-glow"></div>
+        <div class="grid-layers"></div>
+    </div>
+
+    <nav>
+        <span style="display: flex; align-items: center; margin-right: 5px;">
+            <span style="color: var(--accent-blue); font-weight: 900; letter-spacing: -1px; font-size: 1.2rem;">SQL</span>
+            <span style="color: var(--text-primary); font-weight: 700; letter-spacing: -0.5px; font-size: 1.2rem;">Skrypter</span>
+        </span>
+        <div class="nav-links">
+            <a href="index.html" data-i18n="nav_core">Overview</a>
+            <a href="features.html" data-i18n="nav_features">Features</a>
+            <a href="licensing.html" data-i18n="nav_license">Licensing</a>
+            <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+            <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
+        </div>
+        <select class="lang-switcher" onchange="changeLang(this.value)">
+            <option value="en">EN</option>
+            <option value="pl">PL</option>
+        </select>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero reveal" id="hero">
+        <div class="container">
+            <h1 data-i18n="h1_title">Professional SQL Runner for MSSQL</h1>
+            <p class="hero-subtitle" data-i18n="h1_sub">Parallel script execution. Uncompromising security. Zero telemetery.</p>
+            
+            <div class="terminal-snippet reveal" onclick="copySnippet(this)">
+                <span class="prompt">></span> <span class="code">sqlskrypter --deploy --parallel=16 --dry-run</span>
+                <div class="copy-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </div>
+            </div>
+
+            <div class="btn-group reveal-group">
+                <a href="#download" class="btn btn-secondary" style="border-color: rgba(152, 221, 255, 0.3);">
+                    <span data-i18n="btn_trial">Download Free Trial</span>
+                </a>
+                <a href="licensing.html" class="btn btn-primary">
+                    <span data-i18n="btn_pro">Buy Pro License</span>
+                </a>
+            </div>
+            <p class="hero-note" data-i18n="hero_note">Offline. No server installation. DPAPI Secured.</p>
+        </div>
+    </section>
+
+    <!-- Killer Features Section Instead of long lists -->
+    <section class="section-alt reveal" id="core">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="s3_title">Enterprise-Grade Engineering</h2>
+            </div>
+            <div class="features-grid reveal-group" style="grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));">
+                
+                <div class="feat-card" style="display: flex; flex-direction: column; justify-content: center; background: rgba(5, 7, 11, 0.6);">
+                    <h3 data-i18n="f1_h">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        Parallel Execution & Analytics
+                    </h3>
+                    <p data-i18n="f1_p">Execute across hundreds of databases concurrently. Monitor progress via real-time timelines and a detailed summary panel tracking success rates, fastest/slowest runs, and grouped errors.</p>
+                </div>
+
+                <div class="feat-card" style="display: flex; flex-direction: column; justify-content: center; background: rgba(5, 7, 11, 0.6);">
+                    <h3 data-i18n="f2_h">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        ScriptDom Validation & Dry Run
+                    </h3>
+                    <p data-i18n="f2_p">Integrated Microsoft ScriptDom AST parser blocks destructive queries during discovery. Safely simulate transaction rollbacks on production with Dry-Run mode.</p>
+                </div>
+
+                <div class="feat-card" style="display: flex; flex-direction: column; justify-content: center; background: rgba(5, 7, 11, 0.6);">
+                    <h3 data-i18n="f3_h">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                        Advanced Workspace
+                    </h3>
+                    <p data-i18n="f3_p">Hierarchical server trees with drag-and-drop support, drag-and-drop file sorting, color-coded environment tagging, and seamless session state persistence.</p>
+                </div>
+
+                <div class="feat-card" style="display: flex; flex-direction: column; justify-content: center; background: rgba(5, 7, 11, 0.6);">
+                    <h3 data-i18n="f4_h">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        Hardware-Linked Security
+                    </h3>
+                    <p data-i18n="f4_p">Credentials stored via Windows DPAPI. Export shareable configurations using AES encryption + PBKDF2 key derivation.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 4rem;" class="reveal">
+                <a href="features.html" class="btn btn-secondary" data-i18n="btn_explore">Explore all features &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Scroll Gallery -->
+    <section class="gallery-section reveal">
+        <div class="container">
+            <h2 data-i18n="gallery_title" style="margin-bottom: 2rem;">Interface Previews</h2>
+        </div>
+        <div class="gallery-wrapper">
+            <div class="gallery-track">
+                <div class="gallery-item">
+                    <div class="screenshot-placeholder">Main Engine Workspace</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="screenshot-placeholder">Parallel Operations Timeline</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="screenshot-placeholder">Dry Run Diagnostics</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="screenshot-placeholder">Environment Configuration</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download -->
+    <section class="reveal" id="download">
+        <div class="container">
+            <div class="download-card reveal-group">
+                <h2 data-i18n="dl_title">Download SQLSkrypter</h2>
+                <div style="margin-bottom: 2.5rem; color: var(--text-secondary);">
+                    <span data-i18n="dl_ver">Version: 2.0.0</span> | <span data-i18n="dl_date">Release Date: Q2 2026</span>
+                </div>
+                <a href="https://github.com/rotgamedev/SQLSkrypter/releases/latest" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.25rem 3rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span data-i18n="dl_btn">Download Installer (.exe)</span>
+                </a>
+                <div class="dl-info">
+                    <span data-i18n="dl_sys">System Requirements: Windows x64</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content" style="margin-bottom: 2rem;">
+                <div style="flex: 1;">
+                    <strong style="color: var(--text-primary); font-size: 1.2rem; display: block; margin-bottom: 1rem;">SQLSkrypter</strong>
+                    <div class="footer-links">
+                        <a href="faq.html" data-i18n="ft_faq">FAQ</a>
+                        <a href="licensing.html" data-i18n="ft_licd">Licensing</a>
+                        <a href="changelog.html" data-i18n="ft_change">Changelog</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-links">
+                        <a href="privacy.html" data-i18n="ft_priv">Privacy Policy</a>
+                        <a href="terms.html" data-i18n="ft_terms">Terms of condition</a>
+                        <a href="mailto:sqlskrypter@gmail.com" data-i18n="ft_contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 SQLSkrypter. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+

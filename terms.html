@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLSkrypter | Terms of Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="atmosphere">
+        <div class="sf-central-glow"></div>
+        <div class="grid-layers"></div>
+    </div>
+
+    <nav>
+        <span style="display: flex; align-items: center; margin-right: 5px;">
+            <span style="color: var(--accent-blue); font-weight: 900; letter-spacing: -1px; font-size: 1.2rem;">SQL</span>
+            <span style="color: var(--text-primary); font-weight: 700; letter-spacing: -0.5px; font-size: 1.2rem;">Skrypter</span>
+        </span>
+        <div class="nav-links">
+            <a href="index.html" data-i18n="nav_core">Overview</a>
+            <a href="features.html" data-i18n="nav_features">Features</a>
+            <a href="licensing.html" data-i18n="nav_license">Licensing</a>
+            <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+            <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
+        </div>
+        <select class="lang-switcher" onchange="changeLang(this.value)">
+            <option value="en">EN</option>
+            <option value="pl">PL</option>
+        </select>
+    </nav>
+
+    <div class="page-header container reveal">
+        <h1 data-i18n="doc_terms_title">End User License Agreement (EULA)</h1>
+        <p data-i18n="doc_terms_desc">Legal terms for using SQLSkrypter Standard and PRO editions.</p>
+    </div>
+
+    <section style="padding-top: 2rem;">
+        <div class="container document-content reveal">
+            <div style="background: rgba(5,7,11,0.6); padding: 3rem; border-radius: 1.5rem; border: 1px solid var(--border-color);">
+                <p data-i18n="doc_terms_p1" style="font-weight: 600; margin-bottom: 2rem;">This End-User License Agreement ('EULA') is a legal agreement between you and Pawel Merta ('Author'). By using SQLSkrypter, you agree to these terms.</p>
+                
+                <div class="reveal-group">
+                    <h3 data-i18n="doc_terms_s1">1. Software Editions</h3>
+                    <ul class="highlight-list">
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                            <span data-i18n="doc_terms_l1">Standard Edition: Free for personal and test use. Limited to 10 servers and lacks multi-threading.</span>
+                        </li>
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                            <span data-i18n="doc_terms_l2">PRO Edition: Requires a purchased license. Designed for commercial / enterprise use, unlocking all features securely.</span>
+                        </li>
+                    </ul>
+
+                    <h3 data-i18n="doc_terms_s2" style="margin-top: 3rem;">2. Restrictions</h3>
+                    <ul class="highlight-list">
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            <span data-i18n="doc_terms_l3">You may not reverse engineer, decompile, or bypass the offline RSA activation mechanism.</span>
+                        </li>
+                        <li>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            <span data-i18n="doc_terms_l4">You may not resell or lease the software without authorization.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content" style="margin-bottom: 2rem;">
+                <div style="flex: 1;">
+                    <strong style="color: var(--text-primary); font-size: 1.2rem; display: block; margin-bottom: 1rem;">SQLSkrypter</strong>
+                    <div class="footer-links">
+                        <a href="faq.html" data-i18n="ft_faq">FAQ</a>
+                        <a href="licensing.html" data-i18n="ft_licd">Licensing</a>
+                        <a href="changelog.html" data-i18n="ft_change">Changelog</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-links">
+                        <a href="privacy.html" data-i18n="ft_priv">Privacy Policy</a>
+                        <a href="terms.html" data-i18n="ft_terms">Terms of condition</a>
+                        <a href="mailto:sqlskrypter@gmail.com" data-i18n="ft_contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 SQLSkrypter. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+

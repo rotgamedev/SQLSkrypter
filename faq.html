@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLSkrypter | FAQ & Use Cases</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="atmosphere">
+        <div class="sf-central-glow"></div>
+        <div class="grid-layers"></div>
+    </div>
+
+    <nav>
+        <span style="display: flex; align-items: center; margin-right: 5px;">
+            <span style="color: var(--accent-blue); font-weight: 900; letter-spacing: -1px; font-size: 1.2rem;">SQL</span>
+            <span style="color: var(--text-primary); font-weight: 700; letter-spacing: -0.5px; font-size: 1.2rem;">Skrypter</span>
+        </span>
+        <div class="nav-links">
+            <a href="index.html" data-i18n="nav_core">Overview</a>
+            <a href="features.html" data-i18n="nav_features">Features</a>
+            <a href="licensing.html" data-i18n="nav_license">Licensing</a>
+            <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+            <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
+        </div>
+        <select class="lang-switcher" onchange="changeLang(this.value)">
+            <option value="en">EN</option>
+            <option value="pl">PL</option>
+        </select>
+    </nav>
+
+    <div class="page-header container reveal">
+        <h1 data-i18n="doc_faq_title">Frequently Asked Questions</h1>
+        <p data-i18n="doc_faq_desc">Common use cases, troubleshooting, and answers.</p>
+    </div>
+
+    <!-- Troubleshooting / FAQ -->
+    <section style="padding-top: 2rem;">
+        <div class="container document-content">
+            <div class="reveal-group">
+                <div class="faq-item">
+                    <h3 data-i18n="faq_q1">Is it safe to store my SQL Server passwords in Skrypter?</h3>
+                    <p data-i18n="faq_a1">Yes. SQLSkrypter uses Windows Native DPAPI (Data Protection API) to encrypt credentials using keys tied specifically to your OS installation and hardware. It is extremely secure.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 data-i18n="faq_q2">How does the Parallel Execution Engine work?</h3>
+                    <p data-i18n="faq_a2">It spawns isolated, managed threads (configurable limits around 8 parallel queues) to deploy scripts independently to different SQL Server instances. This drastically reduces massive rollout times.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 data-i18n="faq_q3">What happens if a script fails during bulk execution?</h3>
+                    <p data-i18n="faq_a3">The engine isolates errors per-database. You can configure the engine to either halt the remaining queue immediately or continue execution on other healthy servers. Results are logged in the Summary Panel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="section-alt reveal" style="padding-top: 6rem; padding-bottom: 6rem;">
+        <div class="container document-content">
+            <h2 data-i18n="faq_usecases" style="color: var(--accent-blue); text-align: center; margin-bottom: 3rem;">Use Cases</h2>
+            <div class="features-grid reveal-group">
+                <div class="feat-card" style="background: rgba(5,7,11,0.5);">
+                    <h3 data-i18n="faq_u1_h" style="color: var(--accent-blue); display: flex; align-items: center; gap: 0.5rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        Dry Run Logic
+                    </h3>
+                    <p data-i18n="faq_u1">...</p>
+                </div>
+                
+                <div class="feat-card" style="background: rgba(5,7,11,0.5);">
+                    <h3 data-i18n="faq_u2_h" style="color: var(--accent-blue); display: flex; align-items: center; gap: 0.5rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        Audit-by-Error
+                    </h3>
+                    <p data-i18n="faq_u2">...</p>
+                </div>
+
+                <div class="feat-card" style="background: rgba(5,7,11,0.5);">
+                    <h3 data-i18n="faq_u3_h" style="color: var(--accent-blue); display: flex; align-items: center; gap: 0.5rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                        Fleet Maintenance
+                    </h3>
+                    <p data-i18n="faq_u3">...</p>
+                </div>
+
+                <div class="feat-card" style="background: rgba(5,7,11,0.5);">
+                    <h3 data-i18n="faq_u4_h" style="color: var(--accent-blue); display: flex; align-items: center; gap: 0.5rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        Emergency Patching
+                    </h3>
+                    <p data-i18n="faq_u4">...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content" style="margin-bottom: 2rem;">
+                <div style="flex: 1;">
+                    <strong style="color: var(--text-primary); font-size: 1.2rem; display: block; margin-bottom: 1rem;">SQLSkrypter</strong>
+                    <div class="footer-links">
+                        <a href="faq.html" data-i18n="ft_faq">FAQ</a>
+                        <a href="licensing.html" data-i18n="ft_licd">Licensing</a>
+                        <a href="changelog.html" data-i18n="ft_change">Changelog</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-links">
+                        <a href="privacy.html" data-i18n="ft_priv">Privacy Policy</a>
+                        <a href="terms.html" data-i18n="ft_terms">Terms of condition</a>
+                        <a href="mailto:sqlskrypter@gmail.com" data-i18n="ft_contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 SQLSkrypter. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+
+

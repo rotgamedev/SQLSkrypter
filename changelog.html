@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLSkrypter | Changelog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="atmosphere">
+        <div class="sf-central-glow"></div>
+        <div class="grid-layers"></div>
+    </div>
+
+    <nav>
+        <span style="display: flex; align-items: center; margin-right: 5px;">
+            <span style="color: var(--accent-blue); font-weight: 900; letter-spacing: -1px; font-size: 1.2rem;">SQL</span>
+            <span style="color: var(--text-primary); font-weight: 700; letter-spacing: -0.5px; font-size: 1.2rem;">Skrypter</span>
+        </span>
+        <div class="nav-links">
+            <a href="index.html" data-i18n="nav_core">Overview</a>
+            <a href="features.html" data-i18n="nav_features">Features</a>
+            <a href="licensing.html" data-i18n="nav_license">Licensing</a>
+            <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+            <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
+        </div>
+        <select class="lang-switcher" onchange="changeLang(this.value)">
+            <option value="en">EN</option>
+            <option value="pl">PL</option>
+        </select>
+    </nav>
+
+    <div class="page-header container">
+        <h1 data-i18n="ch_pg_title">Evolution of Skrypter</h1>
+        <p data-i18n="ch_pg_desc">See how we transformed from a simple tool into an enterprise engine.</p>
+    </div>
+
+    <section style="padding-top: 2rem;">
+        <div class="container timeline">
+            
+            <div class="timeline-item">
+                <span class="date" data-i18n="ch_v2_date">Q2 2026</span>
+                <h3 data-i18n="ch_v2_title">Version 2.0.0 - The Enterprise Update</h3>
+                <ul class="highlight-list">
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_1">Added Microsoft ScriptDom AST syntax parser.</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_2">Introduced Parallel execution framework and abort controls.</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_3">Added detailed Execution Timeline and Summary Dashboards.</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_4">Migrated from DES to DPAPI and AES/PBKDF2 encryption.</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_5">Introduced advanced tree manipulation (drag & drop, filtering, session loading).</span></li>
+                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_6">Added Multi-Language Support (EN, PL, DE, ES, FR, IT).</span></li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <span class="date">Legacy Engine</span>
+                <h3>Version 1.0.0</h3>
+                <p style="color: var(--text-muted);">The initial release featuring sequential processing, DES encryption, and basic environment management.</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content" style="margin-bottom: 2rem;">
+                <div style="flex: 1;">
+                    <strong style="color: var(--text-primary); font-size: 1.2rem; display: block; margin-bottom: 1rem;">SQLSkrypter</strong>
+                    <div class="footer-links">
+                        <a href="#" data-i18n="ft_manual">User Manual</a>
+                        <a href="#" data-i18n="ft_faq">FAQ</a>
+                        <a href="licensing.html" data-i18n="ft_licd">Licensing</a>
+                        <a href="changelog.html" data-i18n="ft_change">Changelog</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-links">
+                        <a href="#" data-i18n="ft_priv">Privacy Policy</a>
+                        <a href="#" data-i18n="ft_terms">Terms of condition</a>
+                        <a href="mailto:sqlskrypter@gmail.com" data-i18n="ft_contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 SQLSkrypter. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+

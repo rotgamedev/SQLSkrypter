@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLSkrypter | Privacy Policy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="atmosphere">
+        <div class="sf-central-glow"></div>
+        <div class="grid-layers"></div>
+    </div>
+
+    <nav>
+        <span style="display: flex; align-items: center; margin-right: 5px;">
+            <span style="color: var(--accent-blue); font-weight: 900; letter-spacing: -1px; font-size: 1.2rem;">SQL</span>
+            <span style="color: var(--text-primary); font-weight: 700; letter-spacing: -0.5px; font-size: 1.2rem;">Skrypter</span>
+        </span>
+        <div class="nav-links">
+            <a href="index.html" data-i18n="nav_core">Overview</a>
+            <a href="features.html" data-i18n="nav_features">Features</a>
+            <a href="licensing.html" data-i18n="nav_license">Licensing</a>
+            <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+            <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
+        </div>
+        <select class="lang-switcher" onchange="changeLang(this.value)">
+            <option value="en">EN</option>
+            <option value="pl">PL</option>
+        </select>
+    </nav>
+
+    <div class="page-header container reveal">
+        <h1 data-i18n="doc_privacy_title">Privacy Policy</h1>
+        <p data-i18n="doc_privacy_desc">SQLSkrypter operates with a 100% offline, privacy-first architecture.</p>
+    </div>
+
+    <section style="padding-top: 2rem;">
+        <div class="container document-content reveal">
+            <div style="background: rgba(5,7,11,0.6); padding: 3rem; border-radius: 1.5rem; border: 1px solid var(--border-color);">
+                <p data-i18n="doc_privacy_p1">At SQLSkrypter, we fundamentally believe that your database architecture, server names, and execution scripts are proprietary business secrets. Therefore, SQLSkrypter was designed from the ground up to never transmit any data outside of your local machine.</p>
+                
+                <h3 data-i18n="doc_privacy_p2">Key Privacy Tenets:</h3>
+                <ul class="highlight-list reveal-group" style="margin-top: 2rem;">
+                    <li>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span data-i18n="doc_privacy_l1">Zero Telemetry: We do not track application usage, error logs, or execution statistics.</span>
+                    </li>
+                    <li>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span data-i18n="doc_privacy_l2">Local Storage: All configurations, connection strings, and server credentials are encrypted exclusively on your hardware using Windows DPAPI.</span>
+                    </li>
+                    <li>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span data-i18n="doc_privacy_l3">No Cloud Synchronization: Your session states and application configurations remain entirely local.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content" style="margin-bottom: 2rem;">
+                <div style="flex: 1;">
+                    <strong style="color: var(--text-primary); font-size: 1.2rem; display: block; margin-bottom: 1rem;">SQLSkrypter</strong>
+                    <div class="footer-links">
+                        <a href="faq.html" data-i18n="ft_faq">FAQ</a>
+                        <a href="licensing.html" data-i18n="ft_licd">Licensing</a>
+                        <a href="changelog.html" data-i18n="ft_change">Changelog</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-links">
+                        <a href="privacy.html" data-i18n="ft_priv">Privacy Policy</a>
+                        <a href="terms.html" data-i18n="ft_terms">Terms of condition</a>
+                        <a href="mailto:sqlskrypter@gmail.com" data-i18n="ft_contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 SQLSkrypter. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+
