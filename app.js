@@ -585,10 +585,107 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 400);
     };
 
-    // Click on items
-    galleryItems.forEach((item, index) => {
-        item.addEventListener('click', () => openLightbox(index));
+    // 6. Gallery Drag-to-Scroll Engine
+    const galleryWrapper = document.querySelector('.gallery-wrapper');
+    const allGalleryImgs = galleryWrapper.querySelectorAll('img');
+    let isGalleryDragging = false;
+    let startX, scrollLeft, dragDist = 0;
+    let lastX = 0;
+
+    // Prevent native browser dragging for images
+    allGalleryImgs.forEach(img => {
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+        img.style.userSelect = 'none';
+        img.style.webkitUserDrag = 'none';
     });
+
+    const onDragStart = (e) => {
+        isGalleryDragging = true;
+        galleryWrapper.classList.add('is-dragging');
+        // Stop CSS snapping while we are manually controlling the position
+        galleryWrapper.style.scrollSnapType = 'none';
+        
+        // Use clientX for more consistent cross-browser dragging
+        startX = e.clientX;
+        lastX = e.clientX;
+        scrollLeft = galleryWrapper.scrollLeft;
+        dragDist = 0;
+        
+        // Custom cursor visual feedback
+        gsap.to(cursorRing, { scale: 1.5, duration: 0.3 });
+    };
+
+    const onDragMove = (e) => {
+        if (!isGalleryDragging) return;
+        
+        // Failsafe: if mouse button is not pressed, stop dragging immediately
+        if (e.buttons !== 1) {
+            onDragEnd(e);
+            return;
+        }
+
+        e.preventDefault();
+        
+        lastX = e.clientX;
+        const x = e.clientX;
+        const currentWalk = x - startX;
+        galleryWrapper.scrollLeft = scrollLeft - currentWalk;
+        dragDist = Math.abs(currentWalk);
+    };
+
+    const onDragEnd = (e) => {
+        if (!isGalleryDragging) return;
+        
+        isGalleryDragging = false;
+        galleryWrapper.classList.remove('is-dragging');
+        
+        // Re-enable snapping immediately so scrollIntoView works with it
+        galleryWrapper.style.scrollSnapType = 'x mandatory';
+
+        // Swipe Detection
+        const endX = e && e.clientX ? e.clientX : lastX;
+        const swipeDiff = startX - endX;
+        const threshold = 50; 
+
+        if (Math.abs(swipeDiff) > threshold) {
+            const direction = swipeDiff > 0 ? 1 : -1;
+            
+            // 1. Find the item that was closest to center when we started
+            const itemWidth = galleryItems[0].offsetWidth + parseInt(window.getComputedStyle(galleryItems[0]).marginRight);
+            const baseIndex = Math.round(scrollLeft / itemWidth);
+            
+            // 2. Target index
+            let targetIndex = baseIndex + direction;
+            targetIndex = Math.max(0, Math.min(targetIndex, galleryItems.length - 1));
+
+            // 3. Use native scrollIntoView which is 100% compatible with scroll-snap
+            // This is exactly how 'arrow keys' work internally
+            galleryItems[targetIndex].scrollIntoView({
+                behavior: 'smooth',
+                inline: 'center',
+                block: 'nearest'
+            });
+        }
+        
+        gsap.to(cursorRing, { scale: 1, duration: 0.3 });
+    };
+
+    // Attach listeners
+    galleryWrapper.addEventListener('mousedown', onDragStart);
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+    window.addEventListener('blur', onDragEnd);
+
+    // Gallery item click (distinguish between drag and true click)
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', (e) => {
+            // Only open lightbox if the user actually clicked (moved less than 10px)
+            if (dragDist < 10) {
+                openLightbox(index);
+            }
+        });
+    });
+
 
     // Navigation buttons
     lightbox.querySelector('.lightbox-nav.prev').addEventListener('click', (e) => {
@@ -617,13 +714,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     lightbox.addEventListener('wheel', (e) => {
         if (!lightbox.classList.contains('active') || isThrottled) return;
-        isThrottled = true;
         
-        if (e.deltaY > 0 || e.deltaX > 0) updateLightbox(currentIdx + 1);
-        else updateLightbox(currentIdx - 1);
+        // Only trigger if movement is significant (avoids hyper-sensitivity)
+        const threshold = 20;
+        if (Math.abs(e.deltaX) > threshold || Math.abs(e.deltaY) > threshold) {
+            e.preventDefault();
+            isThrottled = true;
+            
+            if (e.deltaY > 0 || e.deltaX > 0) updateLightbox(currentIdx + 1);
+            else updateLightbox(currentIdx - 1);
 
-        setTimeout(() => { isThrottled = false; }, 500); // 500ms block between transitions
-    }, { passive: true });
+            setTimeout(() => { isThrottled = false; }, 500); // 500ms block between transitions
+        }
+    }, { passive: false });
 
     // Anchor Hash Fix for cross-page navigation
     if (window.location.hash) {

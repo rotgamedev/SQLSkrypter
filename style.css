@@ -319,17 +319,17 @@ td strong { color: var(--text-primary); }
     overscroll-behavior-x: contain;
     padding-bottom: 2rem; /* space for scroll thumb if visible */
 }
-/* Hide scrollbar for a cleaner look */
+/* Hide scrollbar visually but keep native scroll active */
+.gallery-wrapper {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
 .gallery-wrapper::-webkit-scrollbar {
-    height: 8px;
+    display: none; /* Chrome, Safari, Opera */
 }
-.gallery-wrapper::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.02);
-    border-radius: 4px;
-}
-.gallery-wrapper::-webkit-scrollbar-thumb {
-    background: rgba(152, 221, 255, 0.2);
-    border-radius: 4px;
+
+.gallery-wrapper {
+    user-select: auto;
 }
 .gallery-track {
     display: flex;
@@ -344,11 +344,15 @@ td strong { color: var(--text-primary); }
     margin-right: 2rem;
     flex-shrink: 0;
     scroll-snap-align: center;
-    cursor: pointer;
+    scroll-snap-stop: always;
+    cursor: grab; /* Shows it can be dragged */
     transition: transform 0.3s ease;
 }
 .gallery-item:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
+}
+.gallery-wrapper.is-dragging, .gallery-wrapper.is-dragging .gallery-item {
+    cursor: grabbing !important;
 }
 .gallery-item .screenshot-placeholder {
     width: 100%;
