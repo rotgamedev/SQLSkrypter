@@ -1,56 +1,97 @@
-👉 Download the latest version:
-https://github.com/rotgamedev/SQLSkrypter/releases/latest
+# SQLSkrypter
 
-# SQLSkrypter (Legacy Version)
-Skrypter is software that is used to execute SQL queries on MSSQL databases. The software allows you to add multiple servers, on which many databases can be located, and execute scripts on them. The query can be written from within the application or imported from a file. The application informs about the correct or incorrect execution of the query by means of color markings as well as saving in "* .log" files.
+**The Enterprise-Grade Orchestrator for SQL Server DBAs.**
 
-The application opens in the 800x600 format. Its size cannot be changed. The default application location is in the center of the screen. The location can be changed by grabbing the application title (SKRYPTER) with the cursor and moving it to any place.
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/rotgamedev/SQLSkrypter?style=for-the-badge&color=gold)
+![Edition-Standard](https://img.shields.io/badge/Edition-Standard-lightgrey?style=for-the-badge)
+![Edition-PRO](https://img.shields.io/badge/Edition-PRO-gold?style=for-the-badge)
+![Privacy-Local](https://img.shields.io/badge/Privacy-100%25%20Local-green?style=for-the-badge)
 
-#### Principle of operation:
+[English Version](#english) | [Polska Wersja](#polski)
 
-The Skrypter sends a query to previously configured servers returning the names of databases located on the given server
+---
 
-The default query text on first run is:
-`"SELECT * FROM master.sys.databases where state_desc = 'ONLINE' order by name"`
-###### Important: You should pay attention to what query will be written, as incorrect query may cause an application error.
+<div align="center">
+  <img src="Website/img/Main Workspace.png" alt="SQLSkrypter Main Workspace" width="800">
+  <p><i>Professional T-SQL orchestration across hundreds of databases.</i></p>
+</div>
 
-On the CONFIGURATION tab, you need to add servers and authentication method. You can also add database names to quickly select these databases
+---
 
-![Config_tab](https://i.imgur.com/UMkvyFn.png)
+<a name="english"></a>
+## 🌍 English
 
-You can add multiple script files to the tab SCRIPT FROM FILE and they will be executed on all selected databases.
+**SQLSkrypter** is a high-performance desktop orchestrator designed for the safe, asynchronous management of T-SQL scripts across complex SQL Server environments. Built for compliance-heavy industries, it delivers unprecedented speed without compromising on data privacy.
 
-![ScriptFile_tab](https://i.imgur.com/6zIg8PT.png)
+### 🚀 Core Value Proposition
 
-You can also write your own script on the SCRIPT tab.
+*   **Asynchronous Parallel Processing**: Execute scripts on hundreds of databases simultaneously using the PRO-only parallel engine.
+*   **Zero-Risk Simulation (Dry Run)**: Validate scripts using transactional rollbacks. Test on production with 0% risk to data.
+*   **Hierarchical Management**: Organize huge fleets into logical, color-coded environment groups.
+*   **Privacy-First Architecture**: No cloud, no telemetry, no leaks. Everything stays on your local machine.
 
-![Script_tab](https://i.imgur.com/zN6V1uG.png)
+### 📸 Visual Interface
 
-Before executing scripts, you need to refresh the list of databases on previously configured servers. Then you need to select which databases the scripts should execute on.
+<table border="0">
+  <tr>
+    <td>
+      <img src="Website/img/EnvConf.png" alt="Environment Configuration" width="400"><br>
+      <b>Environment Management</b><br>
+      Hierarchical infrastructure control.
+    </td>
+    <td>
+      <img src="Website/img/ParOpTi.png" alt="Parallel Execution" width="400"><br>
+      <b>Parallel Optimization</b><br>
+      Blazing fast multi-server execution.
+    </td>
+  </tr>
+</table>
 
-![Refresh_btn](https://i.imgur.com/CBWvySA.png)
+### 💎 Edition Matrix
 
-If you want to ignore a particular server, you can check the circle next to its name on the list. When it turns red, the selected server will be ignored.
+| Feature | Standard (Free) | PRO Edition |
+| :--- | :---: | :---: |
+| **Max Servers** | 10 Servers | **Unlimited** |
+| **Max Environments** | 3 Groups | **Unlimited** |
+| **Execution Mode** | Sequential | **Parallel (Asynchronous)** |
+| **Dry Run Simulation** | ❌ | **✅ Full Support** |
+| **Tree Sessions** | ❌ | **✅ Save/Restore XML** |
+| **Config Export/Import** | ❌ | **✅ Encrypted Portability** |
 
-![Ignore server](https://i.imgur.com/MH0UxIB.png)
+---
 
+<a name="polski"></a>
+## 🇵🇱 Polski
 
+**SQLSkrypter** to profesjonalny orchestrator T-SQL, stworzony do bezpiecznego i wydajnego zarządzania skryptami w rozproszonych środowiskach SQL Server. To potężne narzędzie dla administratorów DBA, którzy zarządzają setkami instancji jednocześnie.
 
-### When everything is ready, just press the "Execute" button
+### 🚀 Dlaczego SQLSkrypter?
 
-###### Important: The application does not return a result (only a log entry in case of an error). So queries like "select" don't make much sense.
+*   **Potężna Wydajność**: Uruchamiaj zmiany na setkach baz danych jednocześnie dzięki silnikowi asynchronicznemu (PRO).
+*   **Bezpieczeństwo (Dry Run)**: Symuluj zmiany w ramach transakcji SQL, które są automatycznie wycofywane. 0% ryzyka dla danych.
+*   **Przejrzysta Struktura**: Organizuj infrastrukturę w logiczne, kolorowane grupy środowisk (Production, Stage, Dev).
+*   **Prywatność (Zero-Trust)**: Brak chmury i telemetrii. Każde hasło i skrypt pozostaje wyłącznie na Twoim komputerze.
 
-The application checks for updates at startup. If there is a newer version, the user will be notified. Checking for updates is done once at the start of the application. The ability to check for updates at startup can be disabled by unchecking the box: Check for updates at application startup. An internet connection is required for this.
+### 🛡️ Bezpieczeństwo i Prywatność
+*   **DPAPI Encryption**: Twoje dane połączeń są chronione przez systemowe szyfrowanie sprzętowe Microsoft.
+*   **AST Discovery**: SQLSkrypter analizuje zapytania za pomocą `ScriptDom`, gwarantując, że przeglądanie baz danych jest zawsze operacją tylko do odczytu.
+*   **Local-Only Philosophy**: Aplikacja nie wymaga i nie inicjuje żadnych połączeń zewnętrznych poza Twoją siecią SQL.
 
-The application has different language versions. The language can be changed by selecting it from the list. Changing the language does not require restarting the application. Currently, you can choose Polish or English language.
+---
 
-###### Despite my best efforts, I cannot guarantee that there will be no problems. Although in my work the software is used successfully by programmers.
+## 📖 Useful Documents
+*   📘 **[User Manual](C:\Users\Pawel\.gemini\antigravity\brain\b54c8ef0-c05f-47de-b1b9-9b8d82e78e13\user_manual.md)**: Detailed feature guide and setup.
+*   🛠️ **[Technical Documentation](C:\Users\Pawel\.gemini\antigravity\brain\b54c8ef0-c05f-47de-b1b9-9b8d82e78e13\technical_documentation.md)**: RSA Licensing, Encryption, and SMO details.
+*   💡 **[Real-World Use Cases](C:\Users\Pawel\.gemini\antigravity\brain\b54c8ef0-c05f-47de-b1b9-9b8d82e78e13\use_cases.md)**: Examples of problems SQLSkrypter solves.
 
-I am not a programmer. This software is my first hobby project. If it is helpful for you, I will be grateful for your support.
+---
 
-# Buy Me A beer! 🍺
+## ☕ Support & Contact
+Help us maintain this project and support further development:
 
-Buymeacoffee is a website that contacts developers, designers, artists, etc. with their communities so that people can contribute and help them out so that the content they offer is better since the rewarding system encourages creators to continue doing what they like and helping others.
+[**Official Releases**](https://github.com/rotgamedev/SQLSkrypter) | [**Buy Me A Beer 🍺**](https://www.buymeacoffee.com/pawelm)
 
-If you can contribute or you want to, feel free to do it at [__Buy me a beer! :beer:__](https://www.buymeacoffee.com/pawelm), I will be really thankfull for anything, because that helps me a lot.
-### Be careful, there is no refund system. Remember that you don't need to donate, it is just a free choice for you. Thank you!
+**Support & Sales**: [sqlskrypter@gmail.com](mailto:sqlskrypter@gmail.com)
+
+---
+*Note: This software utilizes Microsoft SMO and ScriptDom for industrial-grade SQL Server interaction.*
