@@ -12,7 +12,7 @@
 ---
 
 <div align="center">
-  <img src="Website/img/Main Workspace.png" alt="SQLSkrypter Main Workspace" width="800">
+  <img src="img/Main Workspace.png" alt="SQLSkrypter Main Workspace" width="800">
   <p><i>Professional T-SQL orchestration across hundreds of databases.</i></p>
 </div>
 
@@ -35,12 +35,12 @@
 <table border="0">
   <tr>
     <td>
-      <img src="Website/img/EnvConf.png" alt="Environment Configuration" width="400"><br>
+      <img src="img/EnvConf.png" alt="Environment Configuration" width="400"><br>
       <b>Environment Management</b><br>
       Hierarchical infrastructure control.
     </td>
     <td>
-      <img src="Website/img/ParOpTi.png" alt="Parallel Execution" width="400"><br>
+      <img src="img/ParOpTi.png" alt="Parallel Execution" width="400"><br>
       <b>Parallel Optimization</b><br>
       Blazing fast multi-server execution.
     </td>
@@ -79,17 +79,10 @@
 
 ---
 
-## 📖 Useful Documents
-*   📘 **[User Manual](C:\Users\Pawel\.gemini\antigravity\brain\b54c8ef0-c05f-47de-b1b9-9b8d82e78e13\user_manual.md)**: Detailed feature guide and setup.
-*   🛠️ **[Technical Documentation](C:\Users\Pawel\.gemini\antigravity\brain\b54c8ef0-c05f-47de-b1b9-9b8d82e78e13\technical_documentation.md)**: RSA Licensing, Encryption, and SMO details.
-*   💡 **[Real-World Use Cases](C:\Users\Pawel\.gemini\antigravity\brain\b54c8ef0-c05f-47de-b1b9-9b8d82e78e13\use_cases.md)**: Examples of problems SQLSkrypter solves.
-
----
-
 ## ☕ Support & Contact
 Help us maintain this project and support further development:
 
-[**Official Releases**](https://github.com/rotgamedev/SQLSkrypter) | [**Buy Me A Beer 🍺**](https://www.buymeacoffee.com/pawelm)
+[**Official Releases**](https://github.com/rotgamedev/SQLSkrypter)
 
 **Support & Sales**: [sqlskrypter@gmail.com](mailto:sqlskrypter@gmail.com)
 
