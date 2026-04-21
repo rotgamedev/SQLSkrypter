@@ -525,6 +525,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 5. Lightbox System
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox-overlay';
+    lightbox.innerHTML = `
+        <div class="lightbox-close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </div>
+        <img class="lightbox-content" src="" alt="Preview">
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = lightbox.querySelector('.lightbox-content');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+    const openLightbox = (src) => {
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scroll
+    };
+
+    const closeLightbox = () => {
+        lightbox.classList.add('closing');
+        lightbox.classList.remove('active');
+        setTimeout(() => {
+            lightbox.classList.remove('closing');
+            document.body.style.overflow = '';
+        }, 400);
+    };
+
+    // Attach to gallery items
+    document.querySelectorAll('.gallery-item img, .gallery-item .screenshot-placeholder').forEach(item => {
+        item.addEventListener('click', (e) => {
+            let src = '';
+            if (item.tagName === 'IMG') {
+                src = item.src;
+            } else {
+                // Handle placeholder case if needed (e.g., getting background or data attribute)
+                const style = window.getComputedStyle(item);
+                const bg = style.backgroundImage;
+                if (bg && bg !== 'none') {
+                    src = bg.slice(5, -2);
+                }
+            }
+            if (src) openLightbox(src);
+        });
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target.closest('.lightbox-close')) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+
     // Anchor Hash Fix for cross-page navigation
     if (window.location.hash) {
         setTimeout(() => {

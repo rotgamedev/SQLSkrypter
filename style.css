@@ -45,20 +45,20 @@ html, body, * {
 #scroll-progress {
     position: fixed; top: 0; left: 0; width: 100%; height: 2px;
     background: var(--accent-blue); transform-origin: 0 50%;
-    transform: scaleX(0); z-index: 10001; pointer-events: none;
+    transform: scaleX(0); z-index: 100003; pointer-events: none;
     box-shadow: 0 0 10px var(--accent-blue);
 }
 
 #custom-cursor-dot {
     position: fixed; top: 0; left: 0; width: 6px; height: 6px;
     background: var(--accent-blue); border-radius: 50%;
-    pointer-events: none; z-index: 10000; transform: translate(-50%, -50%);
+    pointer-events: none; z-index: 100002; transform: translate(-50%, -50%);
 }
 
 #custom-cursor-ring {
     position: fixed; top: 0; left: 0; width: 24px; height: 24px;
     border: 1px solid rgba(152, 221, 255, 0.5); border-radius: 50%;
-    pointer-events: none; z-index: 9999; transform: translate(-50%, -50%);
+    pointer-events: none; z-index: 100001; transform: translate(-50%, -50%);
     transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -344,6 +344,11 @@ td strong { color: var(--text-primary); }
     margin-right: 2rem;
     flex-shrink: 0;
     scroll-snap-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.gallery-item:hover {
+    transform: scale(1.02);
 }
 .gallery-item .screenshot-placeholder {
     width: 100%;
@@ -409,3 +414,61 @@ footer { padding: 4rem 0 2rem; border-top: 1px solid var(--border-color); margin
     
     th, td { padding: 1rem; }
 }
+
+/* Premium Lightbox Overlay */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 1rem;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(152, 221, 255, 0.1);
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox-overlay.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10001;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
