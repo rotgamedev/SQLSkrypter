@@ -532,17 +532,48 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="lightbox-close">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </div>
+        <div class="lightbox-nav prev">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </div>
+        <div class="lightbox-nav next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
         <img class="lightbox-content" src="" alt="Preview">
     `;
     document.body.appendChild(lightbox);
 
     const lightboxImg = lightbox.querySelector('.lightbox-content');
-    const lightboxClose = lightbox.querySelector('.lightbox-close');
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-item img, .gallery-item .screenshot-placeholder'));
+    let currentIdx = 0;
+    let isThrottled = false;
 
-    const openLightbox = (src) => {
-        lightboxImg.src = src;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scroll
+    const getSrc = (item) => {
+        if (item.tagName === 'IMG') return item.src;
+        const style = window.getComputedStyle(item);
+        const bg = style.backgroundImage;
+        return (bg && bg !== 'none') ? bg.slice(5, -2) : null;
+    };
+
+    const updateLightbox = (index) => {
+        currentIdx = (index + galleryItems.length) % galleryItems.length;
+        const src = getSrc(galleryItems[currentIdx]);
+        if (src) {
+            gsap.to(lightboxImg, { opacity: 0, scale: 0.95, duration: 0.2, onComplete: () => {
+                lightboxImg.src = src;
+                gsap.to(lightboxImg, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' });
+            }});
+        }
+    };
+
+    const openLightbox = (index) => {
+        currentIdx = index;
+        const src = getSrc(galleryItems[currentIdx]);
+        if (src) {
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            gsap.fromTo(lightboxImg, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' });
+        }
     };
 
     const closeLightbox = () => {
@@ -554,35 +585,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 400);
     };
 
-    // Attach to gallery items
-    document.querySelectorAll('.gallery-item img, .gallery-item .screenshot-placeholder').forEach(item => {
-        item.addEventListener('click', (e) => {
-            let src = '';
-            if (item.tagName === 'IMG') {
-                src = item.src;
-            } else {
-                // Handle placeholder case if needed (e.g., getting background or data attribute)
-                const style = window.getComputedStyle(item);
-                const bg = style.backgroundImage;
-                if (bg && bg !== 'none') {
-                    src = bg.slice(5, -2);
-                }
-            }
-            if (src) openLightbox(src);
-        });
+    // Click on items
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => openLightbox(index));
     });
 
+    // Navigation buttons
+    lightbox.querySelector('.lightbox-nav.prev').addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateLightbox(currentIdx - 1);
+    });
+    lightbox.querySelector('.lightbox-nav.next').addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateLightbox(currentIdx + 1);
+    });
+
+    // Close logic
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox || e.target.closest('.lightbox-close')) {
             closeLightbox();
         }
     });
 
+    // Keyboard & Wheel
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
-        }
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') updateLightbox(currentIdx + 1);
+        if (e.key === 'ArrowLeft') updateLightbox(currentIdx - 1);
     });
+
+    lightbox.addEventListener('wheel', (e) => {
+        if (!lightbox.classList.contains('active') || isThrottled) return;
+        isThrottled = true;
+        
+        if (e.deltaY > 0 || e.deltaX > 0) updateLightbox(currentIdx + 1);
+        else updateLightbox(currentIdx - 1);
+
+        setTimeout(() => { isThrottled = false; }, 500); // 500ms block between transitions
+    }, { passive: true });
 
     // Anchor Hash Fix for cross-page navigation
     if (window.location.hash) {
