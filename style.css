@@ -100,6 +100,103 @@ html, body, * {
     margin-inline: auto;
 }
 
+/* Pricing Section */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+}
+
+.price-card {
+    background: rgba(15, 20, 30, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 1.5rem;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.price-card:hover {
+    background: rgba(20, 25, 40, 0.6);
+    border-color: rgba(152, 221, 255, 0.3);
+    transform: translateY(-10px);
+}
+
+.price-card.pro {
+    border-color: rgba(152, 221, 255, 0.4);
+    background: radial-gradient(circle at top right, rgba(0, 162, 255, 0.1), transparent), rgba(15, 20, 30, 0.4);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.price-card.pro::after {
+    content: "POPULAR";
+    position: absolute;
+    top: 1.5rem;
+    right: -2.5rem;
+    background: var(--accent-blue);
+    color: var(--bg-base);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.25rem 3rem;
+    transform: rotate(45deg);
+}
+
+.price-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.price-card .price {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 1.5rem 0;
+    color: var(--text-primary);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.price-card .price span {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.price-card .features {
+    list-style: none;
+    margin: 2rem 0;
+    flex-grow: 1;
+}
+
+.price-card .features li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.price-card .features li svg {
+    flex-shrink: 0;
+    color: var(--accent-blue);
+    margin-top: 0.25rem;
+}
+
+.price-card .features li.disabled {
+    opacity: 0.4;
+    text-decoration: line-through;
+}
+
+.price-card .btn {
+    width: 100%;
+    text-align: center;
+}
+
 /* Navigation - Floating Pill */
 nav {
     position: sticky;
@@ -118,7 +215,7 @@ nav {
     box-shadow: 0 15px 40px rgba(0,0,0,0.6);
 }
 
-.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-links { display: flex; gap: 1.2rem; align-items: center; flex-shrink: 1; }
 nav a {
     color: var(--text-secondary);
     text-decoration: none;
@@ -417,6 +514,13 @@ footer { padding: 4rem 0 2rem; border-top: 1px solid var(--border-color); margin
     .features-grid, .licensing-grid { grid-template-columns: 1fr !important; }
     
     th, td { padding: 1rem; }
+}
+
+/* Medium screen adjustments for Polish/Long nav */
+@media (max-width: 1100px) and (min-width: 769px) {
+    .nav-links { gap: 0.8rem; }
+    nav a { font-size: 0.7rem; letter-spacing: 0.05em; }
+    nav { width: calc(100% - 2rem); padding-left: 1rem; }
 }
 
 /* Premium Lightbox Overlay */

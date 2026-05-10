@@ -23,6 +23,7 @@
         <div class="nav-links">
             <a href="index.html" data-i18n="nav_core">Overview</a>
             <a href="features.html" data-i18n="nav_features">Features</a>
+            <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
             <a href="licensing.html" data-i18n="nav_license">Licensing</a>
             <a href="faq.html" data-i18n="nav_faq">FAQ</a>
             <a href="manual.html" data-i18n="nav_manual" class="active">Manual</a>
@@ -42,51 +43,94 @@
 
     <section style="padding-top: 2rem;">
         <div class="container document-content reveal-group">
-            
+            <!-- Section 0: Video Tutorials -->
+            <div style="margin-bottom: 4rem;">
+                <h3 data-i18n="m_vid_title" style="margin-bottom: 1.5rem; font-size: 1.5rem; color: var(--accent-blue);">Video Tutorials</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    
+                    <!-- Video 1 -->
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 1rem; overflow: hidden; display: flex; flex-direction: column;">
+                        <iframe width="100%" height="220" src="https://www.youtube.com/embed/fBf5BuOaI7o" title="SQLSkrypter: Add Server, Load Databases & Run Script Package" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-bottom: 1px solid var(--border-color);"></iframe>
+                        <div style="padding: 1.5rem; flex-grow: 1;">
+                            <h4 data-i18n="m_v1_t" style="margin-top: 0; font-size: 1.1rem; margin-bottom: 0.5rem;">Core Workflow: Connect & Execute</h4>
+                            <p data-i18n="m_v1_d" style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.4;">Watch how to add a server, select databases from the tree, and run a package of scripts in order.</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 1rem; overflow: hidden; display: flex; flex-direction: column;">
+                        <iframe width="100%" height="220" src="https://www.youtube.com/embed/aPFzKFBJy3Q" title="SQLSkrypter Dry-Run Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-bottom: 1px solid var(--border-color);"></iframe>
+                        <div style="padding: 1.5rem; flex-grow: 1;">
+                            <h4 data-i18n="m_v2_t" style="margin-top: 0; font-size: 1.1rem; margin-bottom: 0.5rem;">Safely Test with Dry-Run</h4>
+                            <p data-i18n="m_v2_d" style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.4;">See how Dry-Run simulates execution using transaction rollbacks to prevent accidental changes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 1rem; overflow: hidden; display: flex; flex-direction: column;">
+                        <iframe width="100%" height="220" src="https://www.youtube.com/embed/SheNvv2iXU4" title="SQL Server: Parallel Execution vs Sequential" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-bottom: 1px solid var(--border-color);"></iframe>
+                        <div style="padding: 1.5rem; flex-grow: 1;">
+                            <h4 data-i18n="m_v3_t" style="margin-top: 0; font-size: 1.1rem; margin-bottom: 0.5rem;">Parallel vs Sequential</h4>
+                            <p data-i18n="m_v3_d" style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.4;">Compare the massive time savings when executing the same script using the Parallel Engine.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 1: Intro -->
             <div class="faq-item">
-                <h3 data-i18n="m_s1">Standard vs. PRO Edition Comparison</h3>
-                <p data-i18n="m_s1_d">To ensure high performance and sustainability, SQLSkrypter uses a tiered feature model.</p>
+                <h3 data-i18n="m_intro_t">The Core Concept</h3>
+                <p data-i18n="m_intro_d">SQLSkrypter is built on a simple yet powerful idea: define your server fleet once, and execute across everything in seconds.</p>
                 <ul>
-                    <li data-i18n="m_s1_b1">- See Licensing section for exact feature limitations.</li>
+                    <li data-i18n="m_intro_b1">Connect & Discover: Add servers with credentials. One click fetches all databases from all selected nodes.</li>
+                    <li data-i18n="m_intro_b2">Safety First: The database discovery query is restricted to a simple SELECT to prevent accidental sabotage during exploration.</li>
                 </ul>
             </div>
 
+            <!-- Section 2: Fleet -->
             <div class="faq-item">
-                <h3 data-i18n="m_s2">Setting Up Your Environments</h3>
-                <p data-i18n="m_s2_d">SQLSkrypter allows you to organize your servers into logical groups.</p>
+                <h3 data-i18n="m_fleet_t">Fleet Management</h3>
+                <p data-i18n="m_fleet_d">Manage hundreds of databases across different stages efficiently.</p>
                 <ul>
-                    <li data-i18n="m_s2_b1">Standard Edition: Create up to 3 hierarchical environments.</li>
-                    <li data-i18n="m_s2_b2">Visual Distinction: Custom hex colors are allowed globally.</li>
+                    <li data-i18n="m_fleet_b1">Environments: Categorize servers into environments (PROD, DEV, STAGING) for better visual control and safety.</li>
+                    <li data-i18n="m_fleet_b2">Tree Sessions: Save your current tree state (checked databases) to a file. Load it instantly without re-querying the servers.</li>
                 </ul>
             </div>
 
+            <!-- Section 3: Exec & Monitoring -->
             <div class="faq-item">
-                <h3 data-i18n="m_s3">Script Execution & Modes</h3>
-                <p data-i18n="m_s3_d">The Execute button runs the current script on all checked databases.</p>
+                <h3 data-i18n="m_exec_t">Execution & Monitoring</h3>
+                <p data-i18n="m_exec_d">Real-time visual feedback for every operation across your fleet.</p>
                 <ul>
-                    <li data-i18n="m_s3_b1">Sequential Execution: Operates one after another.</li>
-                    <li data-i18n="m_s3_b2">Dry Run (PRO): Wraps query in a simulated Transaction rollback.</li>
+                    <li data-i18n="m_exec_b1">Visual Status: Databases turn GREEN on success and RED on error. Status counters show precisely how many scripts succeeded per node.</li>
+                    <li data-i18n="m_exec_b2">Interactive Timeline: Every connection and execution is logged with timing. Filter and export your results to CSV/TXT files.</li>
                 </ul>
             </div>
 
+            <!-- Section 4: Performance -->
             <div class="faq-item">
-                <h3 data-i18n="m_s4">Professional Productivity Features (PRO)</h3>
-                <p data-i18n="m_s4_d">Advanced lifecycle tools for DBAs.</p>
+                <h3 data-i18n="m_perf_t">Performance & Logic</h3>
+                <p data-i18n="m_perf_d">Optimized for speed and complex SQL batches.</p>
                 <ul>
-                    <li data-i18n="m_s4_b1">Environment Dashboard (Chips): Isolate Dev/Prod branches instantly.</li>
-                    <li data-i18n="m_s4_b2">Configuration Mobility: Save complex XML structures with AES encryption.</li>
-                    <li data-i18n="m_s4_b3">Tree Sessions: Remember exact checkboxes.</li>
+                    <li data-i18n="m_perf_b1">Parallel Execution: Run up to 8 concurrent threads for massive time gains, or stay Sequential for strict dependency control.</li>
+                    <li data-i18n="m_perf_b2">Advanced Support: Full support for 'GO' batches and PRO Dry-Run simulations to test scripts without making permanent changes.</li>
                 </ul>
             </div>
 
+            <!-- Section 5: Security -->
             <div class="faq-item">
-                <h3 data-i18n="m_s5">Security & Privacy</h3>
-                <p data-i18n="m_s5_d">100% Offline application design.</p>
+                <h3 data-i18n="m_sec_t">Enterprise-Grade Security</h3>
+                <p data-i18n="m_sec_d">Your credentials and server lists never leave your machine.</p>
                 <ul>
-                    <li data-i18n="m_s5_b1">No internet telemetry is ever reported.</li>
-                    <li data-i18n="m_s5_b2">Zero dependencies on cloud validation nodes.</li>
-                    <li data-i18n="m_s5_b3">DPAPI storage encryption for offline credential safety.</li>
+                    <li data-i18n="m_sec_b1">Local Encryption: All sensitive configuration data is protected using AES-256 and Windows DPAPI.</li>
+                    <li data-i18n="m_sec_b2">Portable Configs: Export your setup to an encrypted file with a custom password (PBKDF2) for safe transfer between workstations.</li>
                 </ul>
+            </div>
+
+            <!-- Fast Runner Note -->
+            <div style="margin-top: 4rem; padding: 2rem; background: rgba(152, 221, 255, 0.05); border: 1px dashed var(--accent-blue); border-radius: 1.5rem; text-align: center;">
+                <p style="font-style: italic; color: var(--text-secondary);" data-i18n="m_fast_runner">Note: SQLSkrypter is a 'Fast Runner' focused on orchestration. It does not display data output (SELECT results), focusing on execution status and performance.</p>
             </div>
 
         </div>
@@ -111,7 +155,7 @@
                     <a href="changelog.html" data-i18n="ft_change">Changelog</a>
                     <a href="privacy.html" data-i18n="ft_priv">Privacy Policy</a>
                     <a href="terms.html" data-i18n="ft_terms">Terms</a>
-                    <a href="mailto:support@sqlskrypter.com" data-i18n="ft_contact">Contact</a>
+                    <a href="mailto:sqlskrypter@gmail.com" data-i18n="ft_contact">Contact</a>
                 </div>
             </div>
             <div class="copyright">

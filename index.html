@@ -21,13 +21,14 @@
             <span style="color: var(--text-primary); font-weight: 700; letter-spacing: -0.5px; font-size: 1.2rem;">Skrypter</span>
         </span>
         <div class="nav-links">
-                <a href="index.html" data-i18n="nav_core" class="active">Overview</a>
-                <a href="features.html" data-i18n="nav_features">Features</a>
-                <a href="licensing.html" data-i18n="nav_license">Licensing</a>
-                <a href="faq.html" data-i18n="nav_faq">FAQ</a>
-                <a href="manual.html" data-i18n="nav_manual">Manual</a>
-                <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
-                <a href="#download" data-i18n="nav_download">Download</a>
+            <a href="index.html" data-i18n="nav_core" class="active">Overview</a>
+            <a href="features.html" data-i18n="nav_features">Features</a>
+            <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
+            <a href="licensing.html" data-i18n="nav_license">Licensing</a>
+            <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+            <a href="manual.html" data-i18n="nav_manual">Manual</a>
+            <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
+            <a href="index.html#download" data-i18n="nav_download">Download</a>
         </div>
         <select class="lang-switcher" onchange="changeLang(this.value)">
             <option value="en">EN</option>
@@ -57,8 +58,8 @@
                 <a href="#download" class="btn btn-secondary" style="border-color: rgba(152, 221, 255, 0.3);">
                     <span data-i18n="btn_trial">Download Free Trial</span>
                 </a>
-                <a href="licensing.html" class="btn btn-primary">
-                    <span data-i18n="btn_pro">Buy Pro License</span>
+                <a href="#pricing" class="btn btn-primary" data-i18n="btn_buy_nav">
+                    Get SQLSkrypter PRO
                 </a>
             </div>
             <p class="hero-note" style="margin-bottom: 0.5rem;" data-i18n="hero_note">Offline. No server installation. DPAPI Secured.</p>
@@ -151,6 +152,62 @@
         </div>
     </section>
 
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+        <div class="container reveal-group">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 data-i18n="pricing_title">Choose your power</h2>
+                <p style="color: var(--text-secondary);" data-i18n="pricing_subtitle">Start for free, upgrade for enterprise-scale execution.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Free Tier -->
+                <div class="price-card">
+                    <h3 data-i18n="p1_name">Freemium</h3>
+                    <div class="price">$0<span>/forever</span></div>
+                    <ul class="features">
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p1_f1">Up to 10 Servers</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p1_f2">3 Environments</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p1_f3">Batch Script Execution</span></li>
+                        <li class="disabled"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> <span data-i18n="p1_f4">Transactional Dry Run</span></li>
+                        <li class="disabled"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> <span data-i18n="p1_f5">Parallel Execution</span></li>
+                    </ul>
+                    <a href="#download" class="btn btn-secondary" data-i18n="btn_free">Get Started</a>
+                </div>
+
+                <!-- Pro Tier -->
+                <div class="price-card pro">
+                    <h3 data-i18n="p2_name">Professional</h3>
+                    <div class="price"><span data-i18n="p2_price">$49</span><span data-i18n="p2_price_sub">/one-time</span></div>
+                    <ul class="features">
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p2_f1">Unlimited Servers</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p2_f2">Unlimited Environments</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p2_f3">Transactional Dry Run</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p2_f4">Parallel DB Execution</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p2_f5">Priority Support</span></li>
+                    </ul>
+                    <a href="https://buy.stripe.com/3cI6oz7pE6djbac9hr2ZO00" class="btn btn-primary" id="buy-pro-btn" data-i18n="btn_pro">Upgrade to PRO</a>
+                </div>
+
+                <!-- Renewal Tier -->
+                <div class="price-card">
+                    <h3 data-i18n="p3_name">Updates Renewal</h3>
+                    <div class="price"><span data-i18n="p3_price">$25</span><span data-i18n="p3_price_sub">/12 months</span></div>
+                    <ul class="features">
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p3_f1">Extend Updates Period</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p3_f2">Keep PRO Features</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p3_f3">Latest Major Versions</span></li>
+                    </ul>
+                    <a href="https://buy.stripe.com/4gM9AL5hwdFLbac3X72ZO01" class="btn btn-secondary" id="buy-renew-btn" data-i18n="btn_renew">Renew License</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="color: var(--text-muted); font-size: 0.85rem;" data-i18n="pricing_note">Prices are charged in your local currency at checkout. Displayed USD prices are approximate.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Download -->
     <section class="reveal" id="download">
         <div class="container">
@@ -189,7 +246,7 @@
                     <a href="changelog.html" data-i18n="ft_change">Changelog</a>
                     <a href="privacy.html" data-i18n="ft_priv">Privacy Policy</a>
                     <a href="terms.html" data-i18n="ft_terms">Terms</a>
-                    <a href="mailto:support@sqlskrypter.com" data-i18n="ft_contact">Contact</a>
+                    <a href="mailto:sqlskrypter@gmail.com" data-i18n="ft_contact">Contact</a>
                 </div>
             </div>
             <div class="copyright">

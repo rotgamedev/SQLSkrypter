@@ -1,13 +1,13 @@
 const translations = {
     en: {
         // Navigation
-        nav_core: "Overview", nav_features: "Features", nav_license: "Licensing", nav_changelog: "Changelog", nav_download: "Download", nav_faq: "FAQ", nav_manual: "Manual", nav_screens: "Screenshots",
+        nav_core: "Overview", nav_features: "Features", nav_pricing: "Pricing", nav_license: "Licensing", nav_changelog: "Changelog", nav_download: "Download", nav_faq: "FAQ", nav_manual: "Manual", nav_screens: "Screenshots",
         
         // Index - Hero & Overview
         h1_title: "Professional SQL Runner for MSSQL", h1_sub: "Parallel script execution. Uncompromising security. Zero telemetery.",
         h1_desc: "SQLSkrypter is a tool designed to execute SQL scripts across multiple servers and databases simultaneously — faster, safer, and with complete control.",
         hero_platforms: "Platform: Windows 10/11 x64. .NET 8.0.",
-        btn_trial: "Download Free Trial", btn_pro: "Buy Pro License", hero_note: "Offline. No server installation. DPAPI Secured.",
+        btn_trial: "Download Free Trial", btn_pro: "Buy Pro License", btn_buy_nav: "Get SQLSkrypter PRO", hero_note: "Offline. No server installation. DPAPI Secured.",
         
         ov_title: "Designed for scale",
         ov_1: "Execute scripts against hundreds of databases concurrently.",
@@ -23,6 +23,24 @@ const translations = {
         f2_h: "ScriptDom Validation & Dry Run", f2_p: "Integrated Microsoft ScriptDom AST parser blocks destructive queries during database discovery. Safely simulate transaction rollbacks on production with Dry-Run mode.",
         f3_h: "Advanced Workspace", f3_p: "Hierarchical server trees, drag-and-drop file sorting, color-coded environment tagging, and seamless session state persistence.",
         f4_h: "Hardware-Linked Security", f4_p: "Credentials stored via Windows DPAPI. Export shareable configurations using AES encryption + PBKDF2 key derivation.",
+
+        // Index - Pricing
+        pricing_title: "Choose your power", pricing_subtitle: "Start for free, upgrade for enterprise-scale execution.",
+        p1_name: "Freemium", p1_f1: "Up to 10 Servers", p1_f2: "3 Environments", p1_f3: "Batch Script Execution", p1_f4: "Transactional Dry Run", p1_f5: "Parallel Execution",
+        p2_name: "Professional Edition", p2_price: "~$55", p2_price_sub: "/one-time", p2_f1: "Unlimited Servers", p2_f2: "Unlimited Environments", p2_f3: "Transactional Dry Run", p2_f4: "Parallel DB Execution", p2_f5: "Priority Support",
+        p3_name: "Updates Renewal", p3_price: "~$28", p3_price_sub: "/12 months", p3_f1: "Extend Updates Period", p3_f2: "Keep PRO Features", p3_f3: "Latest Major Versions",
+        btn_free: "Get Started", btn_pro: "Upgrade to PRO", btn_renew: "Renew License", btn_back_home: "Back to Homepage",
+        pricing_note: "Prices are charged in your local currency at checkout. Displayed USD prices are approximate.",
+
+        // Thank You Page
+        ty_title: "Purchase Successful!", ty_subtitle: "Thank you for supporting SQLSkrypter. Your PRO journey starts here.",
+        ty_steps_title: "Next Steps",
+        ty_step1_h: "Check your email", ty_step1_p: "We have sent an 8-character activation code to your email address. It should arrive within the next 2-3 minutes. Please check your spam folder if you don't see it.",
+        ty_step2_h: "Open SQLSkrypter", ty_step2_p: "Launch the application, go to About window, and click on the Activation section.",
+        ty_step3_h: "Enter Activation Code", ty_step3_p: "Paste your code into the Activation Code field and click Activate Online.",
+        ty_invoice_title: "Tax Invoice",
+        ty_invoice_note: "Need a Tax Invoice? Contact us at sqlskrypter@gmail.com with your invoicing details.",
+        ty_visual_guide: "Visual Guide:",
 
         gallery_title: "Interface Previews",
 
@@ -77,6 +95,15 @@ const translations = {
         
         // Changelog Page
         ch_pg_title: "Evolution of Skrypter", ch_pg_desc: "See how we transformed from a simple tool into an enterprise engine.",
+        ch_v21_date: "May 2026",
+        ch_v21_title: "Version 2.1.0 - Features, Improvements & Fixes",
+        ch_v21_1: "Added Persistent Notification History window.",
+        ch_v21_2: "Introduced Notification Badge counter on toolbar.",
+        ch_v21_3: "Integrated Advanced Licensing System with 14-day Trial & Pro bindings.",
+        ch_v21_4: "Improved real-time SQL Syntax Validation & robust 'GO' batch parser.",
+        ch_v21_5: "Added UI Execution Lock to disable actions during script execution.",
+        ch_v21_6: "Fixed clipboard COMException and FontAwesome icon clipping issues.",
+        
         ch_v2_title: "Version 2.0.0 - The Enterprise Update", ch_v2_date: "Q2 2026",
         ch_v2_1: "Added Microsoft ScriptDom AST syntax parser.",
         ch_v2_2: "Introduced Parallel execution framework and abort controls.",
@@ -93,6 +120,10 @@ const translations = {
         doc_privacy_l1: "Zero Telemetry: We do not track application usage, error logs, or execution statistics.",
         doc_privacy_l2: "Local Storage: All configurations, connection strings, and server credentials are encrypted exclusively on your hardware using Windows DPAPI.",
         doc_privacy_l3: "No Cloud Synchronization: Your session states and application configurations remain entirely local.",
+        doc_privacy_p3: "Data Processing for License Purchases:",
+        doc_privacy_l4: "Transaction Data: When purchasing a PRO license, we process your email, name, company name, and address to fulfill the contract and issue invoices.",
+        doc_privacy_l5: "Third-Party Processors: We use Stripe for payment processing, Azure for license management, and SendGrid for automated activation code delivery.",
+        doc_privacy_l6: "Rights: You have the right to access, correct, or request deletion of your license data by contacting our support.",
 
         doc_terms_title: "End User License Agreement (EULA)",
         doc_terms_desc: "Legal terms for using SQLSkrypter Standard and PRO editions.",
@@ -118,18 +149,30 @@ const translations = {
         faq_u4_h: "Emergency Patching", faq_u4: "A critical SP vulnerability is found. Toggle Parallel Execution, deploy the patch to 200 databases simultaneously, and use Intelligent Error Grouping to spot failures immediately.",
         
         ch_v2_1: "Added Microsoft ScriptDom AST syntax parser.",
-        ch_v2_2: "Introduced Parallel execution framework and abort controls.",
-        ch_v2_3: "Added detailed Execution Timeline and Summary Dashboards.",
-        ch_v2_4: "Migrated from DES to DPAPI and AES/PBKDF2 encryption.",
-        ch_v2_5: "Introduced advanced tree manipulation (drag & drop, filtering, session loading).",
-        ch_v2_6: "Added Multi-Language Support (EN, PL, DE, ES, FR, IT).",
         ch_v1_d: "Legacy Engine", ch_v1_t: "Version 1.0.0", ch_v1_p: "The initial release featuring sequential processing, DES encryption, and basic environment management.",
+        
+        m_vid_title: "Video Tutorials",
+        m_v1_t: "Core Workflow: Connect & Execute", m_v1_d: "Watch how to add a server, select databases from the tree, and run a package of scripts in order.",
+        m_v2_t: "Safely Test with Dry-Run", m_v2_d: "See how Dry-Run simulates execution using transaction rollbacks to prevent accidental changes.",
+        m_v3_t: "Parallel vs Sequential", m_v3_d: "Compare the massive time savings when executing the same script using the Parallel Engine.",
+        
         man_pg_t: "Official User Manual", man_pg_d: "Operations, limitations, and architectural overview (v2.0.0).",
-        m_s1: "Standard vs. PRO Edition Comparison", m_s1_d: "To ensure high performance and sustainability, SQLSkrypter uses a tiered feature model.",
-        m_s1_b1: "- See <a href='licensing.html' style='color: var(--accent-blue); text-decoration: underline;'>Licensing</a> section for exact feature limitations.",
-        m_s2: "Setting Up Your Environments", m_s2_d: "SQLSkrypter allows you to organize your servers into logical groups.",
-        m_s3: "Script Execution & Modes", m_s3_d: "The Execute button runs the current script on all checked databases.",
-        m_s4: "Professional Productivity Features (PRO)", m_s4_d: "Advanced lifecycle tools for DBAs.",
+        m_intro_t: "The Core Concept", m_intro_d: "SQLSkrypter is built on a simple yet powerful idea: define your server fleet once, and execute across everything in seconds.",
+        m_intro_b1: "Connect & Discover: Add servers with credentials. One click fetches all databases from all selected nodes.",
+        m_intro_b2: "Safety First: The database discovery query is restricted to a simple SELECT to prevent accidental sabotage during exploration.",
+        m_fleet_t: "Fleet Management", m_fleet_d: "Manage hundreds of databases across different stages efficiently.",
+        m_fleet_b1: "Environments: Categorize servers into environments (PROD, DEV, STAGING) for better visual control and safety.",
+        m_fleet_b2: "Tree Sessions: Save your current tree state (checked databases) to a file. Load it instantly without re-querying the servers.",
+        m_exec_t: "Execution & Monitoring", m_exec_d: "Real-time visual feedback for every operation across your fleet.",
+        m_exec_b1: "Visual Status: Databases turn GREEN on success and RED on error. Status counters show precisely how many scripts succeeded per node.",
+        m_exec_b2: "Interactive Timeline: Every connection and execution is logged with timing. Filter and export your results to CSV/TXT files.",
+        m_perf_t: "Performance & Logic", m_perf_d: "Optimized for speed and complex SQL batches.",
+        m_perf_b1: "Parallel Execution: Run up to 8 concurrent threads for massive time gains, or stay Sequential for strict dependency control.",
+        m_perf_b2: "Advanced Support: Full support for 'GO' batches and PRO Dry-Run simulations to test scripts without making permanent changes.",
+        m_sec_t: "Enterprise-Grade Security", m_sec_d: "Your credentials and server lists never leave your machine.",
+        m_sec_b1: "Local Encryption: All sensitive configuration data is protected using AES-256 and Windows DPAPI.",
+        m_sec_b2: "Portable Configs: Export your setup to an encrypted file with a custom password (PBKDF2) for safe transfer between workstations.",
+        m_fast_runner: "Note: SQLSkrypter is a 'Fast Runner' focused on orchestration. It does not display data output (SELECT results), focusing on execution status and performance.",
         m_s5: "Security & Privacy", m_s5_d: "100% Offline application design.",
 
         m_s2_b1: "Standard Edition: Create up to 3 hierarchical environments.",
@@ -145,7 +188,7 @@ const translations = {
 
 
         // Download
-        dl_title: "Download SQLSkrypter", dl_ver: "Version: 2.0.0", dl_date: "Release Date: Q2 2026", dl_btn: "Download Installer (.exe)", dl_sys: "System Requirements: Windows 10/11 x64. .NET 8.0 Desktop Runtime. Minimum 4GB RAM.",
+        dl_title: "Download SQLSkrypter", dl_ver: "Version: 2.1.0", dl_date: "Release Date: May 2026", dl_btn: "Download Installer (.exe)", dl_sys: "System Requirements: Windows 10/11 x64. .NET 8.0 Desktop Runtime. Minimum 4GB RAM.",
 
         // Footer
         ft_manual: "User Manual", ft_faq: "FAQ", ft_licd: "Licensing", ft_change: "Changelog",
@@ -153,13 +196,13 @@ const translations = {
     },
     pl: {
         // Navigation
-        nav_core: "Przegląd", nav_features: "Funkcje", nav_license: "Licencjonowanie", nav_changelog: "Changelog", nav_download: "Pobierz", nav_faq: "FAQ", nav_manual: "Manual", nav_screens: "Screeny",
+        nav_core: "Przegląd", nav_features: "Funkcje", nav_pricing: "Cennik", nav_license: "Licencje", nav_changelog: "Zmiany", nav_download: "Pobierz", nav_faq: "FAQ", nav_manual: "Instrukcja", nav_screens: "Zrzuty ekranu",
         
         // Index - Hero & Overview
         h1_title: "Profesjonalny SQL Runner dla MSSQL", h1_sub: "Równoległe procedury. Bezkompromisowe bezpieczeństwo. Zero telemetrii.",
         h1_desc: "SQLSkrypter to narzędzie do wykonywania skryptów SQL na wielu serwerach i bazach jednocześnie — szybciej, bezpieczniej i z pełną kontrolą.",
         hero_platforms: "Platforma: Windows 10/11 x64. .NET 8.0.",
-        btn_trial: "Pobierz Darmowy Trial", btn_pro: "Kup Licencję PRO", hero_note: "Offline. Brak serwerów. Chronione przez DPAPI.",
+        btn_trial: "Pobierz wersję próbną", btn_pro: "Kup licencję Pro", btn_buy_nav: "Zdobądź SQLSkrypter PRO", hero_note: "Działa offline. Brak instalacji serwerowej. Zabezpieczone przez DPAPI.",
         
         ov_title: "Szybsza Praca z Bazami",
         ov_1: "Wykonywanie skryptów na wielu serwerach i setkach baz równocześnie.",
@@ -174,7 +217,25 @@ const translations = {
         f1_h: "Równoległe Operacje i Analityka", f1_p: "Wykonywanie skryptów na setkach baz jednocześnie. Śledź postęp na żywo dzięki Paskowi Postępu oraz analizuj sukcesy, najszybsze/najwolniejsze bazy i pogrupowane błędy w Panelu Podsumowania.",
         f2_h: "ScriptDom i Dry Run", f2_p: "Zintegrowany analizator składniowy Microsoft ScriptDom blokuje niebezpieczne operacje podczas odpytywania serwera o bazy. Bezpiecznie testuj zapytania (rollback) używając trybu Dry-Run na produkcji.",
         f3_h: "Zaawansowany Interfejs", f3_p: "Drzewo serwerów, oznaczanie środowisk kolorami, swobodne sortowanie plików (drag & drop) oraz natychmiastowe odzyskiwanie sesji.",
-        f4_h: "Sprzętowe Szyfrowanie", f4_p: "Poświadczenia chronione natywnym mechanizmem Windows DPAPI. Bezpieczny eksport konfiguracji wspierany przez potężne szyfrowanie AES + PBKDF2.",
+        f4_h: "Bezpieczeństwo sprzętowe", f4_p: "Poświadczenia przechowywane przez Windows DPAPI. Eksport konfiguracji przy użyciu szyfrowania AES + PBKDF2.",
+
+        // Index - Pricing
+        pricing_title: "Wybierz swoją moc", pricing_subtitle: "Zacznij za darmo, przejdź na PRO dla pełnej skali operacji.",
+        p1_name: "Freemium", p1_f1: "Do 10 serwerów", p1_f2: "3 środowiska", p1_f3: "Wsadowe wykonywanie skryptów", p1_f4: "Symulacja Dry Run", p1_f5: "Równoległe wykonywanie",
+        p2_name: "Edycja Professional", p2_price: "199 zł", p2_price_sub: "/jednorazowo", p2_f1: "Nielimitowane serwery", p2_f2: "Nielimitowane środowiska", p2_f3: "Transakcyjny Dry Run", p2_f4: "Równoległe DB & Pliki", p2_f5: "Wsparcie priorytetowe",
+        p3_name: "Odnowienie Aktualizacji", p3_price: "99 zł", p3_price_sub: "/12 miesięcy", p3_f1: "Przedłuż okres aktualizacji", p3_f2: "Zachowaj funkcje PRO", p3_f3: "Najnowsze wersje główne",
+        btn_free: "Rozpocznij teraz", btn_pro: "Przejdź na PRO", btn_renew: "Odśwież licencję", btn_back_home: "Powrót do strony głównej",
+        pricing_note: "Główną walutą rozliczeniową jest PLN. W przypadku kart zagranicznych Stripe automatycznie przeliczy walutę.",
+
+        // Thank You Page
+        ty_title: "Zakup udany!", ty_subtitle: "Dziękujemy za wsparcie SQLSkrypter. Twoja przygoda z PRO zaczyna się tutaj.",
+        ty_steps_title: "Następne kroki",
+        ty_step1_h: "Sprawdź swoją skrzynkę", ty_step1_p: "Wysłaliśmy 8-znakowy kod aktywacyjny na Twój adres e-mail. Powinien dotrzeć w ciągu 2-3 minut. Jeśli wiadomość nie dociera, sprawdź folder SPAM.",
+        ty_step2_h: "Otwórz SQLSkrypter", ty_step2_p: "Uruchom aplikację, przejdź do okna O programie i otwórz sekcję Aktywacja.",
+        ty_step3_h: "Wpisz kod aktywacyjny", ty_step3_p: "Wklej swój kod w pole Kod Aktywacyjny i kliknij Aktywuj Online.",
+        ty_invoice_title: "Faktura VAT",
+        ty_invoice_note: "Potrzebujesz faktury VAT? Napisz na sqlskrypter@gmail.com, podając dane do faktury.",
+        ty_visual_guide: "Instrukcja wizualna:",
 
         gallery_title: "Urzekający Interfejs",
 
@@ -229,6 +290,15 @@ const translations = {
 
         // Changelog Page
         ch_pg_title: "Ewolucja Oprogramowania", ch_pg_desc: "Sprawdź, jak ewoluowaliśmy od małego narzędzia do potężnego silnika bazodanowego.",
+        ch_v21_date: "Maj 2026",
+        ch_v21_title: "Wersja 2.1.0 - Nowe Funkcje, Poprawki i Usprawnienia",
+        ch_v21_1: "Dodano okno Historii Powiadomień z możliwością sortowania i skalowania.",
+        ch_v21_2: "Wprowadzono licznik nowych powiadomień (Badge) na pasku narzędzi.",
+        ch_v21_3: "Zintegrowano Zaawansowany System Licencjonowania (14-dniowy Trial i klucze Pro).",
+        ch_v21_4: "Ulepszono walidację składni SQL w czasie rzeczywistym oraz parser słowa 'GO'.",
+        ch_v21_5: "Wdrożono blokadę interfejsu (Execution Lock) dla bezpieczeństwa podczas wykonywania skryptów.",
+        ch_v21_6: "Rozwiązano problemy ze schowkiem systemowym (COMException) i renderowaniem ikon.",
+
         ch_v2_title: "Wersja 2.0.0 - Krok Transformacji", ch_v2_date: "Q2 2026",
         ch_v2_1: "Wdrożono silnik analizujący składnię zapytań (Microsoft ScriptDom AST).",
         ch_v2_2: "Rozbudowano kod o framework współbieżności i kontrolę anulowania procesów.",
@@ -246,6 +316,10 @@ const translations = {
         doc_privacy_l1: "Zero Telemetrii: Nie śledzimy użycia, błędów ani czasu logowania ani działania procesów.",
         doc_privacy_l2: "Szyfrowanie Lokalne: Połączenia i konfiguracja są chronione sprzętowo przez Microsoft DPAPI wyłącznie na Twoim komputerze.",
         doc_privacy_l3: "Brak chmury: Żadne sesje, konfiguracje ani licencje nie są archiwizowane na naszych serwerach.",
+        doc_privacy_p3: "Przetwarzanie danych przy zakupie licencji:",
+        doc_privacy_l4: "Dane transakcyjne: Podczas zakupu licencji PRO przetwarzamy Twój e-mail, imię i nazwisko, nazwę firmy oraz adres w celu realizacji umowy i wystawienia faktury.",
+        doc_privacy_l5: "Podmioty przetwarzające: Korzystamy z usług Stripe (płatności), Azure (zarządzanie licencjami) oraz SendGrid (automatyczna wysyłka kodów).",
+        doc_privacy_l6: "Prawa użytkownika: Masz prawo do wglądu, poprawy lub żądania usunięcia swoich danych licencyjnych poprzez kontakt z naszym wsparciem.",
 
         doc_terms_title: "Regulamin i Umowa Licencyjna (EULA)",
         doc_terms_desc: "Prawne zasady korzystania z edycji Standard i PRO SQLSkryptera.",
@@ -270,28 +344,33 @@ const translations = {
         faq_u3_h: "Konserwacja Floty (Tagowanie)", faq_u3: "Chcesz zredukować logi na 40 środowiskach DEV? Filtruj drzewo etykietą 'Dev' w Eksploratorze. Zaznaczasz grupę i bezpiecznie czyścisz bazy bez stresu o pomyłkowe podpięcie Produkcji.",
         faq_u4_h: "Awarie Krytyczne (Paralelizacja)", faq_u4: "Znaleziono groźną lukę w procedurze przechowywanej. Puszczasz równoległą poprawkę na 200 baz SQL. Pełne raporty błędów i weryfikację dostępności badasz na żywo poprzez Panel Grupujący.",
 
-        man_pg_t: "Instrukcja Użytkownika", man_pg_d: "Operacje na panelach, specyfikacja ograniczeń licencyjnych oraz architektura v2.0.0.",
-        m_s1: "Porównanie Wersji Standard i PRO", m_s1_d: "Baza funkcji używanych w produkcji.",
-        m_s2: "Ustawianie Środowisk", m_s2_d: "Grupowanie serwerów w warstwach logicznych używając znaczników kolorystycznych.",
-        m_s3: "Wykonywanie Skryptów i Tryby", m_s3_d: "Zarządzanie bezpieczeństwem procedur T-SQL na produkcji.",
-        m_s4: "Narzędzia Zwiększające Produktywność (Tylko w PRO)", m_s4_d: "Przegrzebuj bazy w locie, nawiguj tysiącami elementów i twórz paczki plików XML.",
-        m_s5: "Bezpieczeństwo Poświadczeń", m_s5_d: "DPAPI i odcięcie od internetu sprawiają sen administratora spokojniejszym.",
+        m_vid_title: "Wideoporadniki",
+        m_v1_t: "Podstawowy Przepływ Pracy", m_v1_d: "Zobacz jak dodać serwer, wybrać bazy z drzewa i uruchomić paczkę skryptów we właściwej kolejności.",
+        m_v2_t: "Bezpieczne Testy z Dry-Run", m_v2_d: "Sprawdź, jak tryb Dry-Run symuluje wykonanie (używając wycofania transakcji), chroniąc produkcję przed błędami.",
+        m_v3_t: "Równoległe vs Sekwencyjne", m_v3_d: "Porównaj ogromną oszczędność czasu, uruchamiając ten sam skrypt za pomocą silnika równoległego.",
 
-        m_s1_b1: "- Zobacz dokument <a href='licensing.html' style='color: var(--accent-blue); text-decoration: underline;'>Licencjonowanie</a>, aby poznać ścisłe limity.",
-        m_s2_b1: "Wersja Standard: Możesz stworzyć do 3 warstw logicznych środowisk.",
-        m_s2_b2: "Identyfikacja wizualna: Dowolne dobieranie kolorów w celu ochrony Produkcji.",
-        m_s3_b1: "Tryb Sekwencyjny: Egzekucja pętli jedna po drugiej. Małe zużycie CPU.",
-        m_s3_b2: "Tryb Dry Run (PRO): Hermetyczne pule transakcji symulujące zapytania bez ryzyka modyfikacji.",
-        m_s4_b1: "Panele Grupujące (Chips): Filtruj całe gałęzie natychmiast klikając ikony.",
-        m_s4_b2: "Mobilność Konfiguracji: Certyfikuj swoje ustawienia twardym szyfrowaniem AES 256.",
-        m_s4_b3: "Sesje Stanu: Odtwórz setki zaznaczonych serwerów jednym kliknięciem z pliku .skrsession.",
-        m_s5_b1: "Absolutnie brak jakiejkolwiek telemetrii przesyłanej na zewnątrz.",
-        m_s5_b2: "Klucze wpisywane offline. Nie weryfikujemy ich w żadnej chmurze powiązanej z narzędziem.",
-        m_s5_b3: "Twarde izolowanie haseł używając maszynowej ochrony Microsoft DPAPI.",
+        man_pg_t: "Instrukcja Użytkownika", man_pg_d: "Operacje na panelach, specyfikacja ograniczeń licencyjnych oraz architektura v2.0.0.",
+        m_intro_t: "Główna Idea", m_intro_d: "Pomysł jest prosty: konfigurujesz serwery raz, a potem wysyłasz zapytania na całą flotę w kilka sekund.",
+        m_intro_b1: "Połączenie i Eksploracja: Dodaj serwery z poświadczeniami. Jedno zapytanie pobiera listy baz z wybranych maszyn.",
+        m_intro_b2: "Bezpieczeństwo: Zapytanie o bazy jest zablokowane tylko dla operacji SELECT, co zapobiega sabotażowi podczas eksploracji.",
+        m_fleet_t: "Zarządzanie Flotą", m_fleet_d: "Kategoryzuj i zarządzaj setkami baz w uporządkowany sposób.",
+        m_fleet_b1: "Środowiska: Przypisuj serwery do grup (PROD, DEV, TEST), aby zwiększyć kontrolę i przejrzystość działań.",
+        m_fleet_b2: "Sesje Drzewa: Zapisuj stan zaznaczonych baz do pliku. Wczytuj sesje błyskawicznie, bez konieczności ponownego łączenia z serwerami.",
+        m_exec_t: "Egzekucja i Monitoring", m_exec_d: "Natychmiastowa informacja zwrotna z każdego serwera i bazy danych.",
+        m_exec_b1: "Kolory Statusów: Bazy zmieniają kolor na ZIELONY po sukcesie lub CZERWONY przy błędzie. Liczniki pokazują statystyki skryptów.",
+        m_exec_b2: "Timeline i Logi: Każda operacja jest logowana z czasem wykonania. Filtruj wyniki i eksportuj je do plików CSV lub TXT.",
+        m_perf_t: "Wydajność i Logika", m_perf_d: "Zoptymalizowane pod kątem szybkości i złożonych paczek skryptów.",
+        m_perf_b1: "Praca Równoległa: Wykonuj skrypty na 8 bazach naraz (kolejkowanie), lub wybierz tryb sekwencyjny dla pełnej kontroli kolejności.",
+        m_perf_b2: "Zaawansowane Funkcje: Pełna obsługa instrukcji 'GO' oraz tryb Dry-Run (symulacja), który testuje skrypt bez wprowadzania zmian.",
+        m_sec_t: "Bezpieczeństwo Enterprise", m_sec_d: "Twoje dane dostępowe nigdy nie opuszczają Twojej lokalnej maszyny.",
+        m_sec_b1: "Szyfrowanie: Konfiguracja jest chroniona algorytmem AES-256 oraz systemowym mechanizmem Windows DPAPI.",
+        m_sec_b2: "Mobilność: Eksportuj konfigurację do pliku z własnym hasłem (Rfc2898/AES), aby bezpiecznie przenieść ją na inny komputer.",
+        m_fast_runner: "Uwaga: SQLSkrypter to tzw. 'Fast Runner'. Aplikacja nie wyświetla wyników zapytań SELECT (danych), skupiając się na statusie wykonania i wydajności.",
+
 
 
         // Download
-        dl_title: "Pobierz SQLSkrypter", dl_ver: "Wersja: 2.0.0", dl_date: "Data Wydania: Q2 2026", dl_btn: "Instalator (.exe)", dl_sys: "Wymaganania techniczne: Windows 10/11 x64, .NET 8.0 Desktop Runtime, Min. 4GB RAM CPU wielordzeniowy (dla operacji równolełych).",
+        dl_title: "Pobierz SQLSkrypter", dl_ver: "Wersja: 2.1.0", dl_date: "Data Wydania: Maj 2026", dl_btn: "Instalator (.exe)", dl_sys: "Wymaganania techniczne: Windows 10/11 x64, .NET 8.0 Desktop Runtime, Min. 4GB RAM CPU wielordzeniowy (dla operacji równolełych).",
 
         // Footer
         ft_manual: "Dokumentacja", ft_faq: "FAQ", ft_licd: "Licencje", ft_change: "Changelog",

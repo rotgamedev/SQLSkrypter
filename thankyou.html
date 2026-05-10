@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLSkrypter | Thank You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="atmosphere">
+        <div class="sf-central-glow"></div>
+        <div class="grid-layers"></div>
+    </div>
+
+    <nav>
+        <span style="display: flex; align-items: center; margin-right: 5px;">
+            <span style="color: var(--accent-blue); font-weight: 900; letter-spacing: -1px; font-size: 1.2rem;">SQL</span>
+            <span style="color: var(--text-primary); font-weight: 700; letter-spacing: -0.5px; font-size: 1.2rem;">Skrypter</span>
+        </span>
+        <div class="nav-links">
+            <a href="index.html" data-i18n="nav_core">Overview</a>
+            <a href="features.html" data-i18n="nav_features">Features</a>
+            <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
+            <a href="licensing.html" data-i18n="nav_license">Licensing</a>
+            <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+            <a href="manual.html" data-i18n="nav_manual">Manual</a>
+            <a href="changelog.html" data-i18n="nav_changelog">Changelog</a>
+            <a href="index.html#download" data-i18n="nav_download">Download</a>
+        </div>
+        <select class="lang-switcher" onchange="changeLang(this.value)">
+            <option value="en">EN</option>
+            <option value="pl">PL</option>
+        </select>
+    </nav>
+
+    <div class="page-header container">
+        <div style="width: 80px; height: 80px; background: var(--accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem auto; box-shadow: 0 0 30px rgba(152, 221, 255, 0.4);">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--bg-base)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h1 data-i18n="ty_title">Purchase Successful!</h1>
+        <p data-i18n="ty_subtitle">Thank you for supporting SQLSkrypter. Your PRO journey starts here.</p>
+    </div>
+
+    <section style="padding: 2rem 0 6rem 0;">
+        <div class="container reveal-group">
+            <div style="background: rgba(15, 20, 30, 0.4); border: 1px solid var(--border-color); border-radius: 2rem; padding: 3rem; max-width: 900px; margin: 0 auto;">
+                <h2 data-i18n="ty_steps_title" style="margin-bottom: 2rem;">Next Steps</h2>
+                
+                <div class="instruction-steps" style="display: grid; gap: 2rem;">
+                    <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                        <div style="width: 32px; height: 32px; background: rgba(152, 221, 255, 0.1); border: 1px solid var(--accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent-blue); font-weight: 800;">1</div>
+                        <div>
+                            <h3 data-i18n="ty_step1_h">Check your email</h3>
+                            <p data-i18n="ty_step1_p" style="color: var(--text-secondary);">We have sent an 8-character activation code to your email address. It should arrive within the next 2-3 minutes. Please check your spam folder if you don't see it.</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                        <div style="width: 32px; height: 32px; background: rgba(152, 221, 255, 0.1); border: 1px solid var(--accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent-blue); font-weight: 800;">2</div>
+                        <div>
+                            <h3 data-i18n="ty_step2_h">Open SQLSkrypter</h3>
+                            <p data-i18n="ty_step2_p" style="color: var(--text-secondary);">Launch the application, go to <strong>About</strong> window, and click on the <strong>Activation</strong> section.</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                        <div style="width: 32px; height: 32px; background: rgba(152, 221, 255, 0.1); border: 1px solid var(--accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent-blue); font-weight: 800;">3</div>
+                        <div>
+                            <h3 data-i18n="ty_step3_h">Enter Activation Code</h3>
+                            <p data-i18n="ty_step3_p" style="color: var(--text-secondary);">Paste your code into the <strong>Activation Code</strong> field and click <strong>Activate Online</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem; text-align: center;">
+                    <p style="margin-bottom: 2rem; color: var(--text-muted); font-size: 0.9rem;" data-i18n="ty_visual_guide">Visual Guide:</p>
+                    <img src="img/AboutLic.png" alt="How to activate" style="width: 100%; border-radius: 1rem; border: 1px solid var(--border-color); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                </div>
+
+                <div style="margin-top: 3rem; padding: 1.5rem; background: rgba(152, 221, 255, 0.05); border: 1px dashed rgba(152, 221, 255, 0.3); border-radius: 1rem; text-align: center;">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 0.5rem; color: var(--accent-blue);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <strong style="font-size: 1rem; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="ty_invoice_title">Tax Invoice</strong>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;" data-i18n="ty_invoice_note">Need a Tax Invoice? Contact us at sqlskrypter@gmail.com with your invoicing details.</p>
+                </div>
+
+                <div style="margin-top: 3rem; text-align: center;">
+                    <a href="index.html" class="btn btn-secondary" data-i18n="btn_back_home">Back to Homepage</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content" style="margin-bottom: 2rem;">
+                <div class="footer-brand" style="margin-right: 2rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="color: var(--accent-blue); font-weight: 900; letter-spacing: -1px; font-size: 1.2rem;">SQL</span>
+                        <span style="color: var(--text-primary); font-weight: 700; letter-spacing: -0.5px; font-size: 1.2rem;">Skrypter</span>
+                    </div>
+                    <div style="color: var(--text-muted); font-size: 0.85rem;" data-i18n="ft_engine">High Performance SQL Engine</div>
+                </div>
+                <div class="footer-links">
+                    <a href="manual.html" data-i18n="ft_manual">User Manual</a>
+                    <a href="faq.html" data-i18n="ft_faq">FAQ</a>
+                    <a href="licensing.html" data-i18n="ft_licd">Licensing</a>
+                    <a href="index.html#download" data-i18n="nav_download">Download</a>
+                    <a href="changelog.html" data-i18n="ft_change">Changelog</a>
+                    <a href="privacy.html" data-i18n="ft_priv">Privacy Policy</a>
+                    <a href="terms.html" data-i18n="ft_terms">Terms</a>
+                    <a href="mailto:sqlskrypter@gmail.com" data-i18n="ft_contact">Contact</a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 SQLSkrypter. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
