@@ -95,6 +95,15 @@ const translations = {
         
         // Changelog Page
         ch_pg_title: "Evolution of Skrypter", ch_pg_desc: "See how we transformed from a simple tool into an enterprise engine.",
+        ch_v211_date: "May 12, 2026",
+        ch_v211_title: "Version 2.1.1 - Maintenance & User Requests",
+        ch_v211_1: "Added: User-Defined SQL Timeout setting in Configuration panel.",
+        ch_v211_2: "Added: 'Copy Error to Clipboard' quick-action button in Execution Summary.",
+        ch_v211_3: "Changed: Standardized error reporting logic between UI and application logs (log4net).",
+        ch_v211_4: "Changed: Modernized Configuration view icons and improved layout.",
+        ch_v211_5: "Improved: Full multi-language support for all new UI elements.",
+        ch_v211_6: "Fixed: Application crashes during long-running SQL operations (Timeout fix).",
+
         ch_v21_date: "May 2026",
         ch_v21_title: "Version 2.1.0 - Features, Improvements & Fixes",
         ch_v21_1: "Added Persistent Notification History window.",
@@ -188,7 +197,7 @@ const translations = {
 
 
         // Download
-        dl_title: "Download SQLSkrypter", dl_ver: "Version: 2.1.0", dl_date: "Release Date: May 2026", dl_btn: "Download Installer (.exe)", dl_sys: "System Requirements: Windows 10/11 x64. .NET 8.0 Desktop Runtime. Minimum 4GB RAM.",
+        dl_title: "Download SQLSkrypter", dl_ver: "Version: 2.1.1", dl_date: "Release Date: May 12, 2026", dl_btn: "Download Installer (.exe)", dl_sys: "System Requirements: Windows 10/11 x64. .NET 8.0 Desktop Runtime. Minimum 4GB RAM.",
 
         // Footer
         ft_manual: "User Manual", ft_faq: "FAQ", ft_licd: "Licensing", ft_change: "Changelog",
@@ -290,6 +299,15 @@ const translations = {
 
         // Changelog Page
         ch_pg_title: "Ewolucja Oprogramowania", ch_pg_desc: "Sprawdź, jak ewoluowaliśmy od małego narzędzia do potężnego silnika bazodanowego.",
+        ch_v211_date: "12 maja 2026",
+        ch_v211_title: "Wersja 2.1.1 - Konserwacja i Prośby Użytkowników",
+        ch_v211_1: "Dodano: Możliwość ręcznego ustawienia SQL Timeout w panelu Konfiguracji.",
+        ch_v211_2: "Dodano: Przycisk szybkiego kopiowania błędów do schowka w Podsumowaniu.",
+        ch_v211_3: "Zmieniono: Zsynchronizowano logikę raportowania błędów między UI a logami (log4net).",
+        ch_v211_4: "Zmieniono: Odświeżono ikony i układ panelu Konfiguracji dla lepszej użyteczności.",
+        ch_v211_5: "Ulepszono: Pełna lokalizacja (6 języków) dla wszystkich nowych elementów interfejsu.",
+        ch_v211_6: "Naprawiono: Problemy z przerywaniem długich operacji SQL (poprawka Timeout).",
+
         ch_v21_date: "Maj 2026",
         ch_v21_title: "Wersja 2.1.0 - Nowe Funkcje, Poprawki i Usprawnienia",
         ch_v21_1: "Dodano okno Historii Powiadomień z możliwością sortowania i skalowania.",
@@ -370,7 +388,7 @@ const translations = {
 
 
         // Download
-        dl_title: "Pobierz SQLSkrypter", dl_ver: "Wersja: 2.1.0", dl_date: "Data Wydania: Maj 2026", dl_btn: "Instalator (.exe)", dl_sys: "Wymaganania techniczne: Windows 10/11 x64, .NET 8.0 Desktop Runtime, Min. 4GB RAM CPU wielordzeniowy (dla operacji równolełych).",
+        dl_title: "Pobierz SQLSkrypter", dl_ver: "Wersja: 2.1.1", dl_date: "Data Wydania: 12 maja 2026", dl_btn: "Instalator (.exe)", dl_sys: "Wymaganania techniczne: Windows 10/11 x64, .NET 8.0 Desktop Runtime, Min. 4GB RAM CPU wielordzeniowy (dla operacji równolełych).",
 
         // Footer
         ft_manual: "Dokumentacja", ft_faq: "FAQ", ft_licd: "Licencje", ft_change: "Changelog",
