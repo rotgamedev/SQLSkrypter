@@ -95,6 +95,8 @@ const translations = {
         
         // Changelog Page
         ch_pg_title: "Evolution of Skrypter", ch_pg_desc: "See how we transformed from a simple tool into an enterprise engine.",
+        ch_loading: "Loading changelog from GitHub...",
+        ch_error: "Could not load changelog. View it directly on GitHub.",
         ch_v211_date: "May 12, 2026",
         ch_v211_title: "Version 2.1.1 - Maintenance & User Requests",
         ch_v211_1: "Added: User-Defined SQL Timeout setting in Configuration panel.",
@@ -197,7 +199,8 @@ const translations = {
 
 
         // Download
-        dl_title: "Download SQLSkrypter", dl_ver: "Version: 2.1.1", dl_date: "Release Date: May 12, 2026", dl_btn: "Download Installer (.exe)", dl_sys: "System Requirements: Windows 10/11 x64. .NET 8.0 Desktop Runtime. Minimum 4GB RAM.",
+        dl_title: "Download SQLSkrypter", dl_btn: "Download Installer (.exe)", dl_loading: "Loading latest version...",
+        dl_sys: "System Requirements: Windows 10/11 x64. .NET 8.0 Desktop Runtime. Minimum 4GB RAM.",
 
         // Footer
         ft_manual: "User Manual", ft_faq: "FAQ", ft_licd: "Licensing", ft_change: "Changelog",
@@ -299,6 +302,8 @@ const translations = {
 
         // Changelog Page
         ch_pg_title: "Ewolucja Oprogramowania", ch_pg_desc: "Sprawdź, jak ewoluowaliśmy od małego narzędzia do potężnego silnika bazodanowego.",
+        ch_loading: "Ładowanie changelogu z GitHub...",
+        ch_error: "Nie można załadować changelogu. Sprawdź go bezpośrednio na GitHub.",
         ch_v211_date: "12 maja 2026",
         ch_v211_title: "Wersja 2.1.1 - Konserwacja i Prośby Użytkowników",
         ch_v211_1: "Dodano: Możliwość ręcznego ustawienia SQL Timeout w panelu Konfiguracji.",
@@ -388,13 +393,184 @@ const translations = {
 
 
         // Download
-        dl_title: "Pobierz SQLSkrypter", dl_ver: "Wersja: 2.1.1", dl_date: "Data Wydania: 12 maja 2026", dl_btn: "Instalator (.exe)", dl_sys: "Wymaganania techniczne: Windows 10/11 x64, .NET 8.0 Desktop Runtime, Min. 4GB RAM CPU wielordzeniowy (dla operacji równolełych).",
+        dl_title: "Pobierz SQLSkrypter", dl_btn: "Instalator (.exe)", dl_loading: "Pobieranie najnowszej wersji...",
+        dl_sys: "Wymaganania techniczne: Windows 10/11 x64, .NET 8.0 Desktop Runtime, Min. 4GB RAM CPU wielordzeniowy (dla operacji równolełych).",
 
         // Footer
         ft_manual: "Dokumentacja", ft_faq: "FAQ", ft_licd: "Licencje", ft_change: "Changelog",
         ft_priv: "Prywatność", ft_terms: "Regulamin", ft_contact: "Kontakt"
     }
 };
+
+// --- GitHub Changelog (dynamic from all releases) ---
+function fetchChangelog() {
+    const timeline = document.getElementById('gh-changelog-timeline');
+    const loading  = document.getElementById('gh-changelog-loading');
+    const errorBox = document.getElementById('gh-changelog-error');
+    if (!timeline || !loading) return;
+
+    const lang = localStorage.getItem('sqlskrypter_lang') || 'en';
+
+    fetch('https://api.github.com/repos/rotgamedev/SQLSkrypter/releases?per_page=20', {
+        headers: { 'Accept': 'application/vnd.github+json' }
+    })
+    .then(res => {
+        if (!res.ok) throw new Error('API error');
+        return res.json();
+    })
+    .then(releases => {
+        loading.remove();
+
+        if (!releases.length) {
+            errorBox.style.display = 'block';
+            return;
+        }
+
+        const ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>`;
+
+        // Colour-coded badge per section header keyword
+        const BADGE_COLORS = {
+            'added':   '#4ade80',
+            'new':     '#4ade80',
+            'changed': '#facc15',
+            'improved':'#facc15',
+            'fixed':   '#f87171',
+            'removed': '#f87171',
+        };
+
+        function sectionColor(header) {
+            const lower = header.toLowerCase();
+            for (const [key, color] of Object.entries(BADGE_COLORS)) {
+                if (lower.includes(key)) return color;
+            }
+            return 'var(--accent-blue)';
+        }
+
+        // Lightweight Markdown → timeline HTML converter
+        function parseBody(body) {
+            if (!body || !body.trim()) return '';
+            let html = '';
+            let inList = false;
+            const lines = body.split(/\r?\n/);
+
+            for (const raw of lines) {
+                const line = raw.trim();
+                if (!line) {
+                    if (inList) { html += '</ul>'; inList = false; }
+                    continue;
+                }
+
+                // ### Section header
+                if (line.startsWith('###')) {
+                    if (inList) { html += '</ul>'; inList = false; }
+                    const title = line.replace(/^#+\s*/, '');
+                    const color = sectionColor(title);
+                    html += `<p style="font-weight:700;margin:1.2rem 0 0.4rem;color:${color};font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;">${title}</p>`;
+                    continue;
+                }
+
+                // ## or # header (release name duplicate — skip)
+                if (line.startsWith('#')) continue;
+
+                // Bullet point
+                if (line.startsWith('- ') || line.startsWith('* ')) {
+                    if (!inList) { html += '<ul class="highlight-list">'; inList = true; }
+                    const text = line.slice(2).replace(/`([^`]+)`/g, '<code style="background:rgba(152,221,255,0.1);padding:1px 5px;border-radius:4px;font-size:0.9em;">$1</code>');
+                    html += `<li>${ICON}<span>${text}</span></li>`;
+                    continue;
+                }
+
+                // Plain paragraph text
+                if (inList) { html += '</ul>'; inList = false; }
+                const text = line.replace(/`([^`]+)`/g, '<code style="background:rgba(152,221,255,0.1);padding:1px 5px;border-radius:4px;font-size:0.9em;">$1</code>');
+                html += `<p style="color:var(--text-secondary);margin:0.3rem 0;">${text}</p>`;
+            }
+
+            if (inList) html += '</ul>';
+            return html;
+        }
+
+        releases.forEach((release, index) => {
+            const tag  = (release.tag_name || '').replace(/^v/i, '');
+            const name = release.name || release.tag_name || tag;
+            const rawDate = release.published_at;
+            const dateObj = rawDate ? new Date(rawDate) : null;
+            const dateStr = dateObj
+                ? dateObj.toLocaleDateString(lang === 'pl' ? 'pl-PL' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' })
+                : '';
+
+            const isLatest = index === 0;
+            const latestBadge = isLatest
+                ? `<span style="display:inline-block;margin-left:0.75rem;padding:2px 10px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;background:var(--accent-blue);color:#000;border-radius:100px;">latest</span>`
+                : '';
+
+            const bodyHtml = parseBody(release.body);
+
+            const item = document.createElement('div');
+            item.className = 'timeline-item';
+            item.innerHTML = `
+                <span class="date">${dateStr}</span>
+                <h3>${name}${latestBadge}</h3>
+                ${bodyHtml || `<p style="color:var(--text-muted);font-style:italic;">No release notes.</p>`}
+                <a href="${release.html_url}" target="_blank" rel="noopener"
+                   style="display:inline-flex;align-items:center;gap:6px;margin-top:1rem;font-size:0.8rem;color:var(--accent-blue);opacity:0.7;text-decoration:none;"
+                   onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    View on GitHub
+                </a>
+            `;
+            timeline.appendChild(item);
+        });
+    })
+    .catch(() => {
+        if (loading) loading.remove();
+        if (errorBox) errorBox.style.display = 'block';
+    });
+}
+
+// --- GitHub Latest Release Badge ---
+function fetchLatestRelease() {
+    const badge = document.getElementById('gh-release-badge');
+    if (!badge) return; // Only run on pages that have the badge
+
+    const lang = localStorage.getItem('sqlskrypter_lang') || 'en';
+
+    fetch('https://api.github.com/repos/rotgamedev/SQLSkrypter/releases/latest', {
+        headers: { 'Accept': 'application/vnd.github+json' }
+    })
+    .then(res => {
+        if (!res.ok) throw new Error('API error');
+        return res.json();
+    })
+    .then(data => {
+        const tag = data.tag_name || '';
+        const version = tag.replace(/^v/i, '');
+        const rawDate = data.published_at;
+        const dateObj = rawDate ? new Date(rawDate) : null;
+
+        let dateStr = '';
+        if (dateObj) {
+            if (lang === 'pl') {
+                dateStr = dateObj.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+            } else {
+                dateStr = dateObj.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+            }
+        }
+
+        const versionLabel = lang === 'pl' ? 'Wersja' : 'Version';
+        const dateLabel   = lang === 'pl' ? 'Data wydania' : 'Release Date';
+
+        badge.innerHTML = `
+            <svg style="display:inline;vertical-align:middle;margin-right:6px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#98ddff" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg>
+            <strong style="color:var(--accent-blue);">${versionLabel}: ${version}</strong>
+            ${dateStr ? `&nbsp;|&nbsp;${dateLabel}: ${dateStr}` : ''}
+        `;
+    })
+    .catch(() => {
+        // Silently hide badge on failure — don't break the page
+        badge.innerHTML = '';
+    });
+}
 
 // --- Decrypt Text Effect ---
 function decodeText(element) {
@@ -607,6 +783,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize scrolling logic
     changeLang(initialLang);
     initScrollAnimations();
+
+    // Fetch latest GitHub release version
+    fetchLatestRelease();
+
+    // Fetch full changelog from GitHub releases
+    fetchChangelog();
 
     // 4. Scroll Progress Bar logic
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {

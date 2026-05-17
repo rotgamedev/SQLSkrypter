@@ -42,54 +42,23 @@
     </div>
 
     <section style="padding-top: 2rem;">
-        <div class="container timeline">
-            <div class="timeline-item">
-                <span class="date" data-i18n="ch_v211_date">May 12, 2026</span>
-                <h3 data-i18n="ch_v211_title">Version 2.1.1 - Maintenance & User Requests</h3>
-                <ul class="highlight-list">
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v211_1">Added: User-Defined SQL Timeout setting in Configuration panel.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v211_2">Added: 'Copy Error to Clipboard' quick-action button in Execution Summary.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v211_3">Changed: Standardized error reporting logic between UI and application logs.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v211_4">Changed: Modernized Configuration view icons and improved layout.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v211_5">Improved: Full multi-language support for all new UI elements.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v211_6">Fixed: Application crashes during long-running SQL operations (Timeout fix).</span></li>
-                </ul>
+        <div class="container timeline" id="gh-changelog-timeline">
+
+            <!-- Loading state -->
+            <div id="gh-changelog-loading" style="text-align:center; padding: 4rem 0; color: var(--text-muted);">
+                <svg style="display:block;margin:0 auto 1rem;animation:spin 1.2s linear infinite;" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
+                <span data-i18n="ch_loading">Loading changelog from GitHub...</span>
             </div>
 
-            <div class="timeline-item">
-                <span class="date" data-i18n="ch_v21_date">May 2026</span>
-                <h3 data-i18n="ch_v21_title">Version 2.1.0 - Features, Improvements & Fixes</h3>
-                <ul class="highlight-list">
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v21_1">Added Persistent Notification History window.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v21_2">Introduced Notification Badge counter on toolbar.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v21_3">Integrated Advanced Licensing System with 14-day Trial & Pro bindings.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v21_4">Improved real-time SQL Syntax Validation & robust 'GO' batch parser.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v21_5">Added UI Execution Lock to disable actions during script execution.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v21_6">Fixed clipboard COMException and FontAwesome icon clipping issues.</span></li>
-                </ul>
+            <!-- Error fallback (hidden by default) -->
+            <div id="gh-changelog-error" style="display:none; text-align:center; padding: 4rem 0;">
+                <p style="color:var(--text-muted); margin-bottom:1rem;" data-i18n="ch_error">Could not load changelog. View it directly on GitHub.</p>
+                <a href="https://github.com/rotgamedev/SQLSkrypter/releases" target="_blank" rel="noopener" class="btn btn-secondary">GitHub Releases →</a>
             </div>
 
-            <div class="timeline-item">
-                <span class="date" data-i18n="ch_v2_date">Q2 2026</span>
-                <h3 data-i18n="ch_v2_title">Version 2.0.0 - The Enterprise Update</h3>
-                <ul class="highlight-list">
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_1">Added Microsoft ScriptDom AST syntax parser.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_2">Introduced Parallel execution framework and abort controls.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_3">Added detailed Execution Timeline and Summary Dashboards.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_4">Migrated from DES to DPAPI and AES/PBKDF2 encryption.</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_5">Introduced advanced tree manipulation (drag & drop, filtering, session loading).</span></li>
-                    <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span data-i18n="ch_v2_6">Added Multi-Language Support (EN, PL, DE, ES, FR, IT).</span></li>
-                </ul>
-            </div>
-
-            <div class="timeline-item">
-                <span class="date" data-i18n="ch_v1_d">Legacy Engine</span>
-                <h3 data-i18n="ch_v1_t">Version 1.0.0</h3>
-                <p style="color: var(--text-muted);" data-i18n="ch_v1_p">The initial release featuring sequential processing, DES encryption, and basic environment management.</p>
-            </div>
-            
         </div>
     </section>
+
 
     <!-- Footer -->
         <footer>

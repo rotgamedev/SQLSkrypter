@@ -214,8 +214,12 @@
             <div class="download-card reveal-group">
                 <h2 data-i18n="dl_title">Download SQLSkrypter</h2>
                 <div style="margin-bottom: 2.5rem; color: var(--text-secondary);">
-                    <span data-i18n="dl_ver">Version: 2.0.0</span> | <span data-i18n="dl_date">Release Date: Q2 2026</span>
+                    <span id="gh-release-badge">
+                        <svg style="display:inline;vertical-align:middle;margin-right:6px;animation:spin 1.2s linear infinite;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-opacity="0.3"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
+                        <span data-i18n="dl_loading">Loading latest version...</span>
+                    </span>
                 </div>
+                <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
                 <a href="https://github.com/rotgamedev/SQLSkrypter/releases/latest" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.25rem 3rem;">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                     <span data-i18n="dl_btn">Download Installer (.exe)</span>
