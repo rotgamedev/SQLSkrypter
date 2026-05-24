@@ -604,7 +604,7 @@
         <div class="manual-container">
             
             <!-- Left Sidebar TOC -->
-            <aside class="manual-sidebar reveal">
+            <aside class="manual-sidebar">
                 <div class="toc-title">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                     <span class="lang-en">Table of Contents</span>
@@ -642,27 +642,34 @@
                     <li>
                         <a href="#ch-5" class="toc-link">
                             <span>05</span>
-                            <span class="lang-en">Dynamic Variables</span>
-                            <span class="lang-pl">Zmienne Dynamiczne</span>
+                            <span class="lang-en">Timeline & Summary</span>
+                            <span class="lang-pl">Oś Czasu i Wyniki</span>
                         </a>
                     </li>
                     <li>
                         <a href="#ch-6" class="toc-link">
                             <span>06</span>
-                            <span class="lang-en">Application Settings</span>
-                            <span class="lang-pl">Ustawienia Programu</span>
+                            <span class="lang-en">Dynamic Variables</span>
+                            <span class="lang-pl">Zmienne Dynamiczne</span>
                         </a>
                     </li>
                     <li>
                         <a href="#ch-7" class="toc-link">
                             <span>07</span>
-                            <span class="lang-en">Security Architecture</span>
-                            <span class="lang-pl">Architektura Bezpieczeństwa</span>
+                            <span class="lang-en">Application Settings</span>
+                            <span class="lang-pl">Ustawienia Programu</span>
                         </a>
                     </li>
                     <li>
                         <a href="#ch-8" class="toc-link">
                             <span>08</span>
+                            <span class="lang-en">Security Architecture</span>
+                            <span class="lang-pl">Architektura Bezpieczeństwa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ch-9" class="toc-link">
+                            <span>09</span>
                             <span class="lang-en">Licensing & Support</span>
                             <span class="lang-pl">Licencje i Diagnostyka</span>
                         </a>
@@ -962,13 +969,83 @@
                         </div>
                     </article>
 
-                    <!-- Chapter 5 -->
+                    <!-- Chapter 5 (EN) - Execution Timeline & Summary -->
                     <article id="ch-5" class="manual-chapter">
                         <span class="chapter-number">05</span>
-                        <h2>🔗 Chapter 5: Parameterization and Dynamic Variables</h2>
+                        <h2>📊 Chapter 5: Execution Timeline and Execution Summary</h2>
+                        <p>After scripts are launched, the application switches to the results panel consisting of two tabs: <strong>Execution Timeline</strong> and <strong>Execution Summary</strong>. Both views update in real time.</p>
+
+                        <h3>5.1 Execution Timeline</h3>
+                        <p>The Timeline is a chronological log of all events in the execution session. Each entry contains:</p>
+                        <ul>
+                            <li><strong>Timestamp:</strong> The time of the event in <code>HH:mm:ss</code> format.</li>
+                            <li><strong>Status icon:</strong> A visual indicator of the operation’s outcome.</li>
+                            <li><strong>Location:</strong> The server name and database the entry refers to.</li>
+                            <li><strong>Duration (ms):</strong> The execution time of the script on that database (shown for success and warning entries).</li>
+                        </ul>
+
+                        <h4>Entry Types in the Timeline</h4>
+                        <table style="width:100%;border-collapse:collapse;margin:0 0 20px;font-size:0.9rem;">
+                          <thead><tr><th style="border:1px solid #2F3338;padding:8px;background:#1a1d20;color:#fff;">Icon</th><th style="border:1px solid #2F3338;padding:8px;background:#1a1d20;color:#fff;">Color</th><th style="border:1px solid #2F3338;padding:8px;background:#1a1d20;color:#fff;">Type</th><th style="border:1px solid #2F3338;padding:8px;background:#1a1d20;color:#fff;">Meaning</th></tr></thead>
+                          <tbody>
+                            <tr style="background:rgba(255,255,255,0.02);"><td style="border:1px solid #2F3338;padding:8px;">ℹ️</td><td style="border:1px solid #2F3338;padding:8px;">Blue</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Info</strong></td><td style="border:1px solid #2F3338;padding:8px;">System message (e.g., session start)</td></tr>
+                            <tr><td style="border:1px solid #2F3338;padding:8px;"><code>›</code></td><td style="border:1px solid #2F3338;padding:8px;">Blue (animated)</td><td style="border:1px solid #2F3338;padding:8px;"><strong>In Progress</strong></td><td style="border:1px solid #2F3338;padding:8px;">Connecting — animated dots indicate active connection</td></tr>
+                            <tr style="background:rgba(255,255,255,0.02);"><td style="border:1px solid #2F3338;padding:8px;">✔</td><td style="border:1px solid #2F3338;padding:8px;">Green</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Success</strong></td><td style="border:1px solid #2F3338;padding:8px;">Script executed successfully</td></tr>
+                            <tr><td style="border:1px solid #2F3338;padding:8px;">↺</td><td style="border:1px solid #2F3338;padding:8px;">Light blue</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Dry-run OK</strong></td><td style="border:1px solid #2F3338;padding:8px;">Simulation mode — transaction rolled back</td></tr>
+                            <tr style="background:rgba(255,255,255,0.02);"><td style="border:1px solid #2F3338;padding:8px;">✖</td><td style="border:1px solid #2F3338;padding:8px;">Red</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Error</strong></td><td style="border:1px solid #2F3338;padding:8px;">SQL error (message shown below location)</td></tr>
+                            <tr><td style="border:1px solid #2F3338;padding:8px;">⚠</td><td style="border:1px solid #2F3338;padding:8px;">Orange</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Warning</strong></td><td style="border:1px solid #2F3338;padding:8px;">SQL warning during execution</td></tr>
+                            <tr style="background:rgba(255,255,255,0.02);"><td style="border:1px solid #2F3338;padding:8px;">🏁</td><td style="border:1px solid #2F3338;padding:8px;">Gray</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Session Summary</strong></td><td style="border:1px solid #2F3338;padding:8px;">Closes the session with total count and elapsed time</td></tr>
+                          </tbody>
+                        </table>
+
+                        <h4>Timeline Toolbar</h4>
+                        <ul>
+                            <li><strong>Server Filter (PRO):</strong> Dropdown to narrow events to a specific server. Empty option = all servers.</li>
+                            <li><strong>Status Filters (PRO):</strong> Radio buttons: All / ✔ Success / ⚠ Warning / ✖ Error. Session summary row always stays visible.</li>
+                            <li><strong>Re-run Failed (PRO):</strong> Re-executes the script <strong>only on databases that reported an error</strong>. The retry count is shown next to the icon.</li>
+                            <li><strong>Export (PRO):</strong> Saves filtered entries to <code>.txt</code> (readable report) or <code>.csv</code> (Timestamp; Status; Server; Database; Message; Duration).</li>
+                            <li><strong>Clear (🗑):</strong> Removes all entries from the Timeline.</li>
+                        </ul>
+
+                        <h3>5.2 Execution Summary</h3>
+                        <p>The summary panel aggregates session statistics into an analytical dashboard:</p>
+                        <ul>
+                            <li><strong>Success Rate:</strong> Percentage of successful operations out of all executed.</li>
+                            <li><strong>Total Time:</strong> Total duration of the session in milliseconds.</li>
+                            <li><strong>Counters:</strong> Total / Success / Warnings / Errors.</li>
+                        </ul>
+
+                        <h4>Error &amp; Warning Aggregation (Top Errors)</h4>
+                        <p>SQLSkrypter <strong>groups identical SQL error and warning messages</strong> from multiple databases into a single card. Each card displays:</p>
+                        <ul>
+                            <li>The error/warning message text.</li>
+                            <li>A list of affected databases (e.g., <code>Server1/DbA, Server2/DbB</code>).</li>
+                            <li>A red/orange count badge with the number of affected databases.</li>
+                            <li>A copy button to copy the full message and database list to clipboard.</li>
+                        </ul>
+
+                        <div class="callout callout-tip">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1 .3 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 22h4"></path></svg>
+                            <div class="callout-content">
+                                <div class="callout-title">Scope vs. isolated failure</div>
+                                <p>If the same error appears on 200 databases — it’s an infrastructure problem (server / network). If only on 3 specific databases — it’s a local data issue unique to those instances.</p>
+                            </div>
+                        </div>
+
+                        <h4>Performance Insights</h4>
+                        <ul>
+                            <li><strong>🕐 Slowest:</strong> Server and database with the longest execution time (red).</li>
+                            <li><strong>⚡ Fastest:</strong> Server and database with the shortest execution time (green).</li>
+                        </ul>
+                    </article>
+
+                    <!-- Chapter 6 -->
+                    <article id="ch-6" class="manual-chapter">
+                        <span class="chapter-number">06</span>
+                        <h2>🔗 Chapter 6: Parameterization and Dynamic Variables</h2>
                         <p>SQLSkrypter is equipped with an in-memory dynamic parameterization engine, making it easier to deploy configuration scripts across hundreds of databases without manually editing values.</p>
                         
-                        <h3>5.1 How It Works and Syntax</h3>
+                        <h3>6.1 How It Works and Syntax</h3>
                         <p>Variables are defined directly in the SQL code using double curly braces: <code>{{VariableName}}</code>.</p>
                         <p>While editing or loading a script, the application automatically scans its content. Detected variables will appear in the <strong>Script Variables (Parameterization)</strong> panel on the right side of the editor.</p>
                         <ul>
@@ -1002,7 +1079,7 @@
                         <p>The application will read these lines and automatically populate the corresponding text fields in the variables panel, speeding up your workflow.</p>
                         <p>The values entered in the panel will be safely substituted directly in the application's RAM memory just before sending the queries to the target databases.</p>
 
-                        <h3>5.2 License Restrictions and Detection Bypass</h3>
+                        <h3>6.2 License Restrictions and Detection Bypass</h3>
                         <ul>
                             <li><strong>PRO Edition:</strong> Full, unlimited access to dynamic variable substitution and automatic loading of default values defined in scripts.</li>
                             <li><strong>FREE Edition (Curly Brace Bypass):</strong>
@@ -1015,52 +1092,52 @@
                         </ul>
                     </article>
 
-                    <!-- Chapter 6 -->
-                    <article id="ch-6" class="manual-chapter">
-                        <span class="chapter-number">06</span>
-                        <h2>⚙️ Chapter 6: Detailed Description of Main Application Settings</h2>
+                    <!-- Chapter 7 -->
+                    <article id="ch-7" class="manual-chapter">
+                        <span class="chapter-number">07</span>
+                        <h2>⚙️ Chapter 7: Detailed Description of Main Application Settings</h2>
                         <p>SQLSkrypter provides an extensive configuration panel (under the <strong>Configuration -> Settings</strong> tab), where users can fine-tune ergonomics and system performance:</p>
                         
-                        <h3>6.1 Toast Notifications (<code>ShowToastNotifications</code>)</h3>
+                        <h3>7.1 Toast Notifications (<code>ShowToastNotifications</code>)</h3>
                         <p><strong>How it works:</strong> Controls whether Windows system notifications appear in the bottom-right corner of the screen after script execution finishes.</p>
                         <p><strong>Details:</strong> Supports DPI-aware technology and multi-monitor setups — the notification always appears on the monitor you are currently working on. This allows you to minimize the application during long script runs and safely focus on other tasks.</p>
 
-                        <h3>6.2 Auto-Updates (<code>checkUpdate</code>)</h3>
+                        <h3>7.2 Auto-Updates (<code>checkUpdate</code>)</h3>
                         <p><strong>How it works:</strong> Automatically queries the GitHub repository on application startup to check for newer releases.</p>
                         <p><strong>Details:</strong> Upon detecting a newer version, displays a window with a complete, localized list of changes (Release Notes). The user can initiate a safe installer download and automatic update with a single click. <em>This option requires a PRO license.</em></p>
 
-                        <h3>6.3 Remember Server Exclusions (<code>ServerExcludeInfo</code>)</h3>
+                        <h3>7.3 Remember Server Exclusions (<code>ServerExcludeInfo</code>)</h3>
                         <p><strong>How it works:</strong> Manages the persistence of manually hidden servers in the explorer (database tree).</p>
                         <p><strong>Details:</strong> If this option is checked, servers manually hidden by the user via the tree context menu (Exclude) will remain hidden after the application restarts. Disabling this option restores the full server list on every fresh application start.</p>
 
-                        <h3>6.4 Parallel Script Execution (<code>ParallelExecution</code>)</h3>
+                        <h3>7.4 Parallel Script Execution (<code>ParallelExecution</code>)</h3>
                         <p><strong>How it works:</strong> Activates multi-threading when running scripts across server fleets.</p>
                         <p><strong>Details:</strong> Launches up to 8 parallel worker threads. Instead of waiting for a script to finish on server A before starting on server B, the application processes servers A, B, C, and D simultaneously, drastically reducing total deployment time. <em>This feature is exclusively available in the PRO edition.</em></p>
 
-                        <h3>6.5 Default Workspace Tab (<code>DefaultWorkspaceTab</code>)</h3>
+                        <h3>7.5 Default Workspace Tab (<code>DefaultWorkspaceTab</code>)</h3>
                         <p><strong>How it works:</strong> Allows you to choose which section is active when the application starts.</p>
                         <p><strong>Details:</strong> Two options are available: <strong>Script Editor</strong> (the default for quick ad-hoc queries) or <strong>Script Files</strong> (the default for administrators deploying pre-built update packages).</p>
 
-                        <h3>6.6 Confirm on Exit (<code>ConfirmExit</code>)</h3>
+                        <h3>7.6 Confirm on Exit (<code>ConfirmExit</code>)</h3>
                         <p><strong>How it works:</strong> Protects against accidentally and mistakenly closing the application.</p>
                         <p><strong>Details:</strong> Enabling this option displays a confirmation prompt when attempting to exit the program. If scripts are actively running in the background, a special warning will be shown, informing the user of the risk of interrupting a transaction.</p>
 
-                        <h3>6.7 Application Language (<code>chooseLanguage</code>)</h3>
+                        <h3>7.7 Application Language (<code>chooseLanguage</code>)</h3>
                         <p><strong>How it works:</strong> Controls the full translation of the application's user interface.</p>
                         <p><strong>Details:</strong> Fully supports <strong>6 languages</strong>: Polish (PL), English (EN-US), German (DE), Spanish (ES), French (FR), and Italian (IT). Language changes take effect instantly without requiring an application restart.</p>
 
-                        <h3>6.8 SQL Execution Timeout (<code>SqlTimeout</code>)</h3>
+                        <h3>7.8 SQL Execution Timeout (<code>SqlTimeout</code>)</h3>
                         <p><strong>How it works:</strong> Configures the <em>Command Timeout</em> (in seconds) for SQL queries sent to servers.</p>
                         <p><strong>Details:</strong> Prevents the application from being blocked by queries waiting for database locks to release. Setting the value to <code>0</code> completely disables the timeout (waits indefinitely) and is recommended for very large structural deployments.</p>
                     </article>
 
-                    <!-- Chapter 7 -->
-                    <article id="ch-7" class="manual-chapter">
-                        <span class="chapter-number">07</span>
-                        <h2>🔒 Chapter 7: Security Architecture and Encryption</h2>
+                    <!-- Chapter 8 -->
+                    <article id="ch-8" class="manual-chapter">
+                        <span class="chapter-number">08</span>
+                        <h2>🔒 Chapter 8: Security Architecture and Encryption</h2>
                         <p>SQLSkrypter has been designed with maximum password protection and database integrity in mind for corporate environments.</p>
                         
-                        <h3>7.1 Discovery Query Verification (ScriptDom AST)</h3>
+                        <h3>8.1 Discovery Query Verification (ScriptDom AST)</h3>
                         <p>To ensure that the database discovery query (<code>sys.databases</code>) never damages the SQL Server structure, the application analyzes its code using the official compiler parser <strong>Microsoft.SqlServer.TransactSql.ScriptDom</strong>.</p>
                         <p>The system builds a syntactic query tree (AST) and, using the Visitor design pattern (<code>SqlSafetyVisitor</code>), unconditionally blocks queries containing:</p>
                         <ul>
@@ -1092,13 +1169,13 @@
                         </ul>
                     </article>
 
-                    <!-- Chapter 8 -->
-                    <article id="ch-8" class="manual-chapter">
-                        <span class="chapter-number">08</span>
-                        <h2>🔑 Chapter 8: Licensing, Trial, and About</h2>
+                    <!-- Chapter 9 -->
+                    <article id="ch-9" class="manual-chapter">
+                        <span class="chapter-number">09</span>
+                        <h2>🔑 Chapter 9: Licensing, Trial, and About</h2>
                         <p>The <strong>About / Licensing</strong> window is the panel for managing the software lifecycle and for system diagnostics.</p>
                         
-                        <h3>8.1 License Editions and Activation</h3>
+                        <h3>9.1 License Editions and Activation</h3>
                         <ul>
                             <li><strong>FREE Edition:</strong> Free of charge, with limitations (up to 10 servers, up to 3 environments, no parallel execution, no Dry Run simulation, variables panel locked).</li>
                             <li><strong>14-Day Trial Period:</strong> Every user can activate a full, free 14-day trial directly from within the application with a single click, granting access to all PRO edition features for testing purposes.</li>
@@ -1112,7 +1189,7 @@
                             </li>
                         </ul>
 
-                        <h3>8.2 System Information and Technical Support</h3>
+                        <h3>9.2 System Information and Technical Support</h3>
                         <p>At the bottom of the "About" panel there is a <strong>System Info</strong> diagnostic section, collecting key environmental metadata useful when contacting technical support:</p>
                         <ul>
                             <li>Windows operating system version, architecture, and hostname.</li>
@@ -1420,13 +1497,83 @@
                         </div>
                     </article>
 
-                    <!-- Chapter 5 (PL) -->
+                    <!-- Chapter 5 (PL) - Execution Timeline & Summary -->
                     <article id="ch-5-pl" class="manual-chapter">
                         <span class="chapter-number">05</span>
-                        <h2>🔗 Rozdział 5: Parametryzacja i Zmienne Dynamiczne</h2>
+                        <h2>📊 Rozdział 5: Oś Czasu (Timeline) i Podsumowanie Wykonania</h2>
+                        <p>Po uruchomieniu skryptów aplikacja przełącza się na panel wynikowy składający się z dwóch zakładek: <strong>Oś Czasu (Timeline)</strong> oraz <strong>Podsumowanie Wykonania (Execution Summary)</strong>. Oba widoki aktualizują się w czasie rzeczywistym.</p>
+
+                        <h3>5.1 Oś Czasu (Execution Timeline)</h3>
+                        <p>Oś czasu to chronologiczny dziennik wszystkich zdarzeń sesji wykonywania. Każdy wpis zawiera:</p>
+                        <ul>
+                            <li><strong>Sygnaturę czasu (Timestamp):</strong> Godzinę zdarzenia w formacie <code>HH:mm:ss</code>.</li>
+                            <li><strong>Ikonę statusu:</strong> Wizualny wskaźnik wyniku operacji.</li>
+                            <li><strong>Lokalizację:</strong> Nazwę serwera i bazę danych, których wpis dotyczy.</li>
+                            <li><strong>Czas trwania (ms):</strong> Czas wykonania skryptu na danej bazie (przy wpisach sukcesu i ostrzeżenia).</li>
+                        </ul>
+
+                        <h4>Typy wpisów na Osi Czasu</h4>
+                        <table style="width:100%;border-collapse:collapse;margin:0 0 20px;font-size:0.9rem;">
+                          <thead><tr><th style="border:1px solid #2F3338;padding:8px;background:#1a1d20;color:#fff;">Ikona</th><th style="border:1px solid #2F3338;padding:8px;background:#1a1d20;color:#fff;">Kolor</th><th style="border:1px solid #2F3338;padding:8px;background:#1a1d20;color:#fff;">Typ</th><th style="border:1px solid #2F3338;padding:8px;background:#1a1d20;color:#fff;">Znaczenie</th></tr></thead>
+                          <tbody>
+                            <tr style="background:rgba(255,255,255,0.02);"><td style="border:1px solid #2F3338;padding:8px;">ℹ️</td><td style="border:1px solid #2F3338;padding:8px;">Niebieski</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Info</strong></td><td style="border:1px solid #2F3338;padding:8px;">Komunikat systemowy (np. start sesji)</td></tr>
+                            <tr><td style="border:1px solid #2F3338;padding:8px;"><code>›</code></td><td style="border:1px solid #2F3338;padding:8px;">Niebieski (animacja)</td><td style="border:1px solid #2F3338;padding:8px;"><strong>W trakcie</strong></td><td style="border:1px solid #2F3338;padding:8px;">Trwa łączenie z bazą — animowane kropki sygnalizują aktywne połączenie</td></tr>
+                            <tr style="background:rgba(255,255,255,0.02);"><td style="border:1px solid #2F3338;padding:8px;">✔</td><td style="border:1px solid #2F3338;padding:8px;">Zielony</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Sukces</strong></td><td style="border:1px solid #2F3338;padding:8px;">Skrypt wykonany pomyślnie</td></tr>
+                            <tr><td style="border:1px solid #2F3338;padding:8px;">↺</td><td style="border:1px solid #2F3338;padding:8px;">Jasnoniebieski</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Dry-run OK</strong></td><td style="border:1px solid #2F3338;padding:8px;">Skrypt wykonany w trybie symulacji — transakcja wycofana</td></tr>
+                            <tr style="background:rgba(255,255,255,0.02);"><td style="border:1px solid #2F3338;padding:8px;">✖</td><td style="border:1px solid #2F3338;padding:8px;">Czerwony</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Błąd</strong></td><td style="border:1px solid #2F3338;padding:8px;">Wykonanie zakończone błędem SQL (treść błędu wyświetlana pod lokalizacją)</td></tr>
+                            <tr><td style="border:1px solid #2F3338;padding:8px;">⚠</td><td style="border:1px solid #2F3338;padding:8px;">Pomarańczowy</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Ostrzeżenie</strong></td><td style="border:1px solid #2F3338;padding:8px;">Wykonanie zakończone z ostrzeżeniem SQL</td></tr>
+                            <tr style="background:rgba(255,255,255,0.02);"><td style="border:1px solid #2F3338;padding:8px;">🏁</td><td style="border:1px solid #2F3338;padding:8px;">Szary</td><td style="border:1px solid #2F3338;padding:8px;"><strong>Podsumowanie sesji</strong></td><td style="border:1px solid #2F3338;padding:8px;">Linia zamykająca sesję z łączną liczbą baz i czasem całkowitym</td></tr>
+                          </tbody>
+                        </table>
+
+                        <h4>Pasek narzędzi Osi Czasu</h4>
+                        <ul>
+                            <li><strong>Filtr serwera (PRO):</strong> Rozwijana lista pozwalająca zawęzić widok do zdarzeń z konkretnego serwera. Wybranie pustej pozycji przywraca widok wszystkich serwerów.</li>
+                            <li><strong>Filtry statusu (PRO):</strong> Cztery przyciski radio umożliwiające pokazanie wyłącznie wpisów o wybranym statusie: Wszystkie / ✔ Sukces / ⚠ Ostrzeżenie / ✖ Błąd. Wpis podsumowania sesji jest zawsze widoczny niezależnie od wybranego filtra.</li>
+                            <li><strong>Re-run Failed (PRO):</strong> Ponawia wykonanie skryptu <strong>wyłącznie na bazach, które zgłosiły błąd</strong> — bez konieczności ręcznego odklikiwania pozostałych baz. Liczba baz do ponowienia jest wyświetlana obok ikony.</li>
+                            <li><strong>Eksport (PRO):</strong> Zapisuje widoczne wpisy do pliku tekstowego (<code>.txt</code>) lub arkusza (<code>.csv</code>) z podziałem na kolumny.</li>
+                            <li><strong>Wyczyść (🗑):</strong> Usuwa wszystkie wpisy z Osi Czasu.</li>
+                        </ul>
+
+                        <h3>5.2 Podsumowanie Wykonania (Execution Summary)</h3>
+                        <p>Panel podsumowania agreguje statystyki zakończonej sesji w czytelną formę analityczną:</p>
+                        <ul>
+                            <li><strong>Success Rate (Wskaźnik Sukcesu):</strong> Procentowy udział operacji zakończonych sukcesem w stosunku do wszystkich wykonanych.</li>
+                            <li><strong>Total Time (Całkowity Czas):</strong> Łączny czas trwania całej sesji wykonywania w milisekundach.</li>
+                            <li><strong>Liczniki szczegółowe:</strong> Razem / Sukces / Ostrzeżenia / Błędy.</li>
+                        </ul>
+
+                        <h4>Agregacja Błędów i Ostrzeżeń (Top Errors)</h4>
+                        <p>SQLSkrypter <strong>grupuje identyczne komunikaty błędów i ostrzeżeń</strong> z wielu baz w jeden wpis. Każda karta błędu wyświetla:</p>
+                        <ul>
+                            <li>Treść komunikatu błędu/ostrzeżenia.</li>
+                            <li>Listę dotkniętych baz danych (np. <code>Server1/BazaA, Server2/BazaB</code>).</li>
+                            <li>Czerwoną lub pomarańczową plakietkę (badge) z liczbą baz, które wygenerowały ten błąd.</li>
+                            <li>Przycisk kopiowania pełnej treści błędu i listy baz do schowka.</li>
+                        </ul>
+
+                        <div class="callout callout-tip">
+                          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1 .3 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 22h4"></path></svg>
+                          <div class="callout-content">
+                            <div class="callout-title">Zasięg błędu a problem lokalny</div>
+                            <p>Agregacja błędów pozwala natychmiast ocenić zasięg problemu. Jeśli ten sam błąd pojawia się na 200 bazach — to problem globalny (serwer lub sieć). Jeśli tylko na 3 bazach — to odosobniony problem lokalny tych instancji.</p>
+                          </div>
+                        </div>
+
+                        <h4>Analiza Wydajności (Performance Insights)</h4>
+                        <ul>
+                            <li><strong>Najwolniejsza baza (🕐 Slowest):</strong> Nazwa serwera i bazy z najdłuższym czasem wykonania (kolor czerwony).</li>
+                            <li><strong>Najszybsza baza (⚡ Fastest):</strong> Nazwa serwera i bazy z najkrótszym czasem wykonania (kolor zielony).</li>
+                        </ul>
+                    </article>
+
+                    <!-- Chapter 6 (PL) -->
+                    <article id="ch-6-pl" class="manual-chapter">
+                        <span class="chapter-number">06</span>
+                        <h2>🔗 Rozdział 6: Parametryzacja i Zmienne Dynamiczne</h2>
                         <p>SQLSkrypter wyposażony jest w silnik dynamicznej parametryzacji w pamięci aplikacji, ułatwiający wdrażanie skryptów konfiguracyjnych na setki baz bez konieczności ręcznego edytowania wartości.</p>
                         
-                        <h3>5.1 Mechanizm Działania i Składnia</h3>
+                        <h3>6.1 Mechanizm Działania i Składnia</h3>
                         <p>Zmienne definiuje się bezpośrednio w kodzie SQL przy użyciu podwójnych nawiasów klamrowych: <code>{{NazwaZmiennej}}</code>.</p>
                         <p>Podczas edycji lub wczytywania skryptu program automatycznie skanuje jego treść. Wykryte zmienne pojawią się w bocznym panelu <strong>Zmienne w skryptach (Parametryzacja)</strong> po prawej stronie edytora.</p>
                         <ul>
@@ -1449,7 +1596,7 @@
                             <div class="terminal-body">
                                 <pre><code><span class="token-comment">-- @VAR: ProgowanaKwota = 1000</span>
 <span class="token-comment">-- @VAR: Kraj = PL</span>
-
+ 
 <span class="token-keyword">UPDATE</span> dbo.KonfiguracjaAplikacji
 <span class="token-keyword">SET</span> Wartosc = <span class="token-string">'{{ProgowanaKwota}}'</span>
 <span class="token-keyword">WHERE</span> KluczKonfiguracji = <span class="token-string">'LimitFaktury'</span>
@@ -1460,7 +1607,7 @@
                         <p>Aplikacja odczyta te linie i automatycznie uzupełni nimi odpowiednie pola tekstowe w bocznym panelu zmiennych, przyspieszając pracę.</p>
                         <p>Wprowadzone w panelu wartości zostaną bezpiecznie podmienione bezpośrednio w pamięci RAM aplikacji tuż przed wysłaniem zapytań do docelowych baz danych.</p>
 
-                        <h3>5.2 Ograniczenia Licencyjne i Wyłącznik Detekcji (Bypass)</h3>
+                        <h3>6.2 Ograniczenia Licencyjne i Wyłącznik Detekcji (Bypass)</h3>
                         <ul>
                             <li><strong>Wersja PRO:</strong> Pełny, nielimitowany dostęp do dynamicznego podstawiania zmiennych oraz automatycznego wczytywania wartości domyślnych zdefiniowanych w skryptach.</li>
                             <li><strong>Wersja FREE (Bypass klamer):</strong>
@@ -1473,52 +1620,52 @@
                         </ul>
                     </article>
 
-                    <!-- Chapter 6 (PL) -->
-                    <article id="ch-6-pl" class="manual-chapter">
-                        <span class="chapter-number">06</span>
-                        <h2>⚙️ Rozdział 6: Szczegółowy Opis Głównych Ustawień Aplikacji</h2>
+                    <!-- Chapter 7 (PL) -->
+                    <article id="ch-7-pl" class="manual-chapter">
+                        <span class="chapter-number">07</span>
+                        <h2>⚙️ Rozdział 7: Szczegółowy Opis Głównych Ustawień Aplikacji</h2>
                         <p>SQLSkrypter udostępnia rozbudowany panel konfiguracyjny (zakładka <strong>Konfiguracja -> Ustawienia</strong>), w którym użytkownik może precyzyjnie dostroić ergonomię pracy i wydajność systemu:</p>
                         
-                        <h3>6.1 Powiadomienia Toast (<code>ShowToastNotifications</code>)</h3>
+                        <h3>7.1 Powiadomienia Toast (<code>ShowToastNotifications</code>)</h3>
                         <p><strong>Opis działania:</strong> Odpowiada za wysyłanie systemowych powiadomień Windows w prawym dolnym rogu ekranu po zakończeniu wykonywania skryptów.</p>
                         <p><strong>Specyfikacja:</strong> Obsługuje technologię DPI-aware i systemy wielomonitorowe – powiadomienie wyświetli się zawsze na monitorze, na którym aktualnie pracujesz. Pozwala to na zminimalizowanie aplikacji podczas wykonywania długich skryptów i bezpieczne zajęcie się inną pracą.</p>
 
-                        <h3>6.2 Aktualizacje (<code>checkUpdate</code>)</h3>
+                        <h3>7.2 Aktualizacje (<code>checkUpdate</code>)</h3>
                         <p><strong>Opis działania:</strong> Automatycznie odpytuje repozytorium GitHub przy uruchomieniu aplikacji w poszukiwaniu nowszych wydań.</p>
                         <p><strong>Specyfikacja:</strong> Po wykryciu nowszej wersji wyświetla okno z kompletną, lokalizowaną listą zmian (Release Notes). Użytkownik jednym kliknięciem może zainicjować bezpieczne pobranie instalatora i automatyczną aktualizację programu. <em>Opcja wymaga licencji PRO.</em></p>
 
-                        <h3>6.3 Zapamiętanie Wykluczenia Serwerów (<code>ServerExcludeInfo</code>)</h3>
+                        <h3>7.3 Zapamiętanie Wykluczenia Serwerów (<code>ServerExcludeInfo</code>)</h3>
                         <p><strong>Opis działania:</strong> Zarządza trwałością ręcznego ukrywania serwerów w eksploratorze (drzewie baz).</p>
                         <p><strong>Specyfikacja:</strong> Jeśli opcja jest zaznaczona, serwery ukryte przez użytkownika z poziomu menu kontekstowego drzewa (Exclude) pozostaną niewidoczne po restarcie programu. Wyłączenie opcji przywraca pełną listę serwerów przy każdym nowym starcie aplikacji.</p>
 
-                        <h3>6.4 Równoległe Wykonywanie Skryptów (<code>ParallelExecution</code>)</h3>
+                        <h3>7.4 Równoległe Wykonywanie Skryptów (<code>ParallelExecution</code>)</h3>
                         <p><strong>Opis działania:</strong> Aktywuje wielowątkowość podczas uruchamiania skryptów na flotach serwerów.</p>
-                        <p><strong>Specyfikacja:</strong> Uruchamia do 8 równoległych wątków roboczych. Zamiast czekać na zakończenie wykonywania skryptu na serwerze A, aplikacja przetwarza serwery A, B, C i D jednocześnie, drastycznie redukując całkowity czas wdrożenia. <em>Funkcja dostępna wyłącznie w wersji PRO.</em></p>
+                        <p><strong>Specyfikacja:</strong> Uruchamia do 8 równoległych wątków roboczych. Zamiast czekać na zakończenie wykonywania skryptu na serwerze A, aplikacja przetrawia serwery A, B, C i D jednocześnie, drasticznie redukując całkowity czas wdrożenia. <em>Funkcja dostępna wyłącznie w wersji PRO.</em></p>
 
-                        <h3>6.5 Domyślne Okno Obszaru Roboczego (<code>DefaultWorkspaceTab</code>)</h3>
+                        <h3>7.5 Domyślne Okno Obszaru Roboczego (<code>DefaultWorkspaceTab</code>)</h3>
                         <p><strong>Opis działania:</strong> Pozwala wybrać, która sekcja ma być aktywna po uruchomieniu aplikacji.</p>
                         <p><strong>Specyfikacja:</strong> Do wyboru są dwie opcje: <strong>Edytor skryptów</strong> (domyślny dla szybkiego pisania zapytań ad-hoc) lub <strong>Skrypty z plików</strong> (domyślny dla administratorów wdrażających gotowe paczki aktualizacyjne).</p>
 
-                        <h3>6.6 Zapytanie Przed Zamknięciem (<code>ConfirmExit</code>)</h3>
+                        <h3>7.6 Zapytanie Przed Zamknięciem (<code>ConfirmExit</code>)</h3>
                         <p><strong>Opis działania:</strong> Chroni przed przypadkowym, omyłkowym zamknięciem programu.</p>
                         <p><strong>Specyfikacja:</strong> Włączenie tej opcji powoduje wyświetlenie monitu potwierdzającego przy próbie wyjścia z programu. Jeśli w tle trwa aktywne wykonywanie skryptów, system wyświetli specjalne ostrzeżenie, informując o ryzyku przerwania transakcji.</p>
 
-                        <h3>6.7 Język Aplikacji (<code>chooseLanguage</code>)</h3>
+                        <h3>7.7 Język Aplikacji (<code>chooseLanguage</code>)</h3>
                         <p><strong>Opis działania:</strong> Odpowiada za pełne tłumaczenie interfejsu użytkownika aplikacji.</p>
                         <p><strong>Specyfikacja:</strong> W pełni wspiera <strong>6 języków</strong>: polski (PL), angielski (EN-US), niemiecki (DE), hiszpański (ES), francuski (FR) i włoski (IT). Zmiana języka następuje natychmiastowo, bez konieczności ponownego uruchamiania aplikacji.</p>
 
-                        <h3>6.8 Limit Czasu Wykonywania SQL (<code>SqlTimeout</code>)</h3>
+                        <h3>7.8 Limit Czasu Wykonywania SQL (<code>SqlTimeout</code>)</h3>
                         <p><strong>Opis działania:</strong> Konfiguruje tzw. <em>Command Timeout</em> (w sekundach) dla zapytań SQL wysyłanych na serwery.</p>
                         <p><strong>Specyfikacja:</strong> Zapobiega blokowaniu aplikacji przez zapytania oczekujące na zwolnienie blokad (locków) w bazie danych. Wpisanie wartości <code>0</code> całkowicie wyłącza limit czasowy (oczekiwanie nieskończone) i jest zalecane przy bardzo dużych wdrożeniach strukturalnych.</p>
                     </article>
 
-                    <!-- Chapter 7 (PL) -->
-                    <article id="ch-7-pl" class="manual-chapter">
-                        <span class="chapter-number">07</span>
-                        <h2>🔒 Rozdział 7: Architektura Bezpieczeństwa i Szyfrowanie</h2>
+                    <!-- Chapter 8 (PL) -->
+                    <article id="ch-8-pl" class="manual-chapter">
+                        <span class="chapter-number">08</span>
+                        <h2>🔒 Rozdział 8: Architektura Bezpieczeństwa i Szyfrowanie</h2>
                         <p>SQLSkrypter został zaprojektowany z myślą o maksymalnej ochronie haseł i integralności baz danych w środowiskach korporacyjnych.</p>
                         
-                        <h3>7.1 Weryfikacja Zapytania Odkrywającego (ScriptDom AST)</h3>
+                        <h3>8.1 Weryfikacja Zapytania Odkrywającego (ScriptDom AST)</h3>
                         <p>Aby zapewnić, że zapytanie odkrywające bazy (<code>sys.databases</code>) nigdy nie uszkodzi struktury serwera SQL, aplikacja analizuje jego kod za pomocą oficjalnego parsera kompilatora <strong>Microsoft.SqlServer.TransactSql.ScriptDom</strong>.</p>
                         <p>System buduje drzewo składniowe zapytania (AST) i za pomocą wzorca projektowego wizytatora (<code>SqlSafetyVisitor</code>) bezwzględnie blokuje zapytania zawierające:</p>
                         <ul>
@@ -1529,7 +1676,7 @@
                         </ul>
                         <p>Gwarantuje to absolutne bezpieczeństwo operacji odkrywania baz.</p>
 
-                        <h3>7.2 Szyfrowanie Konfiguracji Lokalnej (Hybrydowy standard AES-256)</h3>
+                        <h3>8.2 Szyfrowanie Konfiguracji Lokalnej (Hybrydowy standard AES-256)</h3>
                         <p>Konfiguracja serwerów w pliku <code>%LOCALAPPDATA%\Skrypter\DataServers.dat</code> jest chroniona unikalnym schematem hybrydowym:</p>
                         <ol>
                             <li><strong>Jednorazowy Klucz AES-256:</strong> Przy każdym zapisie aplikacja generuje losowy klucz AES (32 bajty) oraz wektor inicjalizacyjny IV (16 bajtów) służące do zaszyfrowania bazy serwerów.</li>
@@ -1542,7 +1689,7 @@
                             <li><strong>Bezpieczeństwo przed kradzieżą:</strong> Przeniesienie pliku konfiguracyjnego na inną maszynę uniemożliwia jego odszyfrowanie. Z kolei w przypadku uszkodzenia profilu użytkownika Windows na danej maszynie, program bez problemu odzyska dane dzięki sprzętowemu kluczowi awaryjnemu.</li>
                         </ol>
 
-                        <h3>7.3 Szyfrowanie przy Eksporcie / Imporcie</h3>
+                        <h3>8.3 Szyfrowanie przy Eksporcie / Imporcie</h3>
                         <ul>
                             <li><strong>Standard:</strong> Wykorzystuje silne szyfrowanie symetryczne <strong>AES-256</strong>.</li>
                             <li><strong>Derywacja Klucza:</strong> Klucz oraz wektor inicjalizacyjny (IV) są generowane na podstawie hasła podanego przez użytkownika za pomocą algorytmu <strong>PBKDF2</strong> (<code>Rfc2898DeriveBytes</code>) z silną solą kryptograficzną.</li>
@@ -1550,13 +1697,13 @@
                         </ul>
                     </article>
 
-                    <!-- Chapter 8 (PL) -->
-                    <article id="ch-8-pl" class="manual-chapter">
-                        <span class="chapter-number">08</span>
-                        <h2>🔑 Rozdział 8: Licencjonowanie, Trial i O Aplikacji</h2>
+                    <!-- Chapter 9 (PL) -->
+                    <article id="ch-9-pl" class="manual-chapter">
+                        <span class="chapter-number">09</span>
+                        <h2>🔑 Rozdział 9: Licencjonowanie, Trial i O Aplikacji</h2>
                         <p>Okno <strong>O aplikacji (About / Licensing)</strong> to panel zarządzania cyklem życia oprogramowania oraz diagnostyki systemowej.</p>
                         
-                        <h3>8.1 Wersje Licencji i Aktywacja</h3>
+                        <h3>9.1 Wersje Licencji i Aktywacja</h3>
                         <ul>
                             <li><strong>Wersja FREE:</strong> Darmowa, z limitami (do 10 serwerów, do 3 środowisk, brak pracy równoległej, brak symulacji Dry Run, zablokowany panel zmiennych).</li>
                             <li><strong>Okres Próbny (14-dniowy TRIAL):</strong> Każdy użytkownik może bezpośrednio z poziomu aplikacji jednym kliknięciem uruchomić pełny, darmowy 14-dniowy okres próbny, dający dostęp do wszystkich możliwości edycji PRO w celach testowych.</li>
@@ -1570,7 +1717,7 @@
                             </li>
                         </ul>
 
-                        <h3>8.2 Informacje o Systemie i Wsparcie Techniczne</h3>
+                        <h3>9.2 Informacje o Systemie i Wsparcie Techniczne</h3>
                         <p>W dolnej części panelu "O aplikacji" znajduje się sekcja diagnostyczna <strong>Informacje o systemie (System Info)</strong>, zbierająca kluczowe metadane środowiskowe przydatne podczas kontaktu z pomocą techniczną:</p>
                         <ul>
                             <li>Wersja systemu operacyjnego Windows, architektura oraz nazwa hosta.</li>
@@ -1583,7 +1730,6 @@
 
                         <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(152, 221, 255, 0.03); border: 1px dashed var(--accent-blue); border-radius: 1rem; text-align: center;">
                             <p style="font-style: italic; color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Uwaga: SQLSkrypter to tzw. "Fast Runner". Aplikacja nie wyświetla wyników zapytań SELECT (danych), skupiając się w całości na statusie wykonania i wydajności.</p>
-                        </div>
                     </article>
 
                 </div>
@@ -1652,7 +1798,7 @@
                                       .filter(ch => ch.offsetParent !== null);
                 
                 let activeIndex = chapters.length;
-                while(--activeIndex && window.scrollY + 180 < chapters[activeIndex].offsetTop) {}
+                while(--activeIndex && window.scrollY + 180 < (chapters[activeIndex].getBoundingClientRect().top + window.scrollY)) {}
                 
                 tocLinks.forEach((link, idx) => {
                     link.classList.remove('active');
@@ -1678,8 +1824,10 @@
                     const targetElem = document.querySelector(finalId);
                     
                     if (targetElem) {
+                        const rect = targetElem.getBoundingClientRect();
+                        const absoluteTop = rect.top + window.scrollY;
                         window.scrollTo({
-                            top: targetElem.offsetTop - 120,
+                            top: absoluteTop - 85,
                             behavior: 'smooth'
                         });
                     }
