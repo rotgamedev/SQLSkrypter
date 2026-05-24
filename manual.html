@@ -3,35 +3,505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQLSkrypter | User Manual & Video Tutorials</title>
-    <meta name="description" content="Official user manual for SQLSkrypter. Learn how to configure servers, manage fleets, safely execute queries using Dry-Run, and watch video guides.">
+    <title>SQLSkrypter | Comprehensive User Manual & Guides</title>
+    <meta name="description" content="Official interactive user manual for SQLSkrypter. Learn how to configure SQL Servers, manage environments, perform Dry-Run simulations, use dynamic parameters, and optimize your database orchestrations.">
     <link rel="canonical" href="https://sqlskrypter.com/manual.html">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sqlskrypter.com/manual.html">
-    <meta property="og:title" content="SQLSkrypter | User Manual & Video Tutorials">
-    <meta property="og:description" content="Official user manual for SQLSkrypter. Learn server configuration, fleet management, and watch quick video tutorials.">
+    <meta property="og:title" content="SQLSkrypter | Interactive User Manual">
+    <meta property="og:description" content="Official user manual for SQLSkrypter. Connect servers, manage environments, and orchestrate SQL queries in parallel securely.">
     <meta property="og:image" content="https://sqlskrypter.com/img/og-preview.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://sqlskrypter.com/manual.html">
-    <meta property="twitter:title" content="SQLSkrypter | User Manual & Video Tutorials">
-    <meta property="twitter:description" content="Official user manual for SQLSkrypter. Learn server configuration, fleet management, and watch quick video tutorials.">
+    <meta property="twitter:title" content="SQLSkrypter | Interactive User Manual">
+    <meta property="twitter:description" content="Official user manual for SQLSkrypter. Connect servers, manage environments, and orchestrate SQL queries in parallel securely.">
     <meta property="twitter:image" content="https://sqlskrypter.com/img/og-preview.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Modernized Manual Styling Scoped to manual.html */
+        
+        /* Language Visibility Rules */
+        html[lang="en"] .lang-pl { display: none !important; }
+        html[lang="pl"] .lang-en { display: none !important; }
+
+        /* Reading Progress Bar */
+        #reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0084ff, var(--accent-blue));
+            width: 0%;
+            z-index: 100004;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px rgba(152, 221, 255, 0.5);
+        }
+
+        /* Two-Column Grid Setup */
+        .manual-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 3rem;
+            margin-bottom: 6rem;
+        }
+
+        @media (max-width: 1024px) {
+            .manual-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        /* Sticky Left Sidebar TOC */
+        .manual-sidebar {
+            position: sticky;
+            top: 6rem;
+            max-height: calc(100vh - 8rem);
+            overflow-y: auto;
+            background: rgba(10, 15, 30, 0.45);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .manual-sidebar {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+        }
+
+        .toc-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .toc-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.7rem 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 0.6rem;
+            transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+            border-left: 2px solid transparent;
+        }
+
+        .toc-link:hover {
+            color: var(--accent-blue);
+            background: rgba(152, 221, 255, 0.04);
+            border-left-color: rgba(152, 221, 255, 0.3);
+        }
+
+        .toc-link.active {
+            color: var(--bg-base);
+            background: var(--accent-blue);
+            box-shadow: 0 4px 15px rgba(152, 221, 255, 0.25);
+            font-weight: 600;
+            border-left-color: var(--accent-blue);
+        }
+
+        
+
+        /* Ambient Chapter Layout */
+        .manual-chapter {
+            background: rgba(15, 20, 30, 0.35);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            padding: 3.5rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .manual-chapter:hover {
+            border-color: rgba(152, 221, 255, 0.2);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+            background: rgba(18, 24, 38, 0.45);
+        }
+
+        @media (max-width: 640px) {
+            .manual-chapter {
+                padding: 2rem;
+            }
+        }
+
+        .chapter-number {
+            position: absolute;
+            top: 1rem;
+            right: 2.5rem;
+            font-size: 6rem;
+            font-weight: 900;
+            color: rgba(152, 221, 255, 0.025);
+            line-height: 1;
+            user-select: none;
+            pointer-events: none;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .manual-chapter h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.9rem;
+            color: var(--accent-blue);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px dashed rgba(158, 179, 210, 0.15);
+        }
+
+        .manual-chapter h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin-top: 2.5rem;
+            margin-bottom: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .manual-chapter p {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            line-height: 1.75;
+            font-size: 0.98rem;
+        }
+
+        .manual-chapter ul, .manual-chapter ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.75rem;
+            color: var(--text-secondary);
+        }
+
+        .manual-chapter li {
+            margin-bottom: 0.65rem;
+            line-height: 1.6;
+        }
+
+        .manual-chapter strong {
+            color: var(--text-primary);
+        }
+
+        /* Callout Boxes (Markdown Alert Blocks replacement) */
+        .callout {
+            display: flex;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            border-radius: 1.2rem;
+            margin: 2rem 0;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .callout-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            margin-top: 0.15rem;
+        }
+
+        .callout-content {
+            flex-grow: 1;
+        }
+
+        .callout-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            margin-top: 0 !important;
+            margin-bottom: 0.4rem !important;
+            font-size: 0.95rem !important;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .callout-content p {
+            margin: 0 !important;
+            font-size: 0.9rem !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Themes */
+        .callout-tip {
+            background: rgba(74, 222, 128, 0.05);
+            border-color: rgba(74, 222, 128, 0.18);
+        }
+        .callout-tip .callout-title { color: #4ade80; }
+        .callout-tip .callout-content p { color: #bbf7d0; }
+
+        .callout-note {
+            background: rgba(152, 221, 255, 0.05);
+            border-color: rgba(152, 221, 255, 0.18);
+        }
+        .callout-note .callout-title { color: var(--accent-blue); }
+        .callout-note .callout-content p { color: #d0efff; }
+
+        .callout-warning {
+            background: rgba(251, 191, 36, 0.05);
+            border-color: rgba(251, 191, 36, 0.18);
+        }
+        .callout-warning .callout-title { color: #fbbf24; }
+        .callout-warning .callout-content p { color: #fef3c7; }
+
+        .callout-important {
+            background: rgba(168, 85, 247, 0.05);
+            border-color: rgba(168, 85, 247, 0.18);
+        }
+        .callout-important .callout-title { color: #c084fc; }
+        .callout-important .callout-content p { color: #f3e8ff; }
+
+        /* Terminals for Code */
+        .terminal-block {
+            background: #030509;
+            border: 1px solid var(--border-color);
+            border-radius: 0.9rem;
+            margin: 2rem 0;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55);
+        }
+
+        .terminal-header {
+            background: #0a0e17;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.7rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 0.45rem;
+        }
+
+        .terminal-btn {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .terminal-btn.red { background: #ff5f56; }
+        .terminal-btn.yellow { background: #ffbd2e; }
+        .terminal-btn.green { background: #27c93f; }
+
+        .terminal-title {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .terminal-copy {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .terminal-copy:hover {
+            color: var(--accent-blue);
+            background: rgba(152, 221, 255, 0.08);
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: #d1dcfa;
+        }
+
+        .terminal-body pre {
+            margin: 0;
+        }
+
+        .token-comment { color: #5f7a9e; font-style: italic; }
+        .token-keyword { color: #ff79c6; font-weight: bold; }
+        .token-string { color: #f1fa8c; }
+        .token-number { color: #bd93f9; }
+        .token-variable { color: #50fa7b; }
+
+        /* Video Showcase Cards */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 2.25rem;
+            margin-bottom: 4rem;
+        }
+
+        .video-card {
+            background: rgba(15, 20, 30, 0.45);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.35s cubic-bezier(0.2, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(152, 221, 255, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+            background: rgba(20, 26, 40, 0.6);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-info h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .video-info p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        /* visual comparison matrices */
+        .limits-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .matrix-card {
+            background: rgba(15, 20, 30, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 1.2rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .matrix-card.pro-card {
+            border-color: rgba(152, 221, 255, 0.22);
+            background: radial-gradient(circle at top right, rgba(0, 162, 255, 0.05), transparent), rgba(15, 20, 30, 0.4);
+        }
+
+        .matrix-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+        }
+
+        .matrix-card ul {
+            list-style: none !important;
+            margin-left: 0 !important;
+            margin-bottom: 0 !important;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .matrix-card li {
+            font-size: 0.9rem !important;
+            margin-bottom: 0 !important;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            line-height: 1.4;
+        }
+
+        .matrix-card li svg {
+            flex-shrink: 0;
+        }
+
+        .matrix-card li.unlocked { color: var(--text-primary); }
+        .matrix-card li.locked { color: var(--text-muted); text-decoration: line-through; }
+    </style>
 </head>
 <body>
+    <div id="reading-progress"></div>
+
     <div class="atmosphere">
         <div class="sf-central-glow"></div>
         <div class="grid-layers"></div>
     </div>
 
+    <!-- Navigation -->
     <nav>
         <span style="display: flex; align-items: center; margin-right: 5px;">
             <span style="color: var(--accent-blue); font-weight: 900; letter-spacing: -1px; font-size: 1.2rem;">SQL</span>
@@ -53,104 +523,1075 @@
         </select>
     </nav>
 
+    <!-- Header Section -->
     <div class="page-header container reveal">
-        <h1 data-i18n="man_pg_t">Official User Manual</h1>
-        <p data-i18n="man_pg_d">Operations, limitations, and architectural overview (v2.0.0).</p>
+        <div class="lang-en">
+            <h1 style="font-family: 'Outfit', sans-serif; font-weight: 900;">Comprehensive User Manual</h1>
+            <p>Professional, Secure, and Fast SQL Orchestration Across Server Fleets (v3.2.0).</p>
+        </div>
+        <div class="lang-pl">
+            <h1 style="font-family: 'Outfit', sans-serif; font-weight: 900;">Podręcznik Użytkownika</h1>
+            <p>Profesjonalna, bezpieczna i szybka orkiestracja SQL na flotach serwerów (v3.2.0).</p>
+        </div>
     </div>
 
-    <section style="padding-top: 2rem;">
-        <div class="container document-content reveal-group">
-            <!-- Section 0: Video Tutorials -->
-            <div style="margin-bottom: 4rem;">
-                <h3 data-i18n="m_vid_title" style="margin-bottom: 1.5rem; font-size: 1.5rem; color: var(--accent-blue);">Video Tutorials</h3>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    
-                    <!-- Video 1 -->
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 1rem; overflow: hidden; display: flex; flex-direction: column;">
-                        <iframe width="100%" height="220" src="https://www.youtube.com/embed/fBf5BuOaI7o" title="SQLSkrypter: Add Server, Load Databases & Run Script Package" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-bottom: 1px solid var(--border-color);"></iframe>
-                        <div style="padding: 1.5rem; flex-grow: 1;">
-                            <h4 data-i18n="m_v1_t" style="margin-top: 0; font-size: 1.1rem; margin-bottom: 0.5rem;">Core Workflow: Connect & Execute</h4>
-                            <p data-i18n="m_v1_d" style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.4;">Watch how to add a server, select databases from the tree, and run a package of scripts in order.</p>
+    <section class="container" style="padding-top: 1rem;">
+        
+        <!-- Video Tutorials Showcase (Treated as Chapter 0) -->
+        <div class="reveal" style="margin-bottom: 2rem;">
+            <div class="lang-en">
+                <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem; color: var(--accent-blue); margin-bottom: 1.5rem;">🎥 Quick Video Demos</h3>
+            </div>
+            <div class="lang-pl">
+                <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem; color: var(--accent-blue); margin-bottom: 1.5rem;">🎥 Wideo Demonstracje</h3>
+            </div>
+            
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/fBf5BuOaI7o" title="SQLSkrypter Core Workflow" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="lang-en">
+                            <h4>Core Workflow: Connect & Execute</h4>
+                            <p>Watch how to add a server, load databases into the interactive tree, select target databases, and launch a sequential script package.</p>
+                        </div>
+                        <div class="lang-pl">
+                            <h4>Podstawowy Przepływ Pracy</h4>
+                            <p>Zobacz jak szybko zarejestrować serwer, załadować bazy do drzewa eksploratora, zaznaczyć cele i uruchomić pakiet plików SQL.</p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Video 2 -->
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 1rem; overflow: hidden; display: flex; flex-direction: column;">
-                        <iframe width="100%" height="220" src="https://www.youtube.com/embed/aPFzKFBJy3Q" title="SQLSkrypter Dry-Run Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-bottom: 1px solid var(--border-color);"></iframe>
-                        <div style="padding: 1.5rem; flex-grow: 1;">
-                            <h4 data-i18n="m_v2_t" style="margin-top: 0; font-size: 1.1rem; margin-bottom: 0.5rem;">Safely Test with Dry-Run</h4>
-                            <p data-i18n="m_v2_d" style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.4;">See how Dry-Run simulates execution using transaction rollbacks to prevent accidental changes.</p>
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/aPFzKFBJy3Q" title="SQLSkrypter Dry-Run Demo" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="lang-en">
+                            <h4>Safely Test with Transactional Dry-Run</h4>
+                            <p>Learn how to safely deploy scripts to production databases with the PRO Dry-Run simulation, testing integrity while ensuring a 100% rollback.</p>
+                        </div>
+                        <div class="lang-pl">
+                            <h4>Bezpieczne Testy z Trybem Dry-Run</h4>
+                            <p>Sprawdź jak tryb Dry-Run symuluje wdrożenia w ramach automatycznych transakcji SQL, gwarantując pełny rollback i zerowe ryzyko uszkodzenia danych.</p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Video 3 -->
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 1rem; overflow: hidden; display: flex; flex-direction: column;">
-                        <iframe width="100%" height="220" src="https://www.youtube.com/embed/SheNvv2iXU4" title="SQL Server: Parallel Execution vs Sequential" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-bottom: 1px solid var(--border-color);"></iframe>
-                        <div style="padding: 1.5rem; flex-grow: 1;">
-                            <h4 data-i18n="m_v3_t" style="margin-top: 0; font-size: 1.1rem; margin-bottom: 0.5rem;">Parallel vs Sequential</h4>
-                            <p data-i18n="m_v3_d" style="font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.4;">Compare the massive time savings when executing the same script using the Parallel Engine.</p>
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/SheNvv2iXU4" title="SQLSkrypter Parallel Engine" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="lang-en">
+                            <h4>Parallel vs Sequential Engine</h4>
+                            <p>Compare performance and witness massive execution time savings when running scripts simultaneously across multi-threaded database pipelines.</p>
+                        </div>
+                        <div class="lang-pl">
+                            <h4>Równoległe vs Sekwencyjne Wykonywanie</h4>
+                            <p>Porównaj czasy wykonania i zobacz olbrzymią oszczędność czasu dzięki wielowątkowemu uruchamianiu skryptów na całych flotach baz danych naraz.</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Section 1: Intro -->
-            <div class="faq-item">
-                <h3 data-i18n="m_intro_t">The Core Concept</h3>
-                <p data-i18n="m_intro_d">SQLSkrypter is built on a simple yet powerful idea: define your server fleet once, and execute across everything in seconds.</p>
-                <ul>
-                    <li data-i18n="m_intro_b1">Connect & Discover: Add servers with credentials. One click fetches all databases from all selected nodes.</li>
-                    <li data-i18n="m_intro_b2">Safety First: The database discovery query is restricted to a simple SELECT to prevent accidental sabotage during exploration.</li>
+        <!-- Two-Column Main Content Container -->
+        <div class="manual-container">
+            
+            <!-- Left Sidebar TOC -->
+            <aside class="manual-sidebar reveal">
+                <div class="toc-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    <span class="lang-en">Table of Contents</span>
+                    <span class="lang-pl">Spis Treści</span>
+                </div>
+                <ul class="toc-list" id="manual-toc">
+                    <li>
+                        <a href="#ch-1" class="toc-link active">
+                            <span>01</span>
+                            <span class="lang-en">Servers & Envs</span>
+                            <span class="lang-pl">Serwery i Środowiska</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ch-2" class="toc-link">
+                            <span>02</span>
+                            <span class="lang-en">Exclusion Manager</span>
+                            <span class="lang-pl">Menedżer Wykluczeń</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ch-3" class="toc-link">
+                            <span>03</span>
+                            <span class="lang-en">Explorer & Sessions</span>
+                            <span class="lang-pl">Eksplorator i Sesje</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ch-4" class="toc-link">
+                            <span>04</span>
+                            <span class="lang-en">Script Workspaces</span>
+                            <span class="lang-pl">Obszary Robocze</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ch-5" class="toc-link">
+                            <span>05</span>
+                            <span class="lang-en">Dynamic Variables</span>
+                            <span class="lang-pl">Zmienne Dynamiczne</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ch-6" class="toc-link">
+                            <span>06</span>
+                            <span class="lang-en">Application Settings</span>
+                            <span class="lang-pl">Ustawienia Programu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ch-7" class="toc-link">
+                            <span>07</span>
+                            <span class="lang-en">Security Architecture</span>
+                            <span class="lang-pl">Architektura Bezpieczeństwa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ch-8" class="toc-link">
+                            <span>08</span>
+                            <span class="lang-en">Licensing & Support</span>
+                            <span class="lang-pl">Licencje i Diagnostyka</span>
+                        </a>
+                    </li>
                 </ul>
-            </div>
+            </aside>
 
-            <!-- Section 2: Fleet -->
-            <div class="faq-item">
-                <h3 data-i18n="m_fleet_t">Fleet Management</h3>
-                <p data-i18n="m_fleet_d">Manage hundreds of databases across different stages efficiently.</p>
-                <ul>
-                    <li data-i18n="m_fleet_b1">Environments: Categorize servers into environments (PROD, DEV, STAGING) for better visual control and safety.</li>
-                    <li data-i18n="m_fleet_b2">Tree Sessions: Save your current tree state (checked databases) to a file. Load it instantly without re-querying the servers.</li>
-                </ul>
-            </div>
+            <!-- Right Column Document Body -->
+            <main class="reveal-group">
 
-            <!-- Section 3: Exec & Monitoring -->
-            <div class="faq-item">
-                <h3 data-i18n="m_exec_t">Execution & Monitoring</h3>
-                <p data-i18n="m_exec_d">Real-time visual feedback for every operation across your fleet.</p>
-                <ul>
-                    <li data-i18n="m_exec_b1">Visual Status: Databases turn GREEN on success and RED on error. Status counters show precisely how many scripts succeeded per node.</li>
-                    <li data-i18n="m_exec_b2">Interactive Timeline: Every connection and execution is logged with timing. Filter and export your results to CSV/TXT files.</li>
-                </ul>
-            </div>
+                <!-- ==================== ENGLISH MANUAL ==================== -->
+                <div class="lang-en">
+                    
+                    <!-- Chapter 1 -->
+                    <article id="ch-1" class="manual-chapter">
+                        <span class="chapter-number">01</span>
+                        <h2>🖥️ Chapter 1: Managing Servers and Environments</h2>
+                        <p>The application's configuration panel (accessible by clicking the <strong>Settings ▼</strong> icon in the top-right corner) is the heart of database infrastructure management.</p>
+                        
+                        <h3>1.1 Adding and Editing Servers</h3>
+                        <p>To register a new SQL Server instance, enter the following parameters in the <strong>Server Details</strong> section:</p>
+                        <ul>
+                            <li><strong>Server Name (<code>ServerName</code>):</strong> The network address of the instance (e.g., <code>localhost</code>, <code>SERVER_NAME\INSTANCE</code>, an IP address, or a port like <code>192.168.1.100,1433</code>).</li>
+                            <li><strong>Description (<code>lblDescription</code>):</strong> A friendly label to help identify the machine (e.g., "Main Production Database - ERP").</li>
+                            <li><strong>Authentication Type:</strong>
+                                <ul>
+                                    <li><em>Windows Authentication:</em> Uses the credentials of the currently logged-in Windows user (Integrated Security/SSPI). The login and password fields are automatically disabled in this mode.</li>
+                                    <li><em>SQL Server Authentication:</em> Requires a dedicated database account (e.g., <code>sa</code>) and its password.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Environment (<code>Environment</code>):</strong> Assigns the server to an environment group for logical segregation and improved visual safety.</li>
+                        </ul>
 
-            <!-- Section 4: Performance -->
-            <div class="faq-item">
-                <h3 data-i18n="m_perf_t">Performance & Logic</h3>
-                <p data-i18n="m_perf_d">Optimized for speed and complex SQL batches.</p>
-                <ul>
-                    <li data-i18n="m_perf_b1">Parallel Execution: Run up to 8 concurrent threads for massive time gains, or stay Sequential for strict dependency control.</li>
-                    <li data-i18n="m_perf_b2">Advanced Support: Full support for 'GO' batches and PRO Dry-Run simulations to test scripts without making permanent changes.</li>
-                </ul>
-            </div>
+                        <div class="callout callout-tip">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1 .3 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 22h4"></path></svg>
+                            <div class="callout-content">
+                                <div class="callout-title">Always test the connection</div>
+                                <p>Before clicking the <strong>Add</strong> button, use the <strong>Test</strong> option to verify the network connection to the SQL Server. This prevents adding invalid or unreachable configurations.</p>
+                            </div>
+                        </div>
 
-            <!-- Section 5: Security -->
-            <div class="faq-item">
-                <h3 data-i18n="m_sec_t">Enterprise-Grade Security</h3>
-                <p data-i18n="m_sec_d">Your credentials and server lists never leave your machine.</p>
-                <ul>
-                    <li data-i18n="m_sec_b1">Local Encryption: All sensitive configuration data is protected using AES-256 and Windows DPAPI.</li>
-                    <li data-i18n="m_sec_b2">Portable Configs: Export your setup to an encrypted file with a custom password (PBKDF2) for safe transfer between workstations.</li>
-                </ul>
-            </div>
+                        <ul>
+                            <li><strong>Edition Limits:</strong>
+                                <ul>
+                                    <li><strong>FREE Edition:</strong> A maximum of <strong>10 servers</strong> can be added to the configuration.</li>
+                                    <li><strong>PRO Edition:</strong> <strong>No limit</strong> on the number of servers.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sorting:</strong> Registered servers in the configuration list are always sorted alphabetically (A–Z).</li>
+                        </ul>
 
-            <!-- Fast Runner Note -->
-            <div style="margin-top: 4rem; padding: 2rem; background: rgba(152, 221, 255, 0.05); border: 1px dashed var(--accent-blue); border-radius: 1.5rem; text-align: center;">
-                <p style="font-style: italic; color: var(--text-secondary);" data-i18n="m_fast_runner">Note: SQLSkrypter is a 'Fast Runner' focused on orchestration. It does not display data output (SELECT results), focusing on execution status and performance.</p>
-            </div>
+                        <h3>1.2 Managing Environments</h3>
+                        <p>Environments are used to logically group servers and assign color-coded labels to them:</p>
+                        <ul>
+                            <li><strong>Default Configuration:</strong> The application starts with three pre-configured environments: <strong>PROD</strong> (Production), <strong>TEST</strong> (Testing), and <strong>DEV</strong> (Development).</li>
+                            <li><strong>Customization:</strong> Users can add new environments, edit their names, pick custom colors (Hex Color), and reorder them in the explorer tree using the Up/Down buttons.</li>
+                            <li><strong>Visual Safety:</strong> The environment color selected (e.g., a bright red for PROD) is displayed as an information banner at the top of the application when production servers are selected, drastically reducing the risk of accidentally deploying a test script to production databases.</li>
+                            <li><strong>Bulk Assignment:</strong> From the server list in the configuration, you can select multiple servers and use the right-click context menu to bulk-assign them to a chosen environment, or delete them all at once.</li>
+                        </ul>
+
+                        <!-- Visual Limits Matrix -->
+                        <div class="limits-matrix">
+                            <div class="matrix-card">
+                                <h4>FREE LIMITS</h4>
+                                <ul>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Max 10 Registered Servers
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Max 3 Environments
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Standard Hex Colors
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="matrix-card pro-card">
+                                <h4 style="color: var(--accent-blue);">PRO LIMITS</h4>
+                                <ul>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Unlimited Registered Servers
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Unlimited Custom Environments
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Bulk Right-Click Operations
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>1.3 Database Patterns</h3>
+                        <ul>
+                            <li><strong>Definition:</strong> In the configuration window, users can define a list of keywords called "patterns" (e.g., <code>Test</code>, <code>Backup</code>, <code>Client</code>).</li>
+                            <li><strong>Application:</strong> After loading the database list in the explorer, clicking the database icon or selecting the relevant option from the context menu will automatically and instantly select all databases whose names contain the defined pattern (e.g., the pattern <code>Test</code> will select <code>Clients_Test</code>, <code>TestDatabase</code>, <code>TestDB</code>). This feature eliminates the need to manually tick dozens of databases across multiple servers.</li>
+                        </ul>
+
+                        <h3>1.4 Global Database Discovery Query</h3>
+                        <ul>
+                            <li><strong>Role:</strong> This is the SQL statement sent to servers during an explorer refresh to retrieve the list of databases. The default content is:</li>
+                        </ul>
+
+                        <div class="terminal-block">
+                            <div class="terminal-header">
+                                <div class="terminal-buttons">
+                                    <div class="terminal-btn red"></div>
+                                    <div class="terminal-btn yellow"></div>
+                                    <div class="terminal-btn green"></div>
+                                </div>
+                                <div class="terminal-title">discovery.sql</div>
+                                <button class="terminal-copy" onclick="copyTerminalSnippet(this)" title="Copy Code">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                </button>
+                            </div>
+                            <div class="terminal-body">
+                                <pre><code><span class="token-keyword">SELECT</span> * <span class="token-keyword">FROM</span> master.sys.databases <span class="token-keyword">WHERE</span> state_desc = <span class="token-string">'ONLINE'</span> <span class="token-keyword">ORDER</span> <span class="token-keyword">BY</span> name</code></pre>
+                            </div>
+                        </div>
+
+                        <ul>
+                            <li><strong>Modification:</strong> You can customize the query content (e.g., to fetch databases with a specific collation). The ScriptDom security system (Chapter 7) validates every entered query, guaranteeing that it is 100% safe for the servers.</li>
+                        </ul>
+
+                        <div class="callout callout-warning">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"></path></svg>
+                            <div class="callout-content">
+                                <div class="callout-title">Discovery Query Recommendation</div>
+                                <p>Filtering databases within the Discovery Query itself (e.g., appending <code>WHERE name NOT IN (...)</code>) is an outdated approach and is not recommended. The dedicated <strong>Exclusion Manager</strong> should be used for hiding databases.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Chapter 2 -->
+                    <article id="ch-2" class="manual-chapter">
+                        <span class="chapter-number">02</span>
+                        <h2>🔍 Chapter 2: Advanced Filtering and the Exclusion Manager</h2>
+                        <p>The Database Exclusion Manager in SQLSkrypter protects against accidentally deploying scripts to system, administrative, or sensitive databases, and keeps the explorer clean. It is opened via the <strong>Manage</strong> button below the exclusion list in the configuration tab.</p>
+                        
+                        <h3>2.1 Exclusion Rule Structure</h3>
+                        <p>An exclusion rule consists of three parts:</p>
+                        <ol>
+                            <li><strong>Server Name:</strong> Specifies which server the rule applies to. Entering a wildcard <code>*</code> makes the rule global, applying to all registered servers.</li>
+                            <li><strong>Database Name:</strong> The name or text pattern of the database (e.g., <code>master</code>).</li>
+                            <li><strong>Match Type (<code>ExclusionMatchType</code>):</strong>
+                                <ul>
+                                    <li><em>Exact:</em> The database is excluded only on a perfect character match (e.g., the rule <code>* = master</code> will hide the <code>master</code> database on every server, but not <code>master_temp</code>).</li>
+                                    <li><em>Contains:</em> Hides databases that contain the keyword anywhere in their name (e.g., the rule <code>* LIKE temp</code> will hide <code>tempdb</code>, <code>DatabaseTemp</code>, <code>OldTemp_Clients</code>).</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <div class="callout callout-note">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            <div class="callout-content">
+                                <div class="callout-title">Built-in Search</div>
+                                <p>The exclusion manager window includes a real-time search bar, allowing you to instantly find and edit rules even in very large exclusion lists.</p>
+                            </div>
+                        </div>
+
+                        <h3>2.2 Quick Exclusion Directly from the Explorer</h3>
+                        <p>Users do not have to manually type rules in the configuration. If a database is loaded in the explorer tree that you don't want to see or process:</p>
+                        <ol>
+                            <li>Right-click it in the explorer.</li>
+                            <li>Select the <strong>Exclude database</strong> option.</li>
+                            <li>The database will immediately disappear from the tree view, and a new rule matching that specific server will be automatically generated in the Exclusion Manager.</li>
+                        </ol>
+                    </article>
+
+                    <!-- Chapter 3 -->
+                    <article id="ch-3" class="manual-chapter">
+                        <span class="chapter-number">03</span>
+                        <h2>🌲 Chapter 3: Database Explorer and Tree Sessions</h2>
+                        <p>The Database Explorer (the left panel of the application) is used to target SQL deployments at specific servers and databases.</p>
+                        
+                        <h3>3.1 The Database Loading Process (Refresh)</h3>
+                        <p>To load the database tree:</p>
+                        <ol>
+                            <li>Check the round checkbox next to the desired server (or servers) on the server list. You can also click the <strong>Check All</strong> button on the main toolbar.</li>
+                            <li><em>Optionally:</em> Use the environment filter (filter icon) to show only servers belonging to, for example, the <strong>TEST</strong> environment.</li>
+                            <li><em>Optionally:</em> Reorder or sort servers using the options hidden under the three-dot button.</li>
+                            <li>Click the <strong>Refresh</strong> button.</li>
+                        </ol>
+                        <p>SQLSkrypter will send discovery queries to the servers in parallel. All detected databases will be loaded and organized into a tree structure. Databases matching any exclusion rules will be <strong>automatically skipped and rejected at this stage</strong>.</p>
+
+                        <h3>3.2 Selecting Databases and Targeting</h3>
+                        <p>SQL scripts will only be sent to the checked databases in the tree. You can select them in several ways:</p>
+                        <ul>
+                            <li><strong>Manual selection:</strong> By clicking the checkboxes next to individual databases.</li>
+                            <li><strong>Pattern-based selection (global):</strong> Clicking the database icon in the patterns section will automatically select all databases in the entire tree whose names match patterns defined in the configuration.</li>
+                            <li><strong>Local selection (per server):</strong> From the context menu of a specific server in the tree, you can select only its databases based on a chosen pattern.</li>
+                            <li><strong>Navigation:</strong> The tree supports quick expand/collapse of all branches (Collapse/Expand All) for readability when working with hundreds of instances.</li>
+                        </ul>
+
+                        <h3>3.3 Saving and Loading Tree Sessions (PRO Only)</h3>
+                        <p>Working with large database fleets in dynamic environments can require frequently recreating specific client or unit selections. SQLSkrypter PRO solves this with the <strong>Tree Sessions</strong> feature:</p>
+                        <ul>
+                            <li><strong>Save Tree Session (<code>SaveSession</code>):</strong> Saves the current state of loaded servers and the exact database selection to an external XML file (<code>.skrsession</code> extension).</li>
+                            <li><strong>Load Tree Session (<code>LoadSession</code>):</strong> Restores the entire tree including all checked databases from the session file.</li>
+                        </ul>
+
+                        <div class="callout callout-important">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            <div class="callout-content">
+                                <div class="callout-title">Instant load without querying servers</div>
+                                <p>Loading a tree session <strong>does not require clicking the Refresh button</strong>. The application restores the selection state instantly from the session file, allowing scripts to be launched in seconds without burdening the network or servers with system queries.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Chapter 4 -->
+                    <article id="ch-4" class="manual-chapter">
+                        <span class="chapter-number">04</span>
+                        <h2>✍️ Chapter 4: Workspaces and Script Execution</h2>
+                        <p>The central section of the application is the Workspace panel, offering two dedicated working modes.</p>
+                        
+                        <h3>4.1 Script Editor Mode</h3>
+                        <p>A convenient development environment for writing and running ad-hoc scripts:</p>
+                        <ul>
+                            <li><strong>Loading code:</strong> You can write code directly, open an existing file using the <strong>Open</strong> button, or drag and drop a SQL file directly into the editor.</li>
+                            <li><strong>Live Validation (Syntax Check):</strong> The editor analyzes SQL syntax in real time (using the ScriptDom engine) and underlines syntax errors with a red squiggle. Validation is informational and does not prevent script execution.</li>
+                            <li><strong>Formatting and Ergonomics:</strong> Selected code can be easily commented or uncommented using the <strong>Comment Selection / Uncomment Selection</strong> buttons on the toolbar.</li>
+                            <li><strong>Log Management:</strong>
+                                <ul>
+                                    <li><em>Show log checkbox:</em> Automatically opens the execution log file immediately after a deployment finishes.</li>
+                                    <li><em>Show log button:</em> Opens the dedicated log file for the Editor.</li>
+                                    <li><em>Clear log button:</em> Permanently clears the editor's log file.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Clear Button:</strong> Clears all code in the editor.</li>
+                        </ul>
+
+                        <h3>4.2 Script Files Mode (Batch Processing)</h3>
+                        <p>Designed for the mass, sequential deployment of update packages consisting of multiple <code>.sql</code> files:</p>
+                        <ul>
+                            <li><strong>Adding files:</strong> Files can be added using the file browser (the <strong>Add</strong> button) or by dragging multiple files or entire folders directly onto the list (Drag & Drop).</li>
+                            <li><strong>Execution order:</strong> Files are executed one after another, from top to bottom. The order in the list can be precisely adjusted using the up/down buttons or by conveniently dragging items with the mouse.</li>
+                            <li><strong>Log and Results Management:</strong>
+                                <ul>
+                                    <li><em>Show log:</em> Automatically opens the log after the batch finishes.</li>
+                                    <li><em>Clear summary:</em> Removes the graphical execution status indicators (<code>OK</code> / <code>Warning</code> / <code>Error</code>) from all scripts in the list from the previous deployment attempt.</li>
+                                    <li><em>Clear:</em> Clears the entire list of loaded script files.</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h3>4.3 Dry Run — The Gold Standard of Safety (PRO Only)</h3>
+                        <p>For deployments to production systems, SQLSkrypter PRO provides the <strong>Dry Run Simulation</strong> feature:</p>
+                        <ol>
+                            <li>Launching a script in Dry Run mode automatically opens an explicit <strong>SQL Transaction (<code>BEGIN TRANSACTION</code>)</strong> on each target database.</li>
+                            <li>The SQL script is executed in its entirety within that transaction, checking all integrity constraints, foreign keys, and physical correctness.</li>
+                            <li>Immediately after execution completes, the application unconditionally sends a <strong>rollback command (<code>ROLLBACK TRANSACTION</code>)</strong>.</li>
+                            <li>As a result, the user receives complete execution logs and a confirmation of deployment correctness without introducing any permanent changes to the database structure or data!</li>
+                        </ol>
+
+                        <div class="limits-matrix">
+                            <div class="matrix-card">
+                                <h4>FREE WORKSPACE</h4>
+                                <ul>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Script Syntax Checker
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Batch File Operations
+                                    </li>
+                                    <li class="locked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                        Dry-Run Simulation
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="matrix-card pro-card">
+                                <h4 style="color: var(--accent-blue);">PRO WORKSPACE</h4>
+                                <ul>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Script Syntax Checker
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Batch File Drag & Drop
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Dry-Run Simulation (100% Rollback)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Chapter 5 -->
+                    <article id="ch-5" class="manual-chapter">
+                        <span class="chapter-number">05</span>
+                        <h2>🔗 Chapter 5: Parameterization and Dynamic Variables</h2>
+                        <p>SQLSkrypter is equipped with an in-memory dynamic parameterization engine, making it easier to deploy configuration scripts across hundreds of databases without manually editing values.</p>
+                        
+                        <h3>5.1 How It Works and Syntax</h3>
+                        <p>Variables are defined directly in the SQL code using double curly braces: <code>{{VariableName}}</code>.</p>
+                        <p>While editing or loading a script, the application automatically scans its content. Detected variables will appear in the <strong>Script Variables (Parameterization)</strong> panel on the right side of the editor.</p>
+                        <ul>
+                            <li><strong>Variable syntax in SQL:</strong> <code>{{VariableName}}</code></li>
+                            <li><strong>Setting default values (Annotations):</strong> Default variable values are declared in SQL code comments (recommended at the beginning of the file):</li>
+                        </ul>
+
+                        <div class="terminal-block">
+                            <div class="terminal-header">
+                                <div class="terminal-buttons">
+                                    <div class="terminal-btn red"></div>
+                                    <div class="terminal-btn yellow"></div>
+                                    <div class="terminal-btn green"></div>
+                                </div>
+                                <div class="terminal-title">parameterized.sql</div>
+                                <button class="terminal-copy" onclick="copyTerminalSnippet(this)" title="Copy Code">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                </button>
+                            </div>
+                            <div class="terminal-body">
+                                <pre><code><span class="token-comment">-- @VAR: ThresholdAmount = 1000</span>
+<span class="token-comment">-- @VAR: Country = PL</span>
+
+<span class="token-keyword">UPDATE</span> dbo.AppConfiguration
+<span class="token-keyword">SET</span> Value = <span class="token-string">'{{ThresholdAmount}}'</span>
+<span class="token-keyword">WHERE</span> ConfigKey = <span class="token-string">'InvoiceLimit'</span>
+  <span class="token-keyword">AND</span> CountryCode = <span class="token-string">'{{Country}}'</span>;</code></pre>
+                            </div>
+                        </div>
+
+                        <p>The application will read these lines and automatically populate the corresponding text fields in the variables panel, speeding up your workflow.</p>
+                        <p>The values entered in the panel will be safely substituted directly in the application's RAM memory just before sending the queries to the target databases.</p>
+
+                        <h3>5.2 License Restrictions and Detection Bypass</h3>
+                        <ul>
+                            <li><strong>PRO Edition:</strong> Full, unlimited access to dynamic variable substitution and automatic loading of default values defined in scripts.</li>
+                            <li><strong>FREE Edition (Curly Brace Bypass):</strong>
+                                <ul>
+                                    <li>If a script contains variables, the parameters panel will be locked with an overlay indicating that the PRO edition is required.</li>
+                                    <li><strong>Variable Detection Toggle (Enable <code>{{ }}</code> variable detection):</strong> SQLSkrypter includes a variable detection switch. Disabling this option causes the application to completely skip scanning for curly braces <code>{{...}}</code>. The entire script text is then sent as <strong>raw SQL code</strong>.</li>
+                                    <li>This allows both FREE and PRO users to seamlessly run scripts that contain native curly braces (e.g., queries for JSON documents, XML queries in SQL Server, or reporting engine templates) without triggering substitution errors or license locks.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Chapter 6 -->
+                    <article id="ch-6" class="manual-chapter">
+                        <span class="chapter-number">06</span>
+                        <h2>⚙️ Chapter 6: Detailed Description of Main Application Settings</h2>
+                        <p>SQLSkrypter provides an extensive configuration panel (under the <strong>Configuration -> Settings</strong> tab), where users can fine-tune ergonomics and system performance:</p>
+                        
+                        <h3>6.1 Toast Notifications (<code>ShowToastNotifications</code>)</h3>
+                        <p><strong>How it works:</strong> Controls whether Windows system notifications appear in the bottom-right corner of the screen after script execution finishes.</p>
+                        <p><strong>Details:</strong> Supports DPI-aware technology and multi-monitor setups — the notification always appears on the monitor you are currently working on. This allows you to minimize the application during long script runs and safely focus on other tasks.</p>
+
+                        <h3>6.2 Auto-Updates (<code>checkUpdate</code>)</h3>
+                        <p><strong>How it works:</strong> Automatically queries the GitHub repository on application startup to check for newer releases.</p>
+                        <p><strong>Details:</strong> Upon detecting a newer version, displays a window with a complete, localized list of changes (Release Notes). The user can initiate a safe installer download and automatic update with a single click. <em>This option requires a PRO license.</em></p>
+
+                        <h3>6.3 Remember Server Exclusions (<code>ServerExcludeInfo</code>)</h3>
+                        <p><strong>How it works:</strong> Manages the persistence of manually hidden servers in the explorer (database tree).</p>
+                        <p><strong>Details:</strong> If this option is checked, servers manually hidden by the user via the tree context menu (Exclude) will remain hidden after the application restarts. Disabling this option restores the full server list on every fresh application start.</p>
+
+                        <h3>6.4 Parallel Script Execution (<code>ParallelExecution</code>)</h3>
+                        <p><strong>How it works:</strong> Activates multi-threading when running scripts across server fleets.</p>
+                        <p><strong>Details:</strong> Launches up to 8 parallel worker threads. Instead of waiting for a script to finish on server A before starting on server B, the application processes servers A, B, C, and D simultaneously, drastically reducing total deployment time. <em>This feature is exclusively available in the PRO edition.</em></p>
+
+                        <h3>6.5 Default Workspace Tab (<code>DefaultWorkspaceTab</code>)</h3>
+                        <p><strong>How it works:</strong> Allows you to choose which section is active when the application starts.</p>
+                        <p><strong>Details:</strong> Two options are available: <strong>Script Editor</strong> (the default for quick ad-hoc queries) or <strong>Script Files</strong> (the default for administrators deploying pre-built update packages).</p>
+
+                        <h3>6.6 Confirm on Exit (<code>ConfirmExit</code>)</h3>
+                        <p><strong>How it works:</strong> Protects against accidentally and mistakenly closing the application.</p>
+                        <p><strong>Details:</strong> Enabling this option displays a confirmation prompt when attempting to exit the program. If scripts are actively running in the background, a special warning will be shown, informing the user of the risk of interrupting a transaction.</p>
+
+                        <h3>6.7 Application Language (<code>chooseLanguage</code>)</h3>
+                        <p><strong>How it works:</strong> Controls the full translation of the application's user interface.</p>
+                        <p><strong>Details:</strong> Fully supports <strong>6 languages</strong>: Polish (PL), English (EN-US), German (DE), Spanish (ES), French (FR), and Italian (IT). Language changes take effect instantly without requiring an application restart.</p>
+
+                        <h3>6.8 SQL Execution Timeout (<code>SqlTimeout</code>)</h3>
+                        <p><strong>How it works:</strong> Configures the <em>Command Timeout</em> (in seconds) for SQL queries sent to servers.</p>
+                        <p><strong>Details:</strong> Prevents the application from being blocked by queries waiting for database locks to release. Setting the value to <code>0</code> completely disables the timeout (waits indefinitely) and is recommended for very large structural deployments.</p>
+                    </article>
+
+                    <!-- Chapter 7 -->
+                    <article id="ch-7" class="manual-chapter">
+                        <span class="chapter-number">07</span>
+                        <h2>🔒 Chapter 7: Security Architecture and Encryption</h2>
+                        <p>SQLSkrypter has been designed with maximum password protection and database integrity in mind for corporate environments.</p>
+                        
+                        <h3>7.1 Discovery Query Verification (ScriptDom AST)</h3>
+                        <p>To ensure that the database discovery query (<code>sys.databases</code>) never damages the SQL Server structure, the application analyzes its code using the official compiler parser <strong>Microsoft.SqlServer.TransactSql.ScriptDom</strong>.</p>
+                        <p>The system builds a syntactic query tree (AST) and, using the Visitor design pattern (<code>SqlSafetyVisitor</code>), unconditionally blocks queries containing:</p>
+                        <ul>
+                            <li>Data manipulation (DML): <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>.</li>
+                            <li>Schema changes (DDL): <code>ALTER TABLE</code>, <code>ALTER DATABASE</code>, <code>DROP</code>, <code>CREATE</code>, <code>TRUNCATE</code>.</li>
+                            <li>Procedural code execution: <code>EXECUTE</code> / <code>EXEC</code>.</li>
+                            <li>Variable assignment in SELECT (<code>SELECT @var = ...</code>) and in-flight table creation (<code>SELECT INTO</code>).</li>
+                        </ul>
+                        <p>This guarantees the absolute safety of all database discovery operations.</p>
+
+                        <h3>7.2 Local Configuration Encryption (Hybrid AES-256 Standard)</h3>
+                        <p>The server configuration stored in the file <code>%LOCALAPPDATA%\Skrypter\DataServers.dat</code> is protected by a unique hybrid encryption scheme:</p>
+                        <ol>
+                            <li><strong>One-Time AES-256 Key:</strong> On every save, the application generates a random AES key (32 bytes) and an Initialization Vector IV (16 bytes) used to encrypt the server database.</li>
+                            <li><strong>Double Encryption of Metadata (AES Key):</strong> The AES key itself is encrypted in parallel using two methods:
+                                <ul>
+                                    <li><em>DPAPI (Windows Data Protection API):</em> Encrypts data with a key tied to the current Windows user account in the operating system.</li>
+                                    <li><em>Hardware-AES (Hardware Fallback):</em> Encrypts data with a unique hardware key generated as a SHA-256 hash of the processor ID (<code>ProcessorId</code>) and the motherboard serial number (<code>SerialNumber</code>), retrieved from the machine's BIOS via the WMI interface.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Security Against Theft:</strong> Moving the configuration file to another machine makes it impossible to decrypt. Conversely, if the Windows user profile is corrupted on the same machine, the application can still recover the data using the hardware fallback key.</li>
+                        </ol>
+
+                        <h3>7.3 Encryption for Export / Import</h3>
+                        <ul>
+                            <li><strong>Standard:</strong> Uses strong <strong>AES-256</strong> symmetric encryption.</li>
+                            <li><strong>Key Derivation:</strong> The key and Initialization Vector (IV) are generated from a user-supplied password using the <strong>PBKDF2</strong> algorithm (<code>Rfc2898DeriveBytes</code>) with a strong cryptographic salt.</li>
+                            <li><strong>File Format:</strong> The exported file contains an encrypted JSON configuration encoded as a human-readable <strong>Base64</strong> string. It is used for the secure transfer of data between workstations.</li>
+                        </ul>
+                    </article>
+
+                    <!-- Chapter 8 -->
+                    <article id="ch-8" class="manual-chapter">
+                        <span class="chapter-number">08</span>
+                        <h2>🔑 Chapter 8: Licensing, Trial, and About</h2>
+                        <p>The <strong>About / Licensing</strong> window is the panel for managing the software lifecycle and for system diagnostics.</p>
+                        
+                        <h3>8.1 License Editions and Activation</h3>
+                        <ul>
+                            <li><strong>FREE Edition:</strong> Free of charge, with limitations (up to 10 servers, up to 3 environments, no parallel execution, no Dry Run simulation, variables panel locked).</li>
+                            <li><strong>14-Day Trial Period:</strong> Every user can activate a full, free 14-day trial directly from within the application with a single click, granting access to all PRO edition features for testing purposes.</li>
+                            <li><strong>PRO Activation (Manual / Offline):</strong>
+                                <ol>
+                                    <li>Navigate to the <strong>About -> Licensing</strong> tab.</li>
+                                    <li>Copy the generated unique <strong>Device ID (Hardware ID)</strong>.</li>
+                                    <li>After purchasing a license, enter your <strong>License Key</strong> and the generated activation code, then click the <strong>Activate</strong> button.</li>
+                                    <li>The application verifies the digital signature of the key using the asymmetric <strong>RSA-2048</strong> algorithm, instantly unlocking premium features without requiring an internet connection.</li>
+                                </ol>
+                            </li>
+                        </ul>
+
+                        <h3>8.2 System Information and Technical Support</h3>
+                        <p>At the bottom of the "About" panel there is a <strong>System Info</strong> diagnostic section, collecting key environmental metadata useful when contacting technical support:</p>
+                        <ul>
+                            <li>Windows operating system version, architecture, and hostname.</li>
+                            <li>The installed version of the .NET Framework.</li>
+                            <li>CPU model and the amount of RAM.</li>
+                            <li>Information about whether the application is running inside a virtual machine (VM).</li>
+                            <li>The exact application installation path and the location of local log files (log4net).</li>
+                            <li><strong>Contact:</strong> For technical issues or PRO license inquiries, please reach out at: <code style="background: rgba(152, 221, 255, 0.1); padding: 2px 6px; border-radius: 4px;">sqlskrypter@gmail.com</code></li>
+                        </ul>
+
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(152, 221, 255, 0.03); border: 1px dashed var(--accent-blue); border-radius: 1rem; text-align: center;">
+                            <p style="font-style: italic; color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Note: SQLSkrypter is a "Fast Runner" focused on orchestration. It does not display data output (SELECT results), focusing entirely on execution status and performance.</p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- ==================== POLISH MANUAL ==================== -->
+                <div class="lang-pl">
+                    
+                    <!-- Chapter 1 (PL) -->
+                    <article id="ch-1-pl" class="manual-chapter">
+                        <span class="chapter-number">01</span>
+                        <h2>🖥️ Rozdział 1: Zarządzanie Serwerami i Środowiskami</h2>
+                        <p>Panel konfiguracyjny aplikacji (dostępny po kliknięciu ikony <strong>Ustawienia ▼</strong> w prawym górnym rogu) stanowi serce zarządzania infrastrukturą bazodanową.</p>
+                        
+                        <h3>1.1 Dodawanie i Edycja Serwerów</h3>
+                        <p>Aby zarejestrować nową instancję SQL Server, wprowadź następujące parametry w sekcji <strong>Szczegóły serwera (Server Details)</strong>:</p>
+                        <ul>
+                            <li><strong>Nazwa serwera (<code>ServerName</code>):</strong> Adres sieciowy instancji (np. <code>localhost</code>, <code>NAZWA_SERWERA\INSTANCJA</code>, adres IP lub port, np. <code>192.168.1.100,1433</code>).</li>
+                            <li><strong>Opis (<code>lblDescription</code>):</strong> Przyjazna nazwa pomagająca w identyfikacji maszyny (np. „Główna baza produkcyjna - ERP”).</li>
+                            <li><strong>Typ Uwierzytelnienia:</strong>
+                                <ul>
+                                    <li><em>Uwierzytelnienie Windows:</em> Wykorzystuje poświadczenia systemu Windows zalogowanego użytkownika (Integrated Security/SSPI). Pola loginu i hasła są wtedy automatycznie blokowane.</li>
+                                    <li><em>Uwierzytelnienie SQL Server:</em> Wymaga wpisania dedykowanego konta bazodanowego (np. <code>sa</code>) oraz hasła.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Środowisko (<code>Environment</code>):</strong> Przypisanie maszyny do grupy środowiskowej w celu segregacji i podniesienia bezpieczeństwa wizualnego.</li>
+                        </ul>
+
+                        <div class="callout callout-tip">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1 .3 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 22h4"></path></svg>
+                            <div class="callout-content">
+                                <div class="callout-title">Zawsze testuj połączenie</div>
+                                <p>Przed kliknięciem przycisku <strong>Dodaj (Add)</strong> skorzystaj z opcji <strong>Test</strong>, aby sprawdzić stan połączenia sieciowego z serwerem SQL. Unikniesz w ten sposób dodawania niepoprawnych konfiguracji.</p>
+                            </div>
+                        </div>
+
+                        <ul>
+                            <li><strong>Ograniczenia wersji:</strong>
+                                <ul>
+                                    <li><strong>Wersja FREE:</strong> Pozwala na dodanie maksymalnie <strong>10 serwerów</strong> w konfiguracji.</li>
+                                    <li><strong>Wersja PRO:</strong> Całkowity <strong>brak ograniczeń</strong> liczby serwerów.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sortowanie:</strong> Zarejestrowane serwery na liście konfiguracyjnej są zawsze automatycznie sortowane alfabetycznie (A-Z).</li>
+                        </ul>
+
+                        <h3>1.2 Zarządzanie Środowiskami</h3>
+                        <p>Środowiska służą do logicznego grupowania serwerów i przypisywania im oznaczeń kolorystycznych:</p>
+                        <ul>
+                            <li><strong>Domyślna konfiguracja:</strong> Aplikacja startuje z trzema skonfigurowanymi środowiskami: <strong>PROD</strong> (Produkcja), <strong>TEST</strong> (Testy) oraz <strong>DEV</strong> (Programistyczne).</li>
+                            <li><strong>Customizacja:</strong> Użytkownik może dodawać nowe środowiska, edytować ich nazwy, dobierać kolory (Hex Color) oraz zmieniać kolejność wyświetlania w drzewie eksploratora przyciskami Góra/Dół.</li>
+                            <li><strong>Bezpieczeństwo wizualne:</strong> Wybrany kolor środowiska (np. jaskrawy czerwony dla PROD) wyświetla się jako panel informacyjny u góry aplikacji przy wyborze serwerów produkcyjnych, drastycznie zmniejszając ryzyko wdrożenia skryptu testowego na bazach produkcyjnych.</li>
+                            <li><strong>Grupowe przypisywanie (Bulk Assign):</strong> Z poziomu listy serwerów w konfiguracji możesz zaznaczyć wiele serwerów i za pomocą prawego przycisku myszy (menu kontekstowego) przypisać je masowo do wybranego środowiska lub usunąć je wszystkie za jednym kliknięciem.</li>
+                        </ul>
+
+                        <!-- Visual Limits Matrix (PL) -->
+                        <div class="limits-matrix">
+                            <div class="matrix-card">
+                                <h4>LIMIT WERSJI FREE</h4>
+                                <ul>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Maksymalnie 10 serwerów
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Maksymalnie 3 środowiska
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Paleta podstawowych kolorów HEX
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="matrix-card pro-card">
+                                <h4 style="color: var(--accent-blue);">PEŁNE ZASOBY PRO</h4>
+                                <ul>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Nielimitowana liczba serwerów
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Nielimitowane własne środowiska
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Masowe operacje z menu kontekstowego
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>1.3 Wzorce Baz Danych (Database Patterns)</h3>
+                        <ul>
+                            <li><strong>Definicja:</strong> W oknie konfiguracji użytkownik może zdefiniować listę słów kluczowych zwanych „wzorcami” (np. <code>Test</code>, <code>Backup</code>, <code>Client</code>).</li>
+                            <li><strong>Zastosowanie:</strong> Po wczytaniu listy baz w eksploratorze kliknięcie ikony bazy danych lub wybór opcji z menu pozwala na automatyczne, natychmiastowe zaznaczenie wszystkich baz danych, które w swojej nazwie zawierają zdefiniowaną frazę (np. wzorzec <code>Test</code> zaznaczy <code>Klienci_Test</code>, <code>BazaTestowa</code>, <code>TestDB</code>). Funkcja ta eliminuje konieczność ręcznego wyklikiwania dziesiątek baz na różnych serwerach.</li>
+                        </ul>
+
+                        <h3>1.4 Globalne Zapytanie Odkrywające Bazy (Discovery Query)</h3>
+                        <ul>
+                            <li><strong>Rola:</strong> Jest to instrukcja SQL wysyłana na serwery podczas odświeżania eksploratora w celu pobrania listy baz. Domyślna treść:</li>
+                        </ul>
+
+                        <div class="terminal-block">
+                            <div class="terminal-header">
+                                <div class="terminal-buttons">
+                                    <div class="terminal-btn red"></div>
+                                    <div class="terminal-btn yellow"></div>
+                                    <div class="terminal-btn green"></div>
+                                </div>
+                                <div class="terminal-title">discovery.sql</div>
+                                <button class="terminal-copy" onclick="copyTerminalSnippet(this)" title="Skopiuj Kod">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                </button>
+                            </div>
+                            <div class="terminal-body">
+                                <pre><code><span class="token-keyword">SELECT</span> * <span class="token-keyword">FROM</span> master.sys.databases <span class="token-keyword">WHERE</span> state_desc = <span class="token-string">'ONLINE'</span> <span class="token-keyword">ORDER</span> <span class="token-keyword">BY</span> name</code></pre>
+                            </div>
+                        </div>
+
+                        <ul>
+                            <li><strong>Modyfikacja:</strong> Możesz dostosować treść zapytania (np. pobierać bazy o konkretnym collation). System zabezpieczeń ScriptDom (Rozdział 7) weryfikuje każde wpisane zapytanie, gwarantując, że jest ono w 100% bezpieczne dla serwerów.</li>
+                        </ul>
+
+                        <div class="callout callout-warning">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"></path></svg>
+                            <div class="callout-content">
+                                <div class="callout-title">Rekomendacja filtrowania baz</div>
+                                <p>Filtrowanie baz wewnątrz zapytania odkrywającego (np. dopisywanie <code>WHERE name NOT IN (...)</code>) jest przestarzałą metodą i nie jest zalecane. Do celów ukrywania baz danych służy dedykowany <strong>Menedżer Wykluczeń</strong>.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Chapter 2 (PL) -->
+                    <article id="ch-2-pl" class="manual-chapter">
+                        <span class="chapter-number">02</span>
+                        <h2>🔍 Rozdział 2: Zaawansowane Filtrowanie i Menedżer Wykluczeń</h2>
+                        <p>Menedżer Wykluczeń baz danych w programie SQLSkrypter chroni przed przypadkowym wdrożeniem skryptów na bazy systemowe, administracyjne lub wrażliwe oraz dba o porządek w eksploratorze. Otwiera się go przyciskiem <strong>Zarządzaj (Manage)</strong> pod listą wykluczeń w zakładce konfiguracji.</p>
+                        
+                        <h3>2.1 Struktura Reguł Wykluczeń</h3>
+                        <p>Reguła wykluczenia składa się z trzech części:</p>
+                        <ol>
+                            <li><strong>Nazwa serwera:</strong> Określa, na jakim serwerze reguła ma obowiązywać. Wpisanie znaku gwiazdki <code>*</code> (wildcard) powoduje, że reguła jest globalna i dotyczy wszystkich zarejestrowanych serwerów.</li>
+                            <li><strong>Nazwa bazy danych:</strong> Nazwa lub wzorzec tekstowy bazy (np. <code>master</code>).</li>
+                            <li><strong>Typ dopasowania (<code>ExclusionMatchType</code>):</strong>
+                                <ul>
+                                    <li><em>Exact (Dokładne):</em> Baza jest wykluczana tylko przy idealnej zgodności znaków (np. reguła <code>* = master</code> ukryje bazę <code>master</code> na każdym serwerze, ale no nie ukryje <code>master_temp</code>).</li>
+                                    <li><em>Contains (Zawiera):</em> Ukrywa bazy zawierające słowo kluczowe w dowolnym miejscu nazwy (np. reguła <code>* LIKE temp</code> ukryje <code>tempdb</code>, <code>BazaTemp</code>, <code>StaraTemp_Klienci</code>).</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <div class="callout callout-note">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            <div class="callout-content">
+                                <div class="callout-title">Wbudowana Wyszukiwarka</div>
+                                <p>W oknie menedżera wykluczeń dostępna jest wyszukiwarka czasu rzeczywistego, która pozwala na natychmiastowe odnalezienie i edytowanie reguł przy bardzo rozbudowanych listach wykluczeń.</p>
+                            </div>
+                        </div>
+
+                        <h3>2.2 Szybkie Wykluczanie bezpośrednio z Eksploratora</h3>
+                        <p>Użytkownik nie musi ręcznie wpisywać reguł w konfiguracji. Jeżeli na drzewie eksploratora baz wczytana jest baza, której nie chcesz widzieć ani przetwarzać:</p>
+                        <ol>
+                            <li>Kliknij na nią prawym przyciskiem myszy w eksploratorze.</li>
+                            <li>Wybierz opcję <strong>Wyklucz bazę z serwera (Exclude database)</strong>.</li>
+                            <li>Baza natychmiast zniknie z widoku drzewa, a w menedżerze wykluczeń automatycznie wygeneruje się nowa reguła dopasowana do tego konkretnego serwera.</li>
+                        </ol>
+                    </article>
+
+                    <!-- Chapter 3 (PL) -->
+                    <article id="ch-3-pl" class="manual-chapter">
+                        <span class="chapter-number">03</span>
+                        <h2>🌲 Rozdział 3: Eksplorator Baz Danych i Sesje Drzewa</h2>
+                        <p>Eksplorator baz danych (lewy panel aplikacji) służy do targetowania wdrożeń SQL na serwery i bazy danych.</p>
+                        
+                        <h3>3.1 Proces Wczytywania Baz (Odświeżanie)</h3>
+                        <p>Aby załadować drzewo baz danych:</p>
+                        <ol>
+                            <li>Zaznacz okrągły checkbox przy wybranym serwerze (lub serwerach) na liście serwerów. Możesz też kliknąć przycisk <strong>Zaznacz wszystko (Check All)</strong> na głównym pasku narzędzi.</li>
+                            <li><em>Opcjonalnie:</em> Użyj filtra środowisk (ikona filtru), aby pokazać tylko serwery należące np. do środowiska <strong>TEST</strong>.</li>
+                            <li><em>Opcjonalnie:</em> Zmień kolejność wyświetlania lub posortuj serwery za pomocą opcji ukrytych pod przyciskiem trzech kropek.</li>
+                            <li>Kliknij przycisk <strong>Odśwież (Refresh)</strong>.</li>
+                        </ol>
+                        <p>SQLSkrypter wyśle równolegle zapytania odkrywające na serwery. Wszystkie wykryte bazy danych zostaną wczytane i ułożone w strukturę drzewiastą. Bazy danych pasujące do reguł wykluczeń zostaną <strong>automatycznie pominięte i odrzucone na tym etapie</strong>.</p>
+
+                        <h3>3.2 Zaznaczanie Baz i Targetowanie</h3>
+                        <p>Skrypty SQL zostaną wysłane wyłącznie do zaznaczonych baz danych na drzewie. Możesz je zaznaczać na kilka sposobów:</p>
+                        <ul>
+                            <li><strong>Zaznaczanie ręczne:</strong> Poprzez klikanie checkboxów przy konkretnych bazach danych.</li>
+                            <li><strong>Zaznaczanie według wzorca (globalne):</strong> Klikając ikonę bazy danych w sekcji wzorców, program automatycznie zaznaczy na całym drzewie te bazy, których nazwy pasują do wzorców zdefiniowanych w konfiguracji.</li>
+                            <li><strong>Zaznaczanie lokalne (na serwerze):</strong> Z poziomu menu kontekstowego konkretnego serwera w drzewie można zaznaczyć tylko jego bazy bazując na wybranym wzorcu.</li>
+                            <li><strong>Nawigacja:</strong> Drzewo obsługuje szybkie rozwijanie i zwijanie wszystkich gałęzi (Collapse/Expand All) w celu zachowania czytelności przy setkach instancji.</li>
+                        </ul>
+
+                        <h3>3.3 Zapis i Wczytywanie Sesji Drzewa (PRO Only)</h3>
+                        <p>Praca na dużych bazach danych w dynamicznych środowiskach może wymagać częstego odtwarzania zaznaczeń określonych grup klientów lub jednostek. SQLSkrypter PRO rozwiązuje ten problem za pomocą funkcjonalności <strong>Sesji Drzewa</strong>:</p>
+                        <ul>
+                            <li><strong>Zapisz sesję drzewa (<code>SaveSession</code>):</strong> Zapisuje aktualny stan wczytanych serwerów oraz dokładne zaznaczenie baz danych do zewnętrznego pliku XML (z rozszerzeniem <code>.skrsession</code>).</li>
+                            <li><strong>Wczytaj sesję drzewa (<code>LoadSession</code>):</strong> Odtwarza całe drzewo wraz z zaznaczonymi bazami z pliku sesji.</li>
+                        </ul>
+
+                        <div class="callout callout-important">
+                            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            <div class="callout-content">
+                                <div class="callout-title">Błyskawiczne ładowanie bez odpytywania serwerów</div>
+                                <p>Wczytanie sesji drzewa <strong>nie wymaga klikania przycisku Odśwież</strong>. Aplikacja odtwarza stan zaznaczeń natychmiast z pamięci pliku sesji, co pozwala na uruchomienie skryptów w kilka sekund bez obciążania sieci i serwerów zapytaniami systemowymi.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Chapter 4 (PL) -->
+                    <article id="ch-4-pl" class="manual-chapter">
+                        <span class="chapter-number">04</span>
+                        <h2>✍️ Rozdział 4: Obszary Robocze i Uruchamianie Skryptów</h2>
+                        <p>Środkowa część aplikacji to panel roboczy (Workspace) oferujący dwa dedykowane tryby pracy.</p>
+                        
+                        <h3>4.1 Tryb Edytora Skryptów (The Script Editor)</h3>
+                        <p>Wygodne środowisko programistyczne do tworzenia i uruchamiania skryptów ad-hoc:</p>
+                        <ul>
+                            <li><strong>Wczytywanie kodu:</strong> Możesz pisać kod bezpośrednio, otworzyć istniejący plik przyciskiem <strong>Otwórz</strong> lub przeciągnąć plik SQL bezpośrednio do edytora metodą <strong>Drag & Drop</strong>.</li>
+                            <li><strong>Live-Validation (Walidacja składni):</strong> Edytor w czasie rzeczywistym analizuje składnię SQL (silnik ScriptDom) i podkreśla czerwonym wężykiem błędy składniowe. Walidacja ma charakter informacyjny i nie blokuje możliwości uruchomienia skryptu.</li>
+                            <li><strong>Formatowanie i Ergonomia:</strong> Zaznaczony fragment kodu można łatwo zakomentować lub odkomentować przyciskami <strong>Zakomentuj zazcenie / Odkomentuj zaznaczenie</strong> na ribbonie.</li>
+                            <li><strong>Obsługa Logów:</strong>
+                                <ul>
+                                    <li><em>Checkbox Pokaż log:</em> Automatycznie otwiera plik z logami wykonania skryptu zaraz po zakończeniu wdrożenia.</li>
+                                    <li><em>Przycisk Pokaż log:</em> Otwiera dedykowany plik logu dla Edytora.</li>
+                                    <li><em>Przycisk Wyczyść log:</em> Bezpowrotnie czyści plik logu edytora.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Przycisk Wyczyść:</strong> Czyści cały kod w edytorze.</li>
+                        </ul>
+
+                        <h3>4.2 Tryb Skryptów z Plików (Batch Processing)</h3>
+                        <p>Przeznaczony do masowego, sekwencyjnego wdrażania paczek aktualizacyjnych składających się z wielu plików <code>.sql</code>:</p>
+                        <ul>
+                            <li><strong>Dodawanie plików:</strong> Pliki można dodawać za pomocą eksploratora plików (przycisk <strong>Dodaj</strong>) lub przeciągając wiele plików lub całe katalogi bezpośrednio na listę (Drag & Drop).</li>
+                            <li><strong>Kolejność wykonywania:</strong> Pliki są wykonywane jeden po drugim, od góry do dołu. Kolejność na liście można precyzyjnie zmieniać przyciskami góra/dół lub wygodnie przeciągając pozycje myszką.</li>
+                            <li><strong>Obsługa Logów i Wyników:</strong>
+                                <ul>
+                                    <li><em>Pokaż log:</em> Automatycznie otwiera log po wykonaniu paczki.</li>
+                                    <li><em>Wyczyść podsumowanie:</em> Usuwa z listy plików graficzne znaczniki statusów wykonania (<code>OK</code> / <code>Ostrzeżenie</code> / <code>Błąd</code>) dla wszystkich skryptów z poprzedniej próby wdrożenia.</li>
+                                    <li><em>Wyczyść:</em> Czyści całą listę załadowanych plików skryptów.</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h3>4.3 Dry Run — Gold Standard Bezpieczeństwa (PRO Only)</h3>
+                        <p>Dla wdrożeń na systemach produkcyjnych SQLSkrypter PRO udostępnia funkcję <strong>Symulacji Dry Run</strong>:</p>
+                        <ol>
+                            <li>Uruchomienie skryptu w trybie Dry Run automatycznie otwiera na każdej docelowej bazie danych jawną <strong>transakcję SQL (<code>BEGIN TRANSACTION</code>)</strong>.</li>
+                            <li>Skrypt SQL zostaje w całości wykonany wewnątrz tej transakcji, sprawdzając wszystkie ograniczenia spójności, klucze obce i poprawność fizyczną.</li>
+                            <li>Zaraz po zakończeniu wykonywania kodu, aplikacja bezwzględnie wysyła polecenie <strong>wycofania zmian (<code>ROLLBACK TRANSACTION</code>)</strong>.</li>
+                            <li>Dzięki temu użytkownik otrzymuje pełne logi wykonania i potwierdzenie poprawności wdrożenia bez wprowadzania jakichkolwiek trwałych zmian w strukturze czy danych w bazie!</li>
+                        </ol>
+
+                        <!-- Limits comparison workspace (PL) -->
+                        <div class="limits-matrix">
+                            <div class="matrix-card">
+                                <h4>OBSZAR ROBOCZY FREE</h4>
+                                <ul>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Walidator składni SQL
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Sekwencyjne puszczanie plików
+                                    </li>
+                                    <li class="locked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                        Transakcyjny Dry-Run (rollback)
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="matrix-card pro-card">
+                                <h4 style="color: var(--accent-blue);">OBSZAR ROBOCZY PRO</h4>
+                                <ul>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Walidator składni SQL
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Drag & Drop dla pakietów plików
+                                    </li>
+                                    <li class="unlocked">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        Dry-Run z bezwzględnym rollbackiem
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Chapter 5 (PL) -->
+                    <article id="ch-5-pl" class="manual-chapter">
+                        <span class="chapter-number">05</span>
+                        <h2>🔗 Rozdział 5: Parametryzacja i Zmienne Dynamiczne</h2>
+                        <p>SQLSkrypter wyposażony jest w silnik dynamicznej parametryzacji w pamięci aplikacji, ułatwiający wdrażanie skryptów konfiguracyjnych na setki baz bez konieczności ręcznego edytowania wartości.</p>
+                        
+                        <h3>5.1 Mechanizm Działania i Składnia</h3>
+                        <p>Zmienne definiuje się bezpośrednio w kodzie SQL przy użyciu podwójnych nawiasów klamrowych: <code>{{NazwaZmiennej}}</code>.</p>
+                        <p>Podczas edycji lub wczytywania skryptu program automatycznie skanuje jego treść. Wykryte zmienne pojawią się w bocznym panelu <strong>Zmienne w skryptach (Parametryzacja)</strong> po prawej stronie edytora.</p>
+                        <ul>
+                            <li><strong>Składnia zmiennej w SQL:</strong> <code>{{NazwaZmiennej}}</code></li>
+                            <li><strong>Ustalanie wartości domyślnych (Anotacje):</strong> Domyślne wartości zmiennych deklaruje się w komentarzach kodu SQL (zalecane na początku pliku):</li>
+                        </ul>
+
+                        <div class="terminal-block">
+                            <div class="terminal-header">
+                                <div class="terminal-buttons">
+                                    <div class="terminal-btn red"></div>
+                                    <div class="terminal-btn yellow"></div>
+                                    <div class="terminal-btn green"></div>
+                                </div>
+                                <div class="terminal-title">parametryzacja.sql</div>
+                                <button class="terminal-copy" onclick="copyTerminalSnippet(this)" title="Skopiuj Kod">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                </button>
+                            </div>
+                            <div class="terminal-body">
+                                <pre><code><span class="token-comment">-- @VAR: ProgowanaKwota = 1000</span>
+<span class="token-comment">-- @VAR: Kraj = PL</span>
+
+<span class="token-keyword">UPDATE</span> dbo.KonfiguracjaAplikacji
+<span class="token-keyword">SET</span> Wartosc = <span class="token-string">'{{ProgowanaKwota}}'</span>
+<span class="token-keyword">WHERE</span> KluczKonfiguracji = <span class="token-string">'LimitFaktury'</span>
+  <span class="token-keyword">AND</span> KodKraju = <span class="token-string">'{{Kraj}}'</span>;</code></pre>
+                            </div>
+                        </div>
+
+                        <p>Aplikacja odczyta te linie i automatycznie uzupełni nimi odpowiednie pola tekstowe w bocznym panelu zmiennych, przyspieszając pracę.</p>
+                        <p>Wprowadzone w panelu wartości zostaną bezpiecznie podmienione bezpośrednio w pamięci RAM aplikacji tuż przed wysłaniem zapytań do docelowych baz danych.</p>
+
+                        <h3>5.2 Ograniczenia Licencyjne i Wyłącznik Detekcji (Bypass)</h3>
+                        <ul>
+                            <li><strong>Wersja PRO:</strong> Pełny, nielimitowany dostęp do dynamicznego podstawiania zmiennych oraz automatycznego wczytywania wartości domyślnych zdefiniowanych w skryptach.</li>
+                            <li><strong>Wersja FREE (Bypass klamer):</strong>
+                                <ul>
+                                    <li>Jeśli skrypt zawiera zmienne, panel parametrów zostanie zablokowany nakładką informującą o konieczności posiadania wersji PRO.</li>
+                                    <li><strong>Variable Detection Toggle (Włącz wykrywanie zmiennych {{ }}):</strong> SQLSkrypter posiada wyłącznik detekcji zmiennych. Wyłączenie tej opcji powoduje, że program całkowicie pomija skanowanie klamer <code>{{...}}</code>. Cały tekst skryptu zostaje przesłany w postaci <strong>surowego kodu SQL</strong>.</li>
+                                    <li>Pozwala to zarówno użytkownikom wersji FREE, jak i PRO na bezproblemowe uruchamianie skryptów zawierających natywne klamry (np. zapytania do dokumentów JSON, zapytania XML w SQL Server czy szablony silników raportowych) bez wywoływania błędów podstawiania ani blokad licencyjnych.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Chapter 6 (PL) -->
+                    <article id="ch-6-pl" class="manual-chapter">
+                        <span class="chapter-number">06</span>
+                        <h2>⚙️ Rozdział 6: Szczegółowy Opis Głównych Ustawień Aplikacji</h2>
+                        <p>SQLSkrypter udostępnia rozbudowany panel konfiguracyjny (zakładka <strong>Konfiguracja -> Ustawienia</strong>), w którym użytkownik może precyzyjnie dostroić ergonomię pracy i wydajność systemu:</p>
+                        
+                        <h3>6.1 Powiadomienia Toast (<code>ShowToastNotifications</code>)</h3>
+                        <p><strong>Opis działania:</strong> Odpowiada za wysyłanie systemowych powiadomień Windows w prawym dolnym rogu ekranu po zakończeniu wykonywania skryptów.</p>
+                        <p><strong>Specyfikacja:</strong> Obsługuje technologię DPI-aware i systemy wielomonitorowe – powiadomienie wyświetli się zawsze na monitorze, na którym aktualnie pracujesz. Pozwala to na zminimalizowanie aplikacji podczas wykonywania długich skryptów i bezpieczne zajęcie się inną pracą.</p>
+
+                        <h3>6.2 Aktualizacje (<code>checkUpdate</code>)</h3>
+                        <p><strong>Opis działania:</strong> Automatycznie odpytuje repozytorium GitHub przy uruchomieniu aplikacji w poszukiwaniu nowszych wydań.</p>
+                        <p><strong>Specyfikacja:</strong> Po wykryciu nowszej wersji wyświetla okno z kompletną, lokalizowaną listą zmian (Release Notes). Użytkownik jednym kliknięciem może zainicjować bezpieczne pobranie instalatora i automatyczną aktualizację programu. <em>Opcja wymaga licencji PRO.</em></p>
+
+                        <h3>6.3 Zapamiętanie Wykluczenia Serwerów (<code>ServerExcludeInfo</code>)</h3>
+                        <p><strong>Opis działania:</strong> Zarządza trwałością ręcznego ukrywania serwerów w eksploratorze (drzewie baz).</p>
+                        <p><strong>Specyfikacja:</strong> Jeśli opcja jest zaznaczona, serwery ukryte przez użytkownika z poziomu menu kontekstowego drzewa (Exclude) pozostaną niewidoczne po restarcie programu. Wyłączenie opcji przywraca pełną listę serwerów przy każdym nowym starcie aplikacji.</p>
+
+                        <h3>6.4 Równoległe Wykonywanie Skryptów (<code>ParallelExecution</code>)</h3>
+                        <p><strong>Opis działania:</strong> Aktywuje wielowątkowość podczas uruchamiania skryptów na flotach serwerów.</p>
+                        <p><strong>Specyfikacja:</strong> Uruchamia do 8 równoległych wątków roboczych. Zamiast czekać na zakończenie wykonywania skryptu na serwerze A, aplikacja przetwarza serwery A, B, C i D jednocześnie, drastycznie redukując całkowity czas wdrożenia. <em>Funkcja dostępna wyłącznie w wersji PRO.</em></p>
+
+                        <h3>6.5 Domyślne Okno Obszaru Roboczego (<code>DefaultWorkspaceTab</code>)</h3>
+                        <p><strong>Opis działania:</strong> Pozwala wybrać, która sekcja ma być aktywna po uruchomieniu aplikacji.</p>
+                        <p><strong>Specyfikacja:</strong> Do wyboru są dwie opcje: <strong>Edytor skryptów</strong> (domyślny dla szybkiego pisania zapytań ad-hoc) lub <strong>Skrypty z plików</strong> (domyślny dla administratorów wdrażających gotowe paczki aktualizacyjne).</p>
+
+                        <h3>6.6 Zapytanie Przed Zamknięciem (<code>ConfirmExit</code>)</h3>
+                        <p><strong>Opis działania:</strong> Chroni przed przypadkowym, omyłkowym zamknięciem programu.</p>
+                        <p><strong>Specyfikacja:</strong> Włączenie tej opcji powoduje wyświetlenie monitu potwierdzającego przy próbie wyjścia z programu. Jeśli w tle trwa aktywne wykonywanie skryptów, system wyświetli specjalne ostrzeżenie, informując o ryzyku przerwania transakcji.</p>
+
+                        <h3>6.7 Język Aplikacji (<code>chooseLanguage</code>)</h3>
+                        <p><strong>Opis działania:</strong> Odpowiada za pełne tłumaczenie interfejsu użytkownika aplikacji.</p>
+                        <p><strong>Specyfikacja:</strong> W pełni wspiera <strong>6 języków</strong>: polski (PL), angielski (EN-US), niemiecki (DE), hiszpański (ES), francuski (FR) i włoski (IT). Zmiana języka następuje natychmiastowo, bez konieczności ponownego uruchamiania aplikacji.</p>
+
+                        <h3>6.8 Limit Czasu Wykonywania SQL (<code>SqlTimeout</code>)</h3>
+                        <p><strong>Opis działania:</strong> Konfiguruje tzw. <em>Command Timeout</em> (w sekundach) dla zapytań SQL wysyłanych na serwery.</p>
+                        <p><strong>Specyfikacja:</strong> Zapobiega blokowaniu aplikacji przez zapytania oczekujące na zwolnienie blokad (locków) w bazie danych. Wpisanie wartości <code>0</code> całkowicie wyłącza limit czasowy (oczekiwanie nieskończone) i jest zalecane przy bardzo dużych wdrożeniach strukturalnych.</p>
+                    </article>
+
+                    <!-- Chapter 7 (PL) -->
+                    <article id="ch-7-pl" class="manual-chapter">
+                        <span class="chapter-number">07</span>
+                        <h2>🔒 Rozdział 7: Architektura Bezpieczeństwa i Szyfrowanie</h2>
+                        <p>SQLSkrypter został zaprojektowany z myślą o maksymalnej ochronie haseł i integralności baz danych w środowiskach korporacyjnych.</p>
+                        
+                        <h3>7.1 Weryfikacja Zapytania Odkrywającego (ScriptDom AST)</h3>
+                        <p>Aby zapewnić, że zapytanie odkrywające bazy (<code>sys.databases</code>) nigdy nie uszkodzi struktury serwera SQL, aplikacja analizuje jego kod za pomocą oficjalnego parsera kompilatora <strong>Microsoft.SqlServer.TransactSql.ScriptDom</strong>.</p>
+                        <p>System buduje drzewo składniowe zapytania (AST) i za pomocą wzorca projektowego wizytatora (<code>SqlSafetyVisitor</code>) bezwzględnie blokuje zapytania zawierające:</p>
+                        <ul>
+                            <li>Modyfikacje danych (DML): <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>.</li>
+                            <li>Zmiany schematów (DDL): <code>ALTER TABLE</code>, <code>ALTER DATABASE</code>, <code>DROP</code>, <code>CREATE</code>, <code>TRUNCATE</code>.</li>
+                            <li>Wykonywanie kodu proceduralnego: <code>EXECUTE</code> / <code>EXEC</code>.</li>
+                            <li>Przypisywanie zmiennych w SELECT (<code>SELECT @var = ...</code>) oraz tworzenie tabel w locie (<code>SELECT INTO</code>).</li>
+                        </ul>
+                        <p>Gwarantuje to absolutne bezpieczeństwo operacji odkrywania baz.</p>
+
+                        <h3>7.2 Szyfrowanie Konfiguracji Lokalnej (Hybrydowy standard AES-256)</h3>
+                        <p>Konfiguracja serwerów w pliku <code>%LOCALAPPDATA%\Skrypter\DataServers.dat</code> jest chroniona unikalnym schematem hybrydowym:</p>
+                        <ol>
+                            <li><strong>Jednorazowy Klucz AES-256:</strong> Przy każdym zapisie aplikacja generuje losowy klucz AES (32 bajty) oraz wektor inicjalizacyjny IV (16 bajtów) służące do zaszyfrowania bazy serwerów.</li>
+                            <li><strong>Podwójne Szyfrowanie Metadanych (Klucza AES):</strong> Sam klucz AES jest szyfrowany równolegle dwoma metodami:
+                                <ul>
+                                    <li><em>DPAPI (Windows Data Protection API):</em> Szyfruje dane kluczem powiązanym z kontem aktualnego użytkownika Windows w systemie operacyjnym.</li>
+                                    <li><em>Hardware-AES (Sprzętowy fallback):</em> Szyfruje dane unikalnym kluczem sprzętowym wygenerowanym jako skrót SHA-256 z identyfikatora procesora (<code>ProcessorId</code>) i numeru seryjnego płyty głównej (<code>SerialNumber</code>) pobranych z biosu maszyny przez interfejs WMI.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Bezpieczeństwo przed kradzieżą:</strong> Przeniesienie pliku konfiguracyjnego na inną maszynę uniemożliwia jego odszyfrowanie. Z kolei w przypadku uszkodzenia profilu użytkownika Windows na danej maszynie, program bez problemu odzyska dane dzięki sprzętowemu kluczowi awaryjnemu.</li>
+                        </ol>
+
+                        <h3>7.3 Szyfrowanie przy Eksporcie / Imporcie</h3>
+                        <ul>
+                            <li><strong>Standard:</strong> Wykorzystuje silne szyfrowanie symetryczne <strong>AES-256</strong>.</li>
+                            <li><strong>Derywacja Klucza:</strong> Klucz oraz wektor inicjalizacyjny (IV) są generowane na podstawie hasła podanego przez użytkownika za pomocą algorytmu <strong>PBKDF2</strong> (<code>Rfc2898DeriveBytes</code>) z silną solą kryptograficzną.</li>
+                            <li><strong>Zapis:</strong> Plik eksportu zawiera zaszyfrowany plik konfiguracji JSON zakodowany do postaci czytelnego ciągu znaków <strong>Base64</strong>. Służy do bezpiecznego przenoszenia danych między stacjami roboczymi.</li>
+                        </ul>
+                    </article>
+
+                    <!-- Chapter 8 (PL) -->
+                    <article id="ch-8-pl" class="manual-chapter">
+                        <span class="chapter-number">08</span>
+                        <h2>🔑 Rozdział 8: Licencjonowanie, Trial i O Aplikacji</h2>
+                        <p>Okno <strong>O aplikacji (About / Licensing)</strong> to panel zarządzania cyklem życia oprogramowania oraz diagnostyki systemowej.</p>
+                        
+                        <h3>8.1 Wersje Licencji i Aktywacja</h3>
+                        <ul>
+                            <li><strong>Wersja FREE:</strong> Darmowa, z limitami (do 10 serwerów, do 3 środowisk, brak pracy równoległej, brak symulacji Dry Run, zablokowany panel zmiennych).</li>
+                            <li><strong>Okres Próbny (14-dniowy TRIAL):</strong> Każdy użytkownik może bezpośrednio z poziomu aplikacji jednym kliknięciem uruchomić pełny, darmowy 14-dniowy okres próbny, dający dostęp do wszystkich możliwości edycji PRO w celach testowych.</li>
+                            <li><strong>Aktywacja PRO (Ręczna / Offline):</strong>
+                                <ol>
+                                    <li>Przejdź do zakładki <strong>O aplikacji -> Licencjonowanie</strong>.</li>
+                                    <li>Skopiuj wygenerowany unikalny <strong>Identyfikator Urządzenia (Hardware ID)</strong>.</li>
+                                    <li>Po zakupie licencji wprowadź swój <strong>Klucz licencyjny</strong> oraz wygenerowany kod aktywacyjny i kliknij przycisk <strong>Aktywuj (Activate)</strong>.</li>
+                                    <li>Aplikacja weryfikuje podpis cyfrowy klucza za pomocą asymetrycznego algorytmu <strong>RSA-2048</strong>, natychmiast odblokowując funkcjonalności premium bez konieczności połączenia z Internetem.</li>
+                                </ol>
+                            </li>
+                        </ul>
+
+                        <h3>8.2 Informacje o Systemie i Wsparcie Techniczne</h3>
+                        <p>W dolnej części panelu "O aplikacji" znajduje się sekcja diagnostyczna <strong>Informacje o systemie (System Info)</strong>, zbierająca kluczowe metadane środowiskowe przydatne podczas kontaktu z pomocą techniczną:</p>
+                        <ul>
+                            <li>Wersja systemu operacyjnego Windows, architektura oraz nazwa hosta.</li>
+                            <li>Zainstalowana wersja środowiska .NET Framework.</li>
+                            <li>Model procesora (CPU) oraz ilość pamięci operacyjnej RAM.</li>
+                            <li>Informacja o pracy wewnątrz maszyny wirtualnej (VM).</li>
+                            <li>Dokładna ścieżka instalacji aplikacji oraz lokalizacja lokalnych plików logów (log4net).</li>
+                            <li><strong>Kontakt:</strong> W razie problemów technicznych lub zapytań o licencje PRO prosimy o kontakt pod adresem: <code style="background: rgba(152, 221, 255, 0.1); padding: 2px 6px; border-radius: 4px;">sqlskrypter@gmail.com</code></li>
+                        </ul>
+
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(152, 221, 255, 0.03); border: 1px dashed var(--accent-blue); border-radius: 1rem; text-align: center;">
+                            <p style="font-style: italic; color: var(--text-secondary); margin: 0; font-size: 0.9rem;">Uwaga: SQLSkrypter to tzw. "Fast Runner". Aplikacja nie wyświetla wyników zapytań SELECT (danych), skupiając się w całości na statusie wykonania i wydajności.</p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </main>
 
         </div>
+
     </section>
 
     <!-- Footer -->
@@ -184,5 +1625,88 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="app.js"></script>
+
+    <script>
+        // High Performance Interactive Features
+        window.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Reading Progress Tracker ---
+            window.addEventListener('scroll', () => {
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (window.scrollY / docHeight) * 100;
+                const bar = document.getElementById('reading-progress');
+                if (bar) bar.style.width = progress + '%';
+            });
+
+            // --- Scrollspy: Active TOC State on Scroll ---
+            const tocLinks = document.querySelectorAll('.toc-link');
+            
+            function highlightTOC() {
+                // Determine active language
+                const activeLang = document.documentElement.lang || 'en';
+                const container = document.querySelector(`main .lang-${activeLang}`);
+                if (!container) return;
+
+                // Find only the currently visible chapters belonging to the active language
+                const chapters = Array.from(container.querySelectorAll('.manual-chapter'))
+                                      .filter(ch => ch.offsetParent !== null);
+                
+                let activeIndex = chapters.length;
+                while(--activeIndex && window.scrollY + 180 < chapters[activeIndex].offsetTop) {}
+                
+                tocLinks.forEach((link, idx) => {
+                    link.classList.remove('active');
+                    // Sync PL links to matching index because chapters are structured identically in both languages
+                    if (idx === activeIndex) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            highlightTOC();
+            window.addEventListener('scroll', highlightTOC);
+
+            // Smooth Scroll for TOC links mapping correctly
+            tocLinks.forEach((link) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const activeLang = document.documentElement.lang || 'en';
+                    const targetId = link.getAttribute('href');
+                    
+                    // Match Polish IDs if lang is PL
+                    const finalId = activeLang === 'pl' ? `${targetId}-pl` : targetId;
+                    const targetElem = document.querySelector(finalId);
+                    
+                    if (targetElem) {
+                        window.scrollTo({
+                            top: targetElem.offsetTop - 120,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            
+
+            // --- Mock Terminal Copy snippet ---
+            window.copyTerminalSnippet = function(button) {
+                const codeContainer = button.closest('.terminal-block').querySelector('.terminal-body code');
+                if (!codeContainer) return;
+                
+                const text = codeContainer.innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalSVG = button.innerHTML;
+                    // Switch to checkmark
+                    button.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                    button.style.color = '#4ade80';
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalSVG;
+                        button.style.color = '';
+                    }, 2000);
+                });
+            };
+        });
+    </script>
 </body>
 </html>
