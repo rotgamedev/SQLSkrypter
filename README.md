@@ -36,6 +36,9 @@
 *   **Execution Statistics**: After every run, see a summary: total count, success/error breakdown, and fastest/slowest database.
 *   **Intelligent Error Grouping**: Identical errors across multiple databases are clustered into one entry — instantly revealing infrastructure-wide issues.
 
+### 📖 User Manual & Guides
+Learn how to get the most out of SQLSkrypter by exploring our **[Interactive User Manual](https://rotgamedev.github.io/SQLSkrypter/manual.html)**. It covers server configuration, advanced exclusion filters, parallel execution optimizations, hardware-linked encryption keys, and includes quick video tutorials.
+
 ### 📸 Gallery
 
 <table border="0">
@@ -88,11 +91,15 @@
 *   **Statystyki wykonania**: Po zakończeniu sesji widzisz: liczbę ogółem, błędy/sukcesy, najszybszą i najwolniejszą bazę.
 *   **Inteligentna Agregacja Błędów**: Identyczne błędy z wielu baz są grupowane w jeden wpis — natychmiast wskazując problem infrastrukturalny.
 
+### 📖 Podręcznik Użytkownika i Poradniki
+Dowiedz się, jak w pełni wykorzystać potencjał SQLSkryptera, czytając nasz **[Interaktywny Podręcznik Użytkownika](https://rotgamedev.github.io/SQLSkrypter/manual.html)**. Opisuje on szczegółowo zaawansowane filtry wykluczeń, mechanizmy równoległości, szyfrowanie DPAPI/AES i zawiera praktyczne wideoporadniki.
+
 ---
 
 ## 🔗 Linki / Links
 
 *   🌐 **[Oficjalna Strona / Website](https://rotgamedev.github.io/SQLSkrypter/)**
+*   📖 **[Podręcznik Użytkownika / User Manual](https://rotgamedev.github.io/SQLSkrypter/manual.html)**
 *   🎁 **[Pobierz wersją Trial / Download Trial](https://rotgamedev.github.io/SQLSkrypter/#download)**
 *   📜 **[Lista Zmian / Changelog](https://github.com/rotgamedev/SQLSkrypter/releases)**
 
